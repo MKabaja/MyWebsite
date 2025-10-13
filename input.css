@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .offmenu {
+    @apply fixed right-0 top-20 z-50 w-44 max-w-[85vw] rounded-l-xl bg-gray-100 p-3 shadow-xl transition-all duration-300 ease-out will-change-transform dark:bg-gray-900 md:transition-none;
+  }
+  .offmenu-md {
+    @apply md:pointer-events-auto md:static md:z-auto md:flex md:w-auto md:max-w-none md:translate-x-0 md:space-x-8 md:space-y-0 md:p-0 md:opacity-100 md:shadow-none;
+
+    @apply md:bg-transparent;
+    @apply dark:md:bg-transparent;
+  }
+  .offmenu-closed {
+    @apply pointer-events-none translate-x-full opacity-0;
+  }
+  .offmenu-open {
+    @apply pointer-events-auto translate-x-0 opacity-100;
+  }
+  .overlay-base {
+    @apply pointer-events-none fixed inset-0 z-40 bg-black/40 opacity-0 backdrop-blur-sm transition-all duration-300 md:hidden;
+  }
+  .overlay-open {
+    @apply pointer-events-auto opacity-100;
+  }
+}
+
 /* Kolory bazowe – LIGHT */
 :root {
   --bg1: #1d2829;
@@ -40,9 +64,9 @@
     background-image: linear-gradient(
       90deg,
       rgba(245, 248, 248, 1) 0%,
-      /* #F5F8F8 */ rgba(240, 244, 244, 1) 11%,
-      /* #F0F4F4 */ rgba(233, 236, 237, 1) 41%,
-      /* #E9ECEF */ rgba(233, 236, 237, 1) 58%,
+      rgba(240, 244, 244, 1) 11%,
+      rgba(233, 236, 237, 1) 41%,
+      rgba(233, 236, 237, 1) 58%,
       rgba(240, 244, 244, 1) 85%,
       rgba(245, 248, 248, 1) 100%
     );

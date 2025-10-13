@@ -1,13 +1,8 @@
 module.exports = {
   content: [
     // Skanuje pliki .html w katalogu głównym i we wszystkich podkatalogach
-    './*.html',
-    './**/*.html',
-
-    // Skanuje pliki .js tylko w Twoich katalogach źródłowych (SRC i JS)
-    // Dzięki temu nie skanujemy katalogu node_modules
-    './src/**/*.js',
-    './js/**/*.js',
+    './index.html',
+    './JS/**/*.js',
   ],
 
   darkMode: 'class',
@@ -56,10 +51,11 @@ module.exports = {
       dropShadow: {
         neon: ['0 0 8px rgba(255,140,50,0.6)', '0 0 16px rgba(255,140,50,0.4)'],
         cyan: ['0 0 8px rgba(0,255,245,0.6)', '0 0 16px rgba(0,255,245,0.4)'],
+        cl: ['0 0 4px rgba(0, 150, 136, 0.8)', '0 0 8px rgba(0, 150, 136, 0.4)'],
       },
       boxShadow: {
-        'glow-orange': '0 0 0 3px rgba(255,140,50,0.35), 0 0 30px rgba(255,140,50,0.45)',
-        'glow-cyan': '0 0 0 3px rgba(0,255,245,0.35), 0 0 30px rgba(0,255,245,0.45)',
+        gorange: '0 0 0 3px rgba(255,140,50,0.35), 0 0 30px rgba(255,140,50,0.45)',
+        gcyan: '0 0 0 3px rgba(0,255,245,0.35), 0 0 30px rgba(0,255,245,0.45)',
       },
       backgroundImage: (theme) => ({
         'logo-dark-mode': "url('../images/logo-dark-mode.svg')",

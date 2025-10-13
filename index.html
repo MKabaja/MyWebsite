@@ -13,16 +13,19 @@
     <script defer type="module" src="/JS/app.js"></script>
     <title>Mateusz Kabaja</title>
   </head>
-  <body class="bg-app-gradient p-9 text-white md:p-12">
+  <body class="bg-app-light dark:bg-app-gradient p-10 text-black dark:text-white md:p-12">
+    <div id="site-overlay" class="overlay-base"></div>
     <!-- Header -->
     <header id="header" class="flex items-center justify-between pb-8 md:flex-row">
       <!-- Główny kontener -->
       <div class="container flex flex-row justify-between">
         <!-- LOGO + IMIe -->
         <div class="flex flex-col justify-start text-2xl tracking-wide">
-          <span class="h-10" id="header-logo"
+          <span
+            class="flex h-10 cursor-pointer duration-150 hover:scale-105 hover:drop-shadow-cyan dark:hover:drop-shadow-neon"
+            id="header-logo"
             ><svg
-              class="h-10 text-accent drop-shadow-neon"
+              class="h-10 text-cyber-strong dark:text-accent"
               width="100"
               height="164"
               viewBox="0 0 408 164"
@@ -69,7 +72,7 @@
           <span>Mateusz Kabaja</span>
         </div>
         <!-- Navbar -->
-        <nav class="flex flex-col items-end justify-between md:h-5 md:flex-row">
+        <nav class="relative flex flex-col items-end justify-between md:h-5 md:flex-row">
           <!-- hamburger -->
           <button id="header-hamburger" class="group relative md:hidden" aria-expanded="false">
             <svg
@@ -98,28 +101,37 @@
             </svg>
           </button>
           <!-- menu -->
-          <ul id="header-nav" class="hidden text-lg font-light md:flex md:space-x-8">
+
+          <ul id="header-nav" class="md:offmenu-md offmenu offmenu-closed">
             <li class="group px-2 duration-300 hover:scale-95">
               <a href="#projects">Projekty</a>
               <div
-                class="mx-1 mt-1 border-b-2 border-accent-strong opacity-0 duration-300 group-hover:opacity-100"
+                class="mx-1 mt-1 w-12 border-b-2 border-cyber-strong opacity-0 duration-150 group-hover:opacity-100 dark:border-accent-strong"
               ></div>
             </li>
             <li class="group px-2 duration-300 hover:scale-95">
               <a href="#abaut">O mnie</a>
               <div
-                class="mx-1 mt-1 border-b-2 border-accent-strong opacity-0 duration-300 group-hover:opacity-100"
+                class="mx-1 mt-1 w-12 border-b-2 border-cyber-strong opacity-0 duration-150 group-hover:opacity-100 dark:border-accent-strong"
               ></div>
             </li>
             <li class="group px-2 duration-300 hover:scale-95">
               <a href="#contact">Kontakt</a>
               <div
-                class="mx-1 mt-1 border-b-2 border-accent-strong opacity-0 duration-300 group-hover:opacity-100"
+                class="mx-1 mt-1 w-12 border-b-2 border-cyber-strong opacity-0 duration-150 group-hover:opacity-100 dark:border-accent-strong"
               ></div>
             </li>
           </ul>
         </nav>
       </div>
     </header>
+    <main>
+      <div>
+        <h1>
+          web developer
+          <div></div>
+        </h1>
+      </div>
+    </main>
   </body>
 </html>
