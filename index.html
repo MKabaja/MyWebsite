@@ -10,18 +10,19 @@
     />
 
     <link rel="stylesheet" href="css/style.css" />
+    <script defer type="module" src="/JS/app.js"></script>
     <title>Mateusz Kabaja</title>
   </head>
-  <body class="p-12 text-white">
+  <body class="bg-app-gradient p-9 text-white md:p-12">
     <!-- Header -->
-    <header class="flex items-center justify-between pb-8 md:flex-row">
+    <header id="header" class="flex items-center justify-between pb-8 md:flex-row">
       <!-- Główny kontener -->
       <div class="container flex flex-row justify-between">
         <!-- LOGO + IMIe -->
         <div class="flex flex-col justify-start text-2xl tracking-wide">
-          <span class="h-10"
+          <span class="h-10" id="header-logo"
             ><svg
-              class="text-accent drop-shadow-neon h-10"
+              class="h-10 text-accent drop-shadow-neon"
               width="100"
               height="164"
               viewBox="0 0 408 164"
@@ -68,16 +69,16 @@
           <span>Mateusz Kabaja</span>
         </div>
         <!-- Navbar -->
-        <nav class="flex flex-col justify-between md:h-5 md:flex-row">
+        <nav class="flex flex-col items-end justify-between md:h-5 md:flex-row">
           <!-- hamburger -->
-          <button class="md:hidden">
+          <button id="header-hamburger" class="group relative md:hidden" aria-expanded="false">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-6"
+              class="absolute inset-0 size-6 transition-all duration-150 group-aria-expanded:rotate-90 group-aria-expanded:opacity-0"
             >
               <path
                 stroke-linecap="round"
@@ -85,25 +86,35 @@
                 d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
               />
             </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="absolute inset-0 size-6 rotate-90 opacity-0 transition-all duration-150 group-aria-expanded:rotate-0 group-aria-expanded:opacity-100"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
           </button>
           <!-- menu -->
-          <ul class="hidden text-lg font-light md:flex md:space-x-8">
+          <ul id="header-nav" class="hidden text-lg font-light md:flex md:space-x-8">
             <li class="group px-2 duration-300 hover:scale-95">
               <a href="#projects">Projekty</a>
               <div
-                class="border-accent-strong mx-1 mt-1 border-b-2 opacity-0 duration-300 group-hover:opacity-100"
+                class="mx-1 mt-1 border-b-2 border-accent-strong opacity-0 duration-300 group-hover:opacity-100"
               ></div>
             </li>
             <li class="group px-2 duration-300 hover:scale-95">
               <a href="#abaut">O mnie</a>
               <div
-                class="border-accent-strong mx-1 mt-1 border-b-2 opacity-0 duration-300 group-hover:opacity-100"
+                class="mx-1 mt-1 border-b-2 border-accent-strong opacity-0 duration-300 group-hover:opacity-100"
               ></div>
             </li>
             <li class="group px-2 duration-300 hover:scale-95">
               <a href="#contact">Kontakt</a>
               <div
-                class="border-accent-strong mx-1 mt-1 border-b-2 opacity-0 duration-300 group-hover:opacity-100"
+                class="mx-1 mt-1 border-b-2 border-accent-strong opacity-0 duration-300 group-hover:opacity-100"
               ></div>
             </li>
           </ul>
