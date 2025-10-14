@@ -24,16 +24,53 @@
   .overlay-open {
     @apply pointer-events-auto opacity-100;
   }
+  /* H1 - LIGHT */
+  .text-gradient-hero {
+    @apply via-pearl bg-gradient-to-r from-cyber to-zinc-700/90 bg-clip-text text-transparent;
+  }
+  /* H1 – DARK */
+  .text-gradient-hero-dark {
+    @apply bg-gradient-to-r from-accent-soft via-zinc-300/60 to-graphite-2 bg-clip-text text-transparent;
+  }
+  /* Lokalizacja – LIGHT  */
+  .text-gradient-muted {
+    @apply bg-gradient-to-l from-zinc-800/90 via-zinc-600/70 to-zinc-500/0 bg-clip-text text-transparent;
+  }
+  /* Lokalizacja – DARK  */
+  .text-gradient-muted-dark {
+    @apply bg-gradient-to-l from-zinc-300/90 via-zinc-400/70 to-zinc-500/40 bg-clip-text text-transparent;
+  }
+  .scroll-down {
+    @apply shadow-scrol absolute bottom-[5%] right-[2%] h-20 w-8 cursor-pointer rounded-xl;
+  }
+  .scroll-down::before,
+  .scroll-down::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    height: 10px;
+    width: 10px;
+    transform: translate(-50%, -100%) rotate(45deg);
+    border: 2px solid lightgray;
+    border-top: transparent;
+    border-left: transparent;
+    animation: scroll-down 3s ease-in-out infinite;
+  }
+  .scroll-down::before {
+    top: 30%;
+    animation-delay: 0.8s;
+  }
 }
 
 /* Kolory bazowe – LIGHT */
 :root {
-  --bg1: #1d2829;
-  --bg2: #181e1f;
-  --bg3: #131314;
-  --bg4: #131314;
-  --bg5: #181e1f;
-  --bg6: #1d2829;
+  --bg1: #f0ece8;
+  --bg2: #ebe6e1;
+  --bg3: #e6e1dc;
+  --bg4: #e4dfda;
+  --bg5: #e9e4df;
+  --bg6: #f2eeea;
 }
 
 /* DARK – nadpisuje tylko wartości */
@@ -59,16 +96,9 @@
       var(--bg6) 100%
     );
   }
-  .bg-app-light {
-    /* delikatnie chłodny szaro-turkusowy, pasuje do Twojej stylistyki */
-    background-image: linear-gradient(
-      90deg,
-      rgba(245, 248, 248, 1) 0%,
-      rgba(240, 244, 244, 1) 11%,
-      rgba(233, 236, 237, 1) 41%,
-      rgba(233, 236, 237, 1) 58%,
-      rgba(240, 244, 244, 1) 85%,
-      rgba(245, 248, 248, 1) 100%
-    );
+  .bg-vignette-light {
+    background-image:
+      radial-gradient(120% 80% at 50% 20%, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0) 55%),
+      linear-gradient(90deg, var(--bg1), var(--bg6));
   }
 }

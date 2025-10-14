@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600;700;900&display=swap"
       rel="stylesheet"
     />
 
@@ -13,7 +13,9 @@
     <script defer type="module" src="/JS/app.js"></script>
     <title>Mateusz Kabaja</title>
   </head>
-  <body class="bg-app-light dark:bg-app-gradient p-10 text-black dark:text-white md:p-12">
+  <body
+    class="bg-app-gradient bg-vignette-light dark:bg-app-gradient p-10 text-black dark:text-white md:p-12"
+  >
     <div id="site-overlay" class="overlay-base"></div>
     <!-- Header -->
     <header id="header" class="flex items-center justify-between pb-8 md:flex-row">
@@ -125,12 +127,38 @@
         </nav>
       </div>
     </header>
-    <main>
-      <div>
-        <h1>
+    <!-- hero  -->
+    <main class="flex min-h-[85vw] flex-1 flex-col justify-between overflow-hidden">
+      <!-- Nagłówek -->
+      <section class="mt-12 uppercase" aria-labelledby="hero-title">
+        <h1
+          id="hero-title"
+          class="text-gradient-hero dark:text-gradient-hero-dark text-center text-[12rem] font-black leading-none tracking-[5px]"
+        >
           web developer
-          <div></div>
         </h1>
+        <!-- sekcja lokalizacji -->
+        <address class="mt-8 flex flex-col items-start not-italic">
+          <p class="dark:text-gradient-muted-dark text-gradient-muted text-2xl">
+            Lokalizacja:<br />
+            Polska
+          </p>
+        </address>
+      </section>
+      <!-- Bio Section -->
+      <section class="mb mb-8 mt-auto uppercase">
+        <p class="max-w-[22rem] text-base font-light leading-[1.6] tracking-wider">
+          Od <span class="text-accent-strong">roku</span> uczę się
+          <span class="text-accent-soft">JavaScriptu</span> i rozwijam swoje umiejętności w
+          tworzeniu nowoczesnych aplikacji. Lubię też
+          <span class="text-cyber-soft">projektować</span> — szczególnie tam, gdzie funkcjonalność
+          spotyka się z dobrym designem.
+        </p>
+      </section>
+      <!-- scroll down element -->
+      <div class="scroll-down">
+        <!-- anty purge -->
+        <span class="animate-scroll-down hidden"></span>
       </div>
     </main>
   </body>

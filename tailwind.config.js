@@ -8,7 +8,18 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      keyframes: {
+        'scroll-down': {
+          '0%': { opacity: '0' },
+          '30%,60%': { opacity: '1' },
+          '100%': { opacity: '0', top: '90%' },
+        },
+      },
+      animation: {
+        'scroll-down': 'scroll-down 3s ease-in-out infinite',
+      },
       colors: {
+        pearl: '#E6D7C8',
         ink: '#0D0D0D', // główne tło
         graphite: {
           DEFAULT: '#1C1C1C', // karty / sekcje
@@ -56,6 +67,7 @@ module.exports = {
       boxShadow: {
         gorange: '0 0 0 3px rgba(255,140,50,0.35), 0 0 30px rgba(255,140,50,0.45)',
         gcyan: '0 0 0 3px rgba(0,255,245,0.35), 0 0 30px rgba(0,255,245,0.45)',
+        scrol: ' 0 0 10px rgba(255,255,255,0.5)',
       },
       backgroundImage: (theme) => ({
         'logo-dark-mode': "url('../images/logo-dark-mode.svg')",
