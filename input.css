@@ -26,7 +26,7 @@
   }
   /* H1 - LIGHT */
   .text-gradient-hero {
-    @apply via-pearl bg-gradient-to-r from-cyber to-zinc-700/90 bg-clip-text text-transparent;
+    @apply bg-gradient-to-l from-cyber-soft via-pearl to-zinc-700/90 bg-clip-text text-transparent;
   }
   /* H1 – DARK */
   .text-gradient-hero-dark {
@@ -41,7 +41,7 @@
     @apply bg-gradient-to-l from-zinc-300/90 via-zinc-400/70 to-zinc-500/40 bg-clip-text text-transparent;
   }
   .scroll-down {
-    @apply shadow-scrol absolute bottom-[5%] right-[2%] h-20 w-8 cursor-pointer rounded-xl;
+    @apply absolute bottom-[5%] right-[2%] h-20 w-8 cursor-pointer rounded-xl shadow-scrol;
   }
   .scroll-down::before,
   .scroll-down::after {
@@ -60,6 +60,11 @@
   .scroll-down::before {
     top: 30%;
     animation-delay: 0.8s;
+  }
+  .card-overlay {
+    background:
+      radial-gradient(80% 100% at 0% 0%, rgba(255, 255, 255, 0.08), transparent 80%),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.6));
   }
 }
 
