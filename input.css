@@ -63,8 +63,8 @@
   }
   .card-overlay {
     background:
-      radial-gradient(80% 100% at var(--x) var(--y), rgba(255, 255, 255, 0.08), transparent 80%),
-      linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.6));
+      radial-gradient(80% 100% at var(--x) var(--y), rgba(255, 255, 255, 0.08), transparent 60%),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.6));
   }
   .card {
     @apply relative transform overflow-hidden rounded-md border border-gray-900 p-8 duration-150 hover:-translate-y-[5px] hover:shadow-gcyan;
@@ -108,5 +108,32 @@
     background-image:
       radial-gradient(120% 80% at 50% 20%, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0) 55%),
       linear-gradient(90deg, var(--bg1), var(--bg6));
+  }
+}
+@layer components {
+  .slider {
+    /* domyślne wartości */
+    --width: 60rem;
+    --height: 40rem;
+    --quantity: 4;
+    height: var(--height);
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, #000 10% 90%, transparent);
+  }
+  .slider .list {
+    display: flex;
+    min-width: calc(var(--width) * var(--quantity));
+    position: relative;
+  }
+  .slider .list .item {
+    width: var(--width);
+    height: var(--height);
+    position: absolute;
+    left: 80%;
+    animation: auto-run 10s linear infinite;
+
+    animation-delay: calc((10s / var(--quantity)) * (var(--position) -1)-10s) !important;
+    transition: 0.5s;
   }
 }

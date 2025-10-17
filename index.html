@@ -8,6 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600;700;900&display=swap"
       rel="stylesheet"
     />
+    <link href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="css/style.css" />
     <script defer type="module" src="/JS/app.js"></script>
@@ -172,19 +173,187 @@
     </main>
     <!-- o mnie -->
     <section id="abaut" class="mt-80 flex w-full flex-col items-center justify-center space-y-3">
-      <h1 class="text-gradient-hero text-7xl font-bold">O Mnie</h1>
+      <h1 class="text-gradient-hero mb-10 text-7xl font-bold">O Mnie</h1>
       <!-- bento Grid -->
       <div id="bento-grid" class="relative grid h-[90vh] w-[90%] grid-cols-3 gap-6">
         <!-- cards -->
         <!-- intro -->
-        <div id="intro" class="card-overlay card col-span-2 min-h-[300px]"></div>
+        <div id="intro" class="card-overlay card col-span-2 min-h-[300px]">
+          <h2 class="mt-12 text-3xl font-light tracking-wide">Cześć!, jestem Mateusz!</h2>
+          <p class="mt-8 max-w-lg text-sm leading-relaxed text-gray-400">
+            Od ponad roku rozwijam się w kierunku front-endu, łącząc ciekawość kodu z zamiłowaniem
+            do estetyki i nowoczesnego designu. Tworzenie stron internetowych daje mi ogromną
+            satysfakcję — szczególnie wtedy, gdy połączenie funkcjonalności i wyglądu tworzy coś, co
+            naprawdę „działa” i dobrze wygląda.
+          </p>
+          <p class="mt-2 max-w-lg text-sm leading-relaxed text-gray-400">
+            Lubię projekty, które pozwalają mi się uczyć czegoś nowego i eksperymentować — czy to z
+            animacjami, responsywnym układem, czy logiką aplikacji. Najbardziej motywuje mnie
+            moment, gdy pomysł z notatnika zaczyna żyć w przeglądarce.
+          </p>
+          <p class="mt-2 max-w-lg text-sm leading-relaxed text-gray-400">
+            Poza kodem interesuję się projektowaniem graficznym i 3D — często wykorzystuję Figma i
+            Spline, by nadać projektom głębi i indywidualnego charakteru. W przyszłości chcę
+            rozwijać się w kierunku full-stacku, łącząc Reacta z backendem w PHP lub Firebase.
+          </p>
+          <img
+            src="images/gradient.png"
+            alt="Gradient"
+            class="abasolute -inset-[1%] -z-10 h-[110%] w-[110%] object-cover"
+          />
+          <div class="absolute right-[15%] top-[-25%] h-[30rem] w-[30rem]">
+            <spline-viewer
+              class="h-[150%] w-[150%] mix-blend-lighten"
+              url="https://prod.spline.design/akDHOzTo50SWLgPr/scene.splinecode"
+            ></spline-viewer>
+          </div>
+        </div>
         <!-- tech -->
-        <div id="tech" class="card-overlay card row-span-2 min-h-[450px]"></div>
+        <div id="tech" class="card-overlay card row-span-2 min-h-[450px]">
+          <h2 class="mt-12 text-3xl font-light tracking-wide">Stack technologiczny</h2>
+          <p class="mt-8 max-w-lg text-sm leading-relaxed text-gray-400">
+            Rozwijam się w obszarze dwóch języków programowania —
+            <span class="font-semibold text-[#F7DF1E]">JavaScript</span>
+            i <span class="font-semibold text-[#777BB4]">PHP</span> — oraz frameworków i narzędzi
+            deweloperskich, które pozwalają mi tworzyć solidne, skalowalne i wydajne aplikacje.
+          </p>
+          <p class="mt-2 max-w-lg text-sm leading-relaxed text-gray-400">
+            Dzięki dobrej znajomości
+            <span class="font-semibold text-[#E34F26]">HTML</span>,
+            <span class="font-semibold text-[#1572B6]">CSS</span>
+            i <span class="font-semibold text-[#F7DF1E]">JavaScript</span>
+            tworzę estetyczne oraz responsywne interfejsy internetowe, które zwiększają
+            zaangażowanie użytkowników. W pracy wykorzystuję również
+            <span class="font-semibold text-[#38BDF8]">Tailwind CSS</span>
+            i <span class="font-semibold text-[#CC6699]">SCSS</span>, które pozwalają mi projektować
+            elastyczne, spójne i łatwe w utrzymaniu systemy komponentów.
+          </p>
+          <p class="mt-2 max-w-lg text-sm leading-relaxed text-gray-400">
+            Od strony backendu korzystam z
+            <span
+              class="bg-gradient-to-r from-[#FFCA28] via-[#FFA000] to-[#F57C00] bg-clip-text font-semibold text-transparent"
+              >Firebase</span
+            >
+            jako zaplecza baz danych i autoryzacji użytkowników, a równocześnie rozwijam się w
+            zakresie
+            <span class="font-semibold text-[#777BB4]">PHP</span>, poszerzając umiejętności o logikę
+            serwera.
+          </p>
+          <p class="mt-2 max-w-lg text-sm leading-relaxed text-gray-400">
+            Aktualnie pogłębiam znajomość
+            <span class="font-semibold text-[#61DAFB]">Reacta</span>, koncentrując się na
+            nowoczesnych rozwiązaniach front-endowych i architekturze komponentowej. Interesuję się
+            także projektowaniem graficznym oraz technologią 3D — tworzę własne modele w
+            <span
+              class="bg-gradient-to-r from-[#F7A8B8] via-[#FF8C32] to-[#6BCDCE] bg-clip-text font-semibold text-transparent"
+              >Spline</span
+            >
+            i projektuję interfejsy w
+            <span
+              class="bg-gradient-to-r from-[#A259FF] to-[#1ABCFE] bg-clip-text font-semibold text-transparent"
+              >Figmie</span
+            >, łącząc estetykę z funkcjonalnością.
+          </p>
+          <img
+            src="images/gradient 2.png"
+            alt="Second Gradient"
+            class="absolute -inset-[1%] -z-10 h-[110%] w-[110%] object-cover"
+          />
+          <img
+            src="images/skills group.png"
+            alt="Skills"
+            class="w-7/10 absolute bottom-[-8%] w-[110%] opacity-30"
+          />
+        </div>
         <!-- time -->
-        <div id="time" class="card-overlay card min-h-[220px]"></div>
+        <div id="time" class="card-overlay card min-h-[220px] space-y-2">
+          <h2 class="mt-2 text-xl font-light tracking-wide">
+            Elastyczny w zakresie komunikacji i miejsca współpracy
+          </h2>
+          <p class="max-w-lg text-sm leading-relaxed text-gray-400">
+            Mieszkam w Polsce (Wieliczka) i jestem otwarty na zdalną współpracę z klientami z całego
+            świata.
+          </p>
+          <img
+            src="images/gradient3&4.png"
+            alt="Gradient 3&4"
+            class="absolute -inset-[1%] -z-10 h-[110%] w-[110%] object-cover"
+          />
+          <button
+            class="ease bottom-[10%] mt-4 flex cursor-pointer items-center gap-2 rounded-3xl bg-[rgba(124,233,230,0.1)] px-5 py-4 text-center text-cyber-soft/80 duration-300 hover:bg-cyber-strong hover:text-black"
+          >
+            <i class="bxr bx-send-alt"></i>
+            Porozmawiajmy o współpracy
+          </button>
+        </div>
         <!-- passion -->
-        <div id="passion" class="card-overlay card min-h-[220px]"></div>
+        <div id="passion" class="card-overlay card min-h-[220px] space-y-2">
+          <h2 class="mt-2 text-xl font-light tracking-wide">
+            Z pasją rozwijam się w świecie technologii
+          </h2>
+          <p class="max-w-lg text-sm leading-relaxed text-gray-400">
+            Z pasją rozwijam się w świecie technologii — programowanie traktuję jako sposób na
+            tworzenie czegoś nowego i użytecznego. Każdy projekt to dla mnie okazja do nauki,
+            eksperymentowania i przekraczania własnych granic. Poza kodem gram na pianinie oraz
+            majsterkuję – lubię rozwiązywać problemy techniczne, konstruować rzeczy od podstaw i
+            pracować manualnie. Interesuję się także grami komputerowymi, szczególnie tymi, które
+            rozwijają kreatywność i logiczne myślenie. Tworzenie – niezależnie od formy – daje mi
+            największą satysfakcję.
+          </p>
+          <img
+            src="images/gradient3&4.png"
+            alt="Gradient 3&4"
+            class="absolute -inset-[1%] -z-10 h-[110%] w-[110%] object-cover"
+          />
+        </div>
       </div>
     </section>
+    <!-- Projects section -->
+    <section
+      id="projects"
+      class="mt-80 flex w-full flex-col items-center justify-center space-y-3 overflow-hidden"
+    >
+      <h3 id="projects-title" class="text-gradient-hero mb-10 text-7xl font-bold">Projekty</h3>
+      <div class="slider">
+        <ul class="list">
+          <li class="item">
+            <video
+              class="mt-8 w-full rounded-xl"
+              loop
+              playsinline
+              src="video/POWERTASKFILM.mp4"
+            ></video>
+          </li>
+          <li class="[--position: 1] item">
+            <video
+              class="mt-8 w-full rounded-xl"
+              loop
+              playsinline
+              src="video/project-1.mp4"
+            ></video>
+          </li>
+          <li class="[--position: 1] item">
+            <video
+              class="mt-8 w-full rounded-xl"
+              loop
+              playsinline
+              src="video/project-2.mp4"
+            ></video>
+          </li>
+          <li class="[--position: 1] item">
+            <video
+              class="mt-8 w-full rounded-xl"
+              loop
+              playsinline
+              src="video/project-3.mp4"
+            ></video>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <script
+      type="module"
+      src="https://unpkg.com/@splinetool/viewer@1.10.81/build/spline-viewer.js"
+    ></script>
   </body>
 </html>

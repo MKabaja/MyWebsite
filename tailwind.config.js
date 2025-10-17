@@ -14,9 +14,22 @@ module.exports = {
           '30%,60%': { opacity: '1' },
           '100%': { opacity: '0', top: '90%' },
         },
+        autoRun: {
+          // Stan początkowy (0% animacji)
+          from: {
+            // Wartość "100%" jest poprawna
+            left: '100%',
+          },
+          // Stan końcowy (100% animacji)
+          to: {
+            // Całą funkcję calc() musisz podać jako string
+            left: 'calc(var(--width) * -1)',
+          },
+        },
       },
       animation: {
         'scroll-down': 'scroll-down 3s ease-in-out infinite',
+        'auto-run': 'autoRun 10s linear infinite',
       },
       colors: {
         pearl: '#E6D7C8',
