@@ -12,11 +12,6 @@
 
     <link rel="stylesheet" href="css/style.css" />
     <script defer type="module" src="/JS/app.js"></script>
-    <script
-      defer
-      type="module"
-      src="https://unpkg.com/@splinetool/viewer@1.10.80/build/spline-viewer.js"
-    ></script>
 
     <title>Mateusz Kabaja</title>
   </head>
@@ -308,42 +303,58 @@
         </div>
       </div>
     </section>
-    <!-- Projects section -->
+    <!-- Projeckty -->
     <section
       id="projects"
       class="mt-80 flex w-full flex-col items-center justify-center space-y-3 overflow-hidden"
     >
       <h3 id="projects-title" class="text-gradient-hero mb-10 text-7xl font-bold">Projekty</h3>
-      <div class="slider">
+      <div class="slider group [--height:40rem] [--quantity:4] [--width:60rem]">
         <ul class="list">
-          <li class="item">
+          <li
+            class="item animate-auto-run [--position:1] hover:scale-[1.2] group-hover:[animation-play-state:paused]"
+            data-state="live"
+          >
             <video
               class="mt-8 w-full rounded-xl"
               loop
+              id="vid1"
               playsinline
               src="video/POWERTASKFILM.mp4"
             ></video>
           </li>
-          <li class="[--position: 1] item">
+          <li
+            class="item animate-auto-run [--position:2] hover:scale-[1.2] group-hover:[animation-play-state:paused]"
+            data-state="locked"
+          >
             <video
               class="mt-8 w-full rounded-xl"
               loop
+              id="vid2"
               playsinline
               src="video/project-1.mp4"
             ></video>
           </li>
-          <li class="[--position: 1] item">
+          <li
+            class="item animate-auto-run [--position:3] hover:scale-[1.2] group-hover:[animation-play-state:paused]"
+            data-state="locked"
+          >
             <video
               class="mt-8 w-full rounded-xl"
               loop
+              id="vid3"
               playsinline
               src="video/project-2.mp4"
             ></video>
           </li>
-          <li class="[--position: 1] item">
+          <li
+            class="item animate-auto-run [--position:4] hover:scale-[1.2] group-hover:[animation-play-state:paused]"
+            data-state="locked"
+          >
             <video
               class="mt-8 w-full rounded-xl"
               loop
+              id="vid4"
               playsinline
               src="video/project-3.mp4"
             ></video>
@@ -351,6 +362,90 @@
         </ul>
       </div>
     </section>
+    <!-- Kontakt -->
+    <section id="contact" class="mt mb-40 mt-80 py-14">
+      <!-- header -->
+      <header class="mb-10 text-center">
+        <h3 class="mb-4 text-7xl font-bold">Napisz do mnie</h3>
+        <p>Chcesz ożywić swój pomysł w sieci? Chętnie pomogę.</p>
+      </header>
+      <!-- Treść -->
+      <div id="contact-grid">
+        <div id="info-card">
+          <h3>Kontakt</h3>
+          <div id="contact-item">
+            <p>E-mail</p>
+            <a href="#">m.kabaja.dev@gmail.com</a>
+          </div>
+
+          <div id="contact-item">
+            <p>Telefon</p>
+            <a href="#">732-011-783</a>
+          </div>
+
+          <div id="contact-item">
+            <p>Lokalizacja</p>
+            <a href="#">Polska, Wieliczka</a>
+          </div>
+          <div id="social-link">
+            <p>Skontakuj się ze mną przez</p>
+            <a href="#">gitHub</a>
+            <a href="#">Linkedin</a>
+            <a href="#">Facebook</a>
+          </div>
+        </div>
+        <div id="info-card">
+          <div id="info-card__content">
+            <h3>Wyślij wiadomość</h3>
+            <form id="contact-form" action="">
+              <div id="contact-form__group1">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="imię"
+                  required
+                  class="form-control"
+                />
+              </div>
+              <div id="contact-form__group2">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="e-mail"
+                  required
+                  class="form-control"
+                />
+              </div>
+              <div id="contact-form__group3">
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  placeholder="temat"
+                  required
+                  class="form-control"
+                />
+              </div>
+              <div id="contact-form__group2">
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="wiadomość"
+                  required
+                  class="form-control"
+                />
+              </div>
+              <button type="submit" id="contact-form__submitBtn"></button>
+              <!-- Toast div -->
+              <div id="contact-form__succes hidden">Wiadomość wysłana! wkrótce odpowiem!</div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <script
       type="module"
       src="https://unpkg.com/@splinetool/viewer@1.10.81/build/spline-viewer.js"

@@ -112,10 +112,6 @@
 }
 @layer components {
   .slider {
-    /* domyślne wartości */
-    --width: 60rem;
-    --height: 40rem;
-    --quantity: 4;
     height: var(--height);
     width: 100%;
     overflow: hidden;
@@ -131,9 +127,17 @@
     height: var(--height);
     position: absolute;
     left: 80%;
-    animation: auto-run 10s linear infinite;
-
-    animation-delay: calc((10s / var(--quantity)) * (var(--position) -1)-10s) !important;
+    animation-delay: calc((15s / var(--quantity)) * (var(--position) - 1) - 15s) !important;
     transition: 0.5s;
+  }
+  [data-state='locked'] {
+    @apply cursor-not-allowed opacity-60 blur-lg;
+  }
+  [data-state='locked'] .media {
+    @apply pointer-events-none;
+  }
+  [data-state='live']:hover {
+    @apply z-10 scale-110;
+    filter: grayscale(0);
   }
 }

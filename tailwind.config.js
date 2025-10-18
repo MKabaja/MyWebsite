@@ -29,7 +29,7 @@ module.exports = {
       },
       animation: {
         'scroll-down': 'scroll-down 3s ease-in-out infinite',
-        'auto-run': 'autoRun 10s linear infinite',
+        'auto-run': 'autoRun 15s linear infinite',
       },
       colors: {
         pearl: '#E6D7C8',
