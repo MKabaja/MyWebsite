@@ -366,38 +366,69 @@
     <section id="contact" class="mt mb-40 mt-80 py-14">
       <!-- header -->
       <header class="mb-10 text-center">
-        <h3 class="mb-4 text-7xl font-bold">Napisz do mnie</h3>
-        <p>Chcesz ożywić swój pomysł w sieci? Chętnie pomogę.</p>
+        <h3
+          class="mb-4 bg-gradient-to-r from-cyber via-sky-400 to-slate-700/90 bg-clip-text text-7xl font-bold text-transparent"
+        >
+          Napisz do mnie
+        </h3>
+        <p class="mx-auto max-w-xl text-gray-500">
+          Chcesz ożywić swój pomysł w sieci? Chętnie pomogę.
+        </p>
       </header>
       <!-- Treść -->
-      <div id="contact-grid">
-        <div id="info-card">
-          <h3>Kontakt</h3>
-          <div id="contact-item">
-            <p>E-mail</p>
-            <a href="#">m.kabaja.dev@gmail.com</a>
+      <div id="contact-grid" class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div class="info-card hover:translate-y-1">
+          <h3 class="mb-16 text-2xl text-gray-300">Kontakt</h3>
+          <div id="contact-item" class="mb-12">
+            <p class="mb-3 font-semibold text-cyber-strong">E-mail:</p>
+            <a
+              class="link-contact"
+              href="#"
+              >m.kabaja.dev@gmail.com</a
+            >
           </div>
 
-          <div id="contact-item">
-            <p>Telefon</p>
-            <a href="#">732-011-783</a>
+          <div id="contact-item" class="mb-12">
+            <p class="mb-3 font-semibold text-cyber-strong">Telefon:</p>
+            <a
+              class="link-contact"
+              href="#"
+              >732-011-783</a
+            >
           </div>
 
-          <div id="contact-item">
-            <p>Lokalizacja</p>
-            <a href="#">Polska, Wieliczka</a>
+          <div id="contact-item" class="mb-12">
+            <p class="mb-3 font-semibold text-cyber-strong">Lokalizacja:</p>
+            <a
+              class="link-contact"
+              href="#"
+              >Polska, Wieliczka</a
+            >
           </div>
-          <div id="social-link">
-            <p>Skontakuj się ze mną przez</p>
-            <a href="#">gitHub</a>
-            <a href="#">Linkedin</a>
-            <a href="#">Facebook</a>
+          <div class="divider"></div>
+          <div id="social-link" class="mt-4 pt-5">
+            <p class="mt-5 py-2 text-gray-300">Skontakuj się ze mną przez</p>
+            <a
+              class="link-media"
+              href="#"
+              >gitHub</a
+            >
+            <a
+              class="link-media"
+              href="#"
+              >Linkedin</a
+            >
+            <a
+              class="link-media"
+              href="#"
+              >Facebook</a
+            >
           </div>
         </div>
-        <div id="info-card">
+        <div class="info-card hover:translate-y-1 ">
           <div id="info-card__content">
-            <h3>Wyślij wiadomość</h3>
-            <form id="contact-form" action="">
+            <h3 class="mb-16 text-2xl text-gray-300">Wyślij wiadomość</h3>
+            <form id="contact-form" class="space-y-5 ">
               <div id="contact-form__group1">
                 <input
                   type="text"
@@ -405,7 +436,7 @@
                   name="name"
                   placeholder="imię"
                   required
-                  class="form-control"
+                  class="form-control "
                 />
               </div>
               <div id="contact-form__group2">
@@ -436,10 +467,11 @@
                   required
                   class="form-control"
                 />
+                </textarea>
               </div>
-              <button type="submit" id="contact-form__submitBtn"></button>
+              <button type="submit" id="contact-form__submitBtn" class="w-full p-5  text-cyber rounded-lg text-base font-semibold cursor-pointer transition-all  ease-linear bg-[rgba(124,233,230,0.1)]  text-center text-cyber-soft/80 duration-300 hover:bg-cyber-strong hover:text-black focus:shadow-gcyan focus:outline-none hover:-translate-y-1 hover:shadow-black/80">Wyślij!</button>
               <!-- Toast div -->
-              <div id="contact-form__succes hidden">Wiadomość wysłana! wkrótce odpowiem!</div>
+              <div id="contact-form__succes" class="bg-[rgba(16,185,129,0.2)] text-[#10b981] p-4 rounded-lg  hidden transition-all duration-300 opacity-0">Wiadomość wysłana! wkrótce odpowiem!</div>
             </form>
           </div>
         </div>

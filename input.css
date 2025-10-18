@@ -69,6 +69,21 @@
   .card {
     @apply relative transform overflow-hidden rounded-md border border-gray-900 p-8 duration-150 hover:-translate-y-[5px] hover:shadow-gcyan;
   }
+  .info-card {
+    @apply overflow-hidden rounded-md bg-[#1e1e1e] p-8 shadow-[inset_-1px_20px_20px_7px_rgba(0,0,0,0.6)] transition-transform duration-300 ease-linear;
+  }
+  .form-control {
+    @apply w-full rounded-lg border border-[#333] bg-[#2d2d2d] px-3 py-4 text-base text-gray-500 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-black/80 focus:-translate-y-2 focus:text-cyber-soft focus:shadow-gcyan focus:outline-none;
+  }
+  textarea.form-control {
+    @apply min-h-32 resize-y;
+  }
+  .link-media {
+    @apply mr-4 inline-block rounded-lg bg-[#2d2d2d] px-2 py-2 transition-all duration-200 hover:-translate-y-1 hover:bg-[#7ce9e6] hover:text-gray-700 hover:shadow-xl hover:shadow-black/80 focus:shadow-gcyan focus:outline-none;
+  }
+  .link-contact {
+    @apply rounded-lg p-1 text-gray-300 transition-colors duration-300 hover:scale-105 hover:text-teal-300 hover:drop-shadow-cyan focus:shadow-gcyan focus:outline-none;
+  }
 }
 
 /* Kolory bazowe – LIGHT */
@@ -139,5 +154,23 @@
   [data-state='live']:hover {
     @apply z-10 scale-110;
     filter: grayscale(0);
+  }
+  .divider {
+    color: #44787c;
+    display: block;
+    width: 100%;
+    height: 1px;
+    border: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      currentColor 20%,
+      currentColor 80%,
+      transparent 100%
+    );
+    margin-bottom: 0.2rem;
+    box-shadow:
+      3px -7px 13px 14px rgba(255, 255, 255, 0.05),
+      -1px 20px 20px 7px rgba(0, 0, 0, 0.6);
   }
 }
