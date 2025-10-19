@@ -137,6 +137,7 @@ if (contactSection && form) {
   const onSubmit = (e) => {
     e.preventDefault();
     toastHandler();
+    form.reset();
   };
   const addHandler = () => {
     if (form.__submitHandlerAttached) return;
@@ -163,7 +164,7 @@ function toastHandler() {
 
   showMsg(msg);
 
-  setTimeout(() => hideMsg(msg), 1000);
+  setTimeout(() => hideMsg(msg), 3000);
 }
 
 function showMsg(msg) {
@@ -173,8 +174,10 @@ function showMsg(msg) {
 function hideMsg(msg) {
   const onEnd = (e) => {
     if (e.propertyName !== 'opacity') return;
-    msg.removeEventListener('transitionend', onEnd, { once: true });
-    msg.classList.remove('opacity-100');
-    msg.classList.add('opacity-0');
+    msg.removeEventListener('transitionend', onEnd);
+    msg.classList.add('hidden');
   };
+  msg.addEventListener('transitionend', onEnd, { once: true });
+  msg.classList.remove('opacity-100');
+  msg.classList.add('opacity-0');
 }

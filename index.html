@@ -8,14 +8,14 @@
       href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600;700;900&display=swap"
       rel="stylesheet"
     />
-    <link href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css" rel="stylesheet" />
+    <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
 
     <link rel="stylesheet" href="css/style.css" />
     <script defer type="module" src="/JS/app.js"></script>
 
     <title>Mateusz Kabaja</title>
   </head>
-  <body class="bg-app-gradient dark:bg-app-gradient p-10 text-white md:p-12">
+  <body class=" relative bg-app-gradient dark:bg-app-gradient p-10 text-white md:p-12 overflow-x-hidden w-full">
     <div id="site-overlay" class="overlay-base"></div>
     <!-- Header -->
     <header id="header" class="flex items-center justify-between pb-8 md:flex-row">
@@ -130,24 +130,29 @@
     <!-- hero  -->
     <main class="flex min-h-[85vw] flex-1 flex-col justify-between overflow-hidden">
       <!-- Nagłówek -->
-      <section class="mt-12 uppercase" aria-labelledby="hero-title">
+      <section class="mt-12 uppercase relative" aria-labelledby="hero-title">
         <h1
           id="hero-title"
-          class="text-gradient-hero-dark text-center text-[12rem] font-black leading-none tracking-[5px]"
+          class="text-gradient-hero-dark text-center lg:text-[12rem] font-black leading-none lg:tracking-[5px] text-7xl md:text-9xl md:tracking-wider"
         >
-          web developer
+          web <br/>developer
         </h1>
         <!-- sekcja lokalizacji -->
         <address class="mt-8 flex flex-col items-start not-italic">
-          <p class="dark:text-gradient-muted-dark text-gradient-muted text-2xl">
-            Lokalizacja:<br />
+          <p class="text-gradient-muted-dark text-gradient-muted  text-xl md:text-2xl">
+            Lokalizacja:<br/>
             Polska
           </p>
         </address>
+         <!-- 3d Model -->
+      <spline-viewer
+        class="pointer-events-none -z-10  absolute top-0 h-[250%]"
+        url="https://prod.spline.design/5WiJXakP8n7uKDRs/scene.splinecode"
+      ></spline-viewer>
       </section>
       <!-- Bio Section -->
-      <section class="mb mb-8 mt-auto uppercase">
-        <p class="max-w-[22rem] text-base font-light leading-[1.6] tracking-wider">
+      <section class="   uppercase">
+        <p class="max-w-[22rem] text-sm md:text-base lg:text-lg font-normal leading-[1.6] tracking-wider mt-48">
           Od <span class="text-accent-strong">roku</span> uczę się
           <span class="text-accent-soft">JavaScriptu</span> i rozwijam swoje umiejętności w
           tworzeniu nowoczesnych aplikacji. Lubię też
@@ -160,21 +165,17 @@
         <!-- anty purge -->
         <span class="hidden animate-scroll-down"></span>
       </div>
-      <!-- 3d Model -->
-      <spline-viewer
-        class="pointer-events-none absolute right-[-14%] top-[20%] -z-10 h-[130%] w-[130%]"
-        url="https://prod.spline.design/5WiJXakP8n7uKDRs/scene.splinecode"
-      ></spline-viewer>
+     
     </main>
     <!-- o mnie -->
     <section id="abaut" class="mt-80 flex w-full flex-col items-center justify-center space-y-3">
       <h1 class="text-gradient-hero mb-10 text-7xl font-bold">O Mnie</h1>
       <!-- bento Grid -->
-      <div id="bento-grid" class="relative grid h-[90vh] w-[90%] grid-cols-3 gap-6">
+      <div id="bento-grid" class="relative grid h-[90vh] w-[90%] md:grid-cols-3 gap-6 xl:h-[80vh]">
         <!-- cards -->
         <!-- intro -->
         <div id="intro" class="card-overlay card col-span-2 min-h-[300px]">
-          <h2 class="mt-12 text-3xl font-light tracking-wide">Cześć!, jestem Mateusz!</h2>
+          <h2 class="mt-12 text-3xl font-light tracking-wide ">Cześć!, jestem Mateusz!</h2>
           <p class="mt-8 max-w-lg text-sm leading-relaxed text-gray-400">
             Od ponad roku rozwijam się w kierunku front-endu, łącząc ciekawość kodu z zamiłowaniem
             do estetyki i nowoczesnego designu. Tworzenie stron internetowych daje mi ogromną
@@ -377,7 +378,7 @@
       </header>
       <!-- Treść -->
       <div id="contact-grid" class="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <div class="info-card hover:translate-y-1">
+        <div class="info-card hover:translate-y-1 transition-all duration-500">
           <h3 class="mb-16 text-2xl text-gray-300">Kontakt</h3>
           <div id="contact-item" class="mb-12">
             <p class="mb-3 font-semibold text-cyber-strong">E-mail:</p>
@@ -427,8 +428,8 @@
         </div>
         <div class="info-card hover:translate-y-1 ">
           <div id="info-card__content">
-            <h3 class="mb-16 text-2xl text-gray-300">Wyślij wiadomość</h3>
-            <form id="contact-form" class="space-y-5 ">
+            <h3 class="mb-16 text-2xl text-gray-300 transition-all duration-500">Wyślij wiadomość</h3>
+            <form id="contact-form" class="space-y-5" autocomplete="off">
               <div id="contact-form__group1">
                 <input
                   type="text"
@@ -436,7 +437,8 @@
                   name="name"
                   placeholder="imię"
                   required
-                  class="form-control "
+                  class="form-control"
+                  autocomplete="off"
                 />
               </div>
               <div id="contact-form__group2">
@@ -447,6 +449,7 @@
                   placeholder="e-mail"
                   required
                   class="form-control"
+                  autocomplete="off"
                 />
               </div>
               <div id="contact-form__group3">
@@ -457,6 +460,7 @@
                   placeholder="temat"
                   required
                   class="form-control"
+                  autocomplete="off"
                 />
               </div>
               <div id="contact-form__group2">
@@ -466,17 +470,33 @@
                   placeholder="wiadomość"
                   required
                   class="form-control"
+                  autocomplete="off"
                 />
                 </textarea>
               </div>
               <button type="submit" id="contact-form__submitBtn" class="w-full p-5  text-cyber rounded-lg text-base font-semibold cursor-pointer transition-all  ease-linear bg-[rgba(124,233,230,0.1)]  text-center text-cyber-soft/80 duration-300 hover:bg-cyber-strong hover:text-black focus:shadow-gcyan focus:outline-none hover:-translate-y-1 hover:shadow-black/80">Wyślij!</button>
               <!-- Toast div -->
-              <div id="contact-form__succes" class="bg-[rgba(16,185,129,0.2)] text-[#10b981] p-4 rounded-lg  hidden transition-all duration-1000 opacity-0">Wiadomość wysłana! wkrótce odpowiem!</div>
+              <div id="contact-form__succes" class="bg-[rgba(16,185,129,0.2)] text-[#10b981] p-4 rounded-lg  hidden transition-all duration-[3000] opacity-0">Wiadomość wysłana! wkrótce odpowiem!</div>
             </form>
           </div>
         </div>
       </div>
     </section>
+    <!-- Stopka -->
+     <footer class="flex justify-between absolute bottom-0 right-0 left-0 px-8 py-14 bg-[rgba(124,233,230,0.1)]">
+      <h3>© 2025. Wykonanie: Mateusz Kabaja</h3>
+      <div class="flex gap-8">
+        <a href="#" class="text-gray-500 text-xl transition-all hover:text-cyber">
+        <i class="bxl bx-github "></i>  
+        </a>
+        <a href="#" class="text-gray-500 text-xl transition-all hover:text-cyber">
+          <i class='bxl  bx-linkedin-square'  ></i> 
+        </a>
+        <a href="#" class="text-gray-500 text-xl transition-all hover:text-cyber">
+          <i class='bxl  bx-facebook'  ></i> 
+        </a>
+      </div>
+     </footer>
 
     <script
       type="module"
