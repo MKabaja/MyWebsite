@@ -1,9 +1,14 @@
 import { initHeader } from './header.js';
+import { createObserver } from './observer-manager.js';
 // odpal tylko jeśli na stronie jest <header>
 window.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('header')) {
     initHeader();
   }
+});
+const observer = createObserver({
+  threshold: 0.15,
+  rootMargin: '0px 0px -10% 0px',
 });
 // =======================================================
 // Sekcja ABAUT
@@ -31,17 +36,25 @@ if (abautSection) {
   // =======================================================
   // INTERSECTION OBSERVER I ZARZĄDZANIE PAMIĘCIĄ
   // =======================================================
-  const io = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        addHandlers();
-      } else {
-        removeHandlers();
-      }
+  observer.register(abautSection, {
+    attach() {
+      addHandlers();
     },
-    { threshold: 0.15 },
-  );
-  io.observe(abautSection);
+    detach() {
+      removeHandlers();
+    },
+  });
+  // const io = new IntersectionObserver(
+  //   ([entry]) => {
+  //     if (entry.isIntersecting) {
+  //       addHandlers();
+  //     } else {
+  //       removeHandlers();
+  //     }
+  //   },
+  //   { threshold: 0.15 },
+  // );
+  // io.observe(abautSection);
 }
 
 function radialMove(card, e) {
@@ -61,36 +74,48 @@ if (projectsSection) {
   const addHandlers = () => {
     videos.forEach((vid) => {
       if (vid.__vidPlayHandler || vid.__vidPlayHandler2) return;
-      const handler = () => playHandler(vid);
-      vid.__vidPlayHandler = handler;
-      const handler2 = () => stopHandler(vid);
-      vid.__vidPlayHandler2 = handler2;
 
-      vid.addEventListener('mouseenter', handler);
-      vid.addEventListener('mouseleave', handler2);
+      const handlerEnter = () => playHandler(vid);
+      const handlerLeave = () => stopHandler(vid);
+
+      vid.__vidPlayHandler = handlerEnter;
+      vid.__vidPlayHandler2 = handlerLeave;
+
+      vid.addEventListener('mouseenter', handlerEnter);
+      vid.addEventListener('mouseleave', handlerLeave);
     });
   };
   const removeHandlers = () => {
     videos.forEach((vid) => {
       if (!vid.__vidPlayHandler || !vid.__vidPlayHandler2) return;
+
       vid.removeEventListener('mouseenter', vid.__vidPlayHandler);
       vid.removeEventListener('mouseleave', vid.__vidPlayHandler2);
+
       vid.__vidPlayHandler = null;
       vid.__vidPlayHandler2 = null;
     });
   };
 
-  const ioSecond = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        addHandlers();
-      } else {
-        removeHandlers();
-      }
+  observer.register(projectsSection, {
+    attach() {
+      addHandlers();
     },
-    { threshold: 0.2 },
-  );
-  ioSecond.observe(projectsSection);
+    detach() {
+      removeHandlers();
+    },
+  });
+  // const ioSecond = new IntersectionObserver(
+  //   ([entry]) => {
+  //     if (entry.isIntersecting) {
+  //       addHandlers();
+  //     } else {
+  //       removeHandlers();
+  //     }
+  //   },
+  //   { threshold: 0.2 },
+  // );
+  // ioSecond.observe(projectsSection);
 }
 
 function playHandler(vid) {
@@ -106,3 +131,50 @@ function stopHandler(vid) {
 // =======================================================
 //  Form wiadomosci
 // =======================================================
+const contactSection = document.getElementById('contact');
+const form = contactSection?.querySelector('#contact-form');
+if (contactSection && form) {
+  const onSubmit = (e) => {
+    e.preventDefault();
+    toastHandler();
+  };
+  const addHandler = () => {
+    if (form.__submitHandlerAttached) return;
+    form.addEventListener('submit', onSubmit);
+    form.__submitHandlerAttached = true;
+  };
+  const removeHandler = () => {
+    if (!form.__submitHandlerAttached) return;
+    form.removeEventListener('submit', onSubmit);
+    form.__submitHandlerAttached = false;
+  };
+
+  observer.register(contactSection, {
+    attach() {
+      addHandler();
+    },
+    detach() {
+      removeHandler();
+    },
+  });
+}
+function toastHandler() {
+  const msg = contactSection.querySelector('#contact-form__succes');
+
+  showMsg(msg);
+
+  setTimeout(() => hideMsg(msg), 1000);
+}
+
+function showMsg(msg) {
+  msg.classList.remove('hidden', 'opacity-0');
+  requestAnimationFrame(() => msg.classList.add('opacity-100'));
+}
+function hideMsg(msg) {
+  const onEnd = (e) => {
+    if (e.propertyName !== 'opacity') return;
+    msg.removeEventListener('transitionend', onEnd, { once: true });
+    msg.classList.remove('opacity-100');
+    msg.classList.add('opacity-0');
+  };
+}
