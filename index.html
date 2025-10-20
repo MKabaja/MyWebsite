@@ -15,7 +15,7 @@
 
     <title>Mateusz Kabaja</title>
   </head>
-  <body class=" relative bg-app-gradient dark:bg-app-gradient p-10 text-white md:p-12 overflow-x-hidden w-full">
+  <body class="relative bg-app-gradient dark:bg-app-gradient p-10 md:p-12 text-white  overflow-x-hidden w-full ">
     <div id="site-overlay" class="overlay-base"></div>
     <!-- Header -->
     <header id="header" class="flex items-center justify-between pb-8 md:flex-row">
@@ -76,14 +76,14 @@
         <!-- Navbar -->
         <nav class="relative flex flex-col items-end justify-between md:h-5 md:flex-row">
           <!-- hamburger -->
-          <button id="header-hamburger" class="group relative md:hidden" aria-expanded="false">
+          <button id="header-hamburger" class=" group relative md:hidden p-4 " aria-expanded="false">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="absolute inset-0 size-6 transition-all duration-150 group-aria-expanded:rotate-90 group-aria-expanded:opacity-0"
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-6 transition-all duration-150 group-aria-expanded:rotate-90 group-aria-expanded:opacity-0"
             >
               <path
                 stroke-linecap="round"
@@ -97,7 +97,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="absolute inset-0 size-6 rotate-90 opacity-0 transition-all duration-150 group-aria-expanded:rotate-0 group-aria-expanded:opacity-100"
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-6 rotate-90 opacity-0 transition-all duration-150 group-aria-expanded:rotate-0 group-aria-expanded:opacity-100"
             >
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
@@ -151,7 +151,7 @@
       ></spline-viewer>
       </section>
       <!-- Bio Section -->
-      <section class="   uppercase">
+      <section class="uppercase pb-5">
         <p class="max-w-[22rem] text-sm md:text-base lg:text-lg font-normal leading-[1.6] tracking-wider mt-48">
           Od <span class="text-accent-strong">roku</span> uczę się
           <span class="text-accent-soft">JavaScriptu</span> i rozwijam swoje umiejętności w
@@ -168,15 +168,15 @@
      
     </main>
     <!-- o mnie -->
-    <section id="abaut" class="mt-80 flex w-full flex-col items-center justify-center space-y-3">
-      <h1 class="text-gradient-hero mb-10 text-7xl font-bold">O Mnie</h1>
+    <section id="abaut" class="mt-52 md:mt-80 flex w-full flex-col items-center justify-center space-y-10">
+      <h1 class="lg:text-[10rem] md:text-9xl text-gradient-hero mb-10 text-7xl font-bold">O Mnie</h1>
       <!-- bento Grid -->
-      <div id="bento-grid" class="relative grid h-[90vh] w-[90%] md:grid-cols-3 gap-6 xl:h-[80vh]">
+      <div id="bento-grid" class="relative w-full md:grid  flex flex-col  md:w-[90%] md:grid-cols-2 gap-6 xl:grid-cols-3">
         <!-- cards -->
         <!-- intro -->
-        <div id="intro" class="card-overlay card col-span-2 min-h-[300px]">
-          <h2 class="mt-12 text-3xl font-light tracking-wide ">Cześć!, jestem Mateusz!</h2>
-          <p class="mt-8 max-w-lg text-sm leading-relaxed text-gray-400">
+        <div id="intro" class="card-overlay card md:col-span-2 xl:min-h-[300px] ">
+          <h2 class="md:mt-12  mt-24  text-3xl font-light tracking-wide ">Cześć!,<br> jestem Mateusz!</h2>
+          <p class="mt-8  max-w-lg text-sm leading-relaxed text-gray-400">
             Od ponad roku rozwijam się w kierunku front-endu, łącząc ciekawość kodu z zamiłowaniem
             do estetyki i nowoczesnego designu. Tworzenie stron internetowych daje mi ogromną
             satysfakcję — szczególnie wtedy, gdy połączenie funkcjonalności i wyglądu tworzy coś, co
@@ -195,9 +195,9 @@
           <img
             src="images/gradient.png"
             alt="Gradient"
-            class="abasolute -inset-[1%] -z-10 h-[110%] w-[110%] object-cover"
+            class="absolute -inset-[1%] -z-10 h-[110%] w-[110%] object-cover"
           />
-          <div class="absolute right-[15%] top-[-25%] h-[30rem] w-[30rem]">
+          <div class="absolute xl:right-[15%] xl:top-[-45%] md:top-[-58%] right-[10%] top-[-35%] h-[30rem] w-[30rem]">
             <spline-viewer
               class="h-[150%] w-[150%] mix-blend-lighten"
               url="https://prod.spline.design/akDHOzTo50SWLgPr/scene.splinecode"
@@ -205,8 +205,8 @@
           </div>
         </div>
         <!-- tech -->
-        <div id="tech" class="card-overlay card row-span-2 min-h-[450px]">
-          <h2 class="mt-12 text-3xl font-light tracking-wide">Stack technologiczny</h2>
+        <div id="tech" class="card-overlay card md:row-span-2 xl:min-h-[450px] ">
+          <h2 class="md:mt-2 mt-12 text-3xl font-light tracking-wide">Stack technologiczny</h2>
           <p class="mt-8 max-w-lg text-sm leading-relaxed text-gray-400">
             Rozwijam się w obszarze dwóch języków programowania —
             <span class="font-semibold text-[#F7DF1E]">JavaScript</span>
@@ -276,7 +276,7 @@
             class="absolute -inset-[1%] -z-10 h-[110%] w-[110%] object-cover"
           />
           <button
-            class="ease bottom-[10%] mt-4 flex cursor-pointer items-center gap-2 rounded-3xl bg-[rgba(124,233,230,0.1)] px-5 py-4 text-center text-cyber-soft/80 duration-300 hover:bg-cyber-strong hover:text-black"
+            class="ease bottom-[10%] mt-6 flex cursor-pointer items-center gap-2 rounded-3xl bg-[rgba(124,233,230,0.1)] px-5 py-4 text-center text-cyber-soft/80 duration-300 hover:bg-cyber-strong hover:text-black"
           >
             <i class="bxr bx-send-alt"></i>
             Porozmawiajmy o współpracy
@@ -307,10 +307,12 @@
     <!-- Projeckty -->
     <section
       id="projects"
-      class="mt-80 flex w-full flex-col items-center justify-center space-y-3 overflow-hidden"
+      class="mt-52 md:mt-80 flex w-full flex-col items-center justify-center space-y-3 overflow-hidden"
     >
-      <h3 id="projects-title" class="text-gradient-hero mb-10 text-7xl font-bold">Projekty</h3>
-      <div class="slider group [--height:40rem] [--quantity:4] [--width:60rem]">
+      <h3 id="projects-title" class="lg:text-[10rem] md:text-9xl text-gradient-hero mb-10 text-7xl font-bold">Projekty</h3>
+      <div class="slider group [--height:25rem] [--quantity:4] [--width:30rem]
+      md:[--height:34rem] md:[--width:48rem]
+      lg:[--height:40rem] lg:[--width:60rem]">
         <ul class="list">
           <li
             class="item animate-auto-run [--position:1] hover:scale-[1.2] group-hover:[animation-play-state:paused]"
@@ -364,7 +366,7 @@
       </div>
     </section>
     <!-- Kontakt -->
-    <section id="contact" class="mt mb-40 mt-80 py-14">
+    <section id="contact" class="mt-20 md:mt-80 mb-40  py-14">
       <!-- header -->
       <header class="mb-10 text-center">
         <h3
