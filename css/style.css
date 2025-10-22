@@ -661,10 +661,6 @@ video {
   inset: -1%;
 }
 
-.inset-0 {
-  inset: 0px;
-}
-
 .bottom-0 {
   bottom: 0px;
 }
@@ -681,6 +677,10 @@ video {
   left: 0px;
 }
 
+.left-1\/2 {
+  left: 50%;
+}
+
 .right-0 {
   right: 0px;
 }
@@ -693,52 +693,12 @@ video {
   top: 0px;
 }
 
-.top-\[-60\%\] {
-  top: -60%;
-}
-
-.top-\[-30\%\] {
-  top: -30%;
-}
-
-.top-\[-80\%\] {
-  top: -80%;
-}
-
-.top-\[80\%\] {
-  top: 80%;
-}
-
-.top-\[0\%\] {
-  top: 0%;
-}
-
-.top-\[20\%\] {
-  top: 20%;
-}
-
-.top-\[-20\%\] {
-  top: -20%;
-}
-
-.top-\[-25\%\] {
-  top: -25%;
+.top-1\/2 {
+  top: 50%;
 }
 
 .top-\[-35\%\] {
   top: -35%;
-}
-
-.top-\[-40\%\] {
-  top: -40%;
-}
-
-.left-1\/2 {
-  left: 50%;
-}
-
-.top-1\/2 {
-  top: 50%;
 }
 
 .-z-10 {
@@ -779,10 +739,6 @@ video {
   margin-bottom: 10rem;
 }
 
-.mr-5 {
-  margin-right: 1.25rem;
-}
-
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -793,6 +749,14 @@ video {
 
 .mt-2 {
   margin-top: 0.5rem;
+}
+
+.mt-20 {
+  margin-top: 5rem;
+}
+
+.mt-24 {
+  margin-top: 6rem;
 }
 
 .mt-4 {
@@ -807,48 +771,16 @@ video {
   margin-top: 1.25rem;
 }
 
-.mt-8 {
-  margin-top: 2rem;
-}
-
-.mt-80 {
-  margin-top: 20rem;
-}
-
 .mt-52 {
   margin-top: 13rem;
-}
-
-.mt-32 {
-  margin-top: 8rem;
-}
-
-.mt-44 {
-  margin-top: 11rem;
-}
-
-.mt-16 {
-  margin-top: 4rem;
-}
-
-.mt-20 {
-  margin-top: 5rem;
 }
 
 .mt-6 {
   margin-top: 1.5rem;
 }
 
-.mt-24 {
-  margin-top: 6rem;
-}
-
-.mr-3 {
-  margin-right: 0.75rem;
-}
-
-.mr-2 {
-  margin-right: 0.5rem;
+.mt-8 {
+  margin-top: 2rem;
 }
 
 .flex {
@@ -886,10 +818,6 @@ video {
 
 .h-\[30rem\] {
   height: 30rem;
-}
-
-.h-\[90vh\] {
-  height: 90vh;
 }
 
 .min-h-\[220px\] {
@@ -1036,6 +964,12 @@ video {
   gap: 2rem;
 }
 
+.space-y-10 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
+}
+
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1058,12 +992,6 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
-}
-
-.space-y-10 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
 }
 
 .overflow-hidden {
@@ -1186,14 +1114,6 @@ video {
 
 .p-5 {
   padding: 1.25rem;
-}
-
-.p-2 {
-  padding: 0.5rem;
-}
-
-.p-3 {
-  padding: 0.75rem;
 }
 
 .px-2 {
@@ -1800,6 +1720,29 @@ textarea.form-control {
   outline-offset: 2px;
 }
 
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
+  @media (max-width: 768px) {
+    .cv-auto {
+      contain-intrinsic-size: 1300px;
+    }
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+      opacity 0.35s ease,
+      transform 0.35s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 .bg-app-gradient {
   background: linear-gradient(
       90deg,
@@ -1814,14 +1757,6 @@ textarea.form-control {
 
 .\[--height\:25rem\] {
   --height: 25rem;
-}
-
-.\[--height\:28rem\] {
-  --height: 28rem;
-}
-
-.\[--height\:40rem\] {
-  --height: 40rem;
 }
 
 .\[--position\:1\] {
@@ -1848,12 +1783,8 @@ textarea.form-control {
   --width: 30rem;
 }
 
-.\[--width\:40rem\] {
-  --width: 40rem;
-}
-
-.\[--width\:60rem\] {
-  --width: 60rem;
+.\[animation-play-state\:paused\] {
+  animation-play-state: paused;
 }
 
 /* Kolory bazowe – LIGHT */
@@ -1983,30 +1914,6 @@ textarea.form-control {
 }
 
 @media (min-width: 768px) {
-  .md\:top-\[-25\%\] {
-    top: -25%;
-  }
-
-  .md\:top-\[-15\%\] {
-    top: -15%;
-  }
-
-  .md\:top-\[-30\%\] {
-    top: -30%;
-  }
-
-  .md\:top-\[-45\%\] {
-    top: -45%;
-  }
-
-  .md\:top-\[-55\%\] {
-    top: -55%;
-  }
-
-  .md\:top-\[-60\%\] {
-    top: -60%;
-  }
-
   .md\:top-\[-58\%\] {
     top: -58%;
   }
@@ -2019,24 +1926,16 @@ textarea.form-control {
     grid-row: span 2 / span 2;
   }
 
-  .md\:mt-80 {
-    margin-top: 20rem;
-  }
-
   .md\:mt-12 {
     margin-top: 3rem;
-  }
-
-  .md\:mt-8 {
-    margin-top: 2rem;
   }
 
   .md\:mt-2 {
     margin-top: 0.5rem;
   }
 
-  .md\:mt-40 {
-    margin-top: 10rem;
+  .md\:mt-80 {
+    margin-top: 20rem;
   }
 
   .md\:grid {
@@ -2135,8 +2034,57 @@ textarea.form-control {
     --width: 48rem;
   }
 
-  .md\:\[--width\:60rem\] {
-    --width: 60rem;
+  .md\:hover\:-translate-y-1:hover {
+    --tw-translate-y: -0.25rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\:hover\:translate-y-1:hover {
+    --tw-translate-y: 0.25rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\:hover\:scale-105:hover {
+    --tw-scale-x: 1.05;
+    --tw-scale-y: 1.05;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\:hover\:scale-95:hover {
+    --tw-scale-x: .95;
+    --tw-scale-y: .95;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\:hover\:scale-\[1\.2\]:hover {
+    --tw-scale-x: 1.2;
+    --tw-scale-y: 1.2;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\:hover\:bg-cyber-strong:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(0 212 204 / var(--tw-bg-opacity, 1));
+  }
+
+  .md\:hover\:text-cyber:hover {
+    --tw-text-opacity: 1;
+    color: rgb(0 255 245 / var(--tw-text-opacity, 1));
+  }
+
+  .md\:hover\:text-black:hover {
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+  }
+
+  .md\:hover\:shadow-black\/80:hover {
+    --tw-shadow-color: rgb(0 0 0 / 0.8);
+    --tw-shadow: var(--tw-shadow-colored);
+  }
+
+  .md\:hover\:drop-shadow-neon:hover {
+    --tw-drop-shadow: drop-shadow(0 0 8px rgba(255,140,50,0.6)) drop-shadow(0 0 16px rgba(255,140,50,0.4));
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
   }
 }
 
@@ -2172,32 +2120,8 @@ textarea.form-control {
     right: 15%;
   }
 
-  .xl\:top-\[-25\%\] {
-    top: -25%;
-  }
-
-  .xl\:top-\[-20\%\] {
-    top: -20%;
-  }
-
-  .xl\:top-\[-30\%\] {
-    top: -30%;
-  }
-
-  .xl\:top-\[-35\%\] {
-    top: -35%;
-  }
-
   .xl\:top-\[-45\%\] {
     top: -45%;
-  }
-
-  .xl\:col-span-2 {
-    grid-column: span 2 / span 2;
-  }
-
-  .xl\:row-span-2 {
-    grid-row: span 2 / span 2;
   }
 
   .xl\:min-h-\[300px\] {
@@ -2210,9 +2134,5 @@ textarea.form-control {
 
   .xl\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .xl\:\[--height\:34rem\] {
-    --height: 34rem;
   }
 }

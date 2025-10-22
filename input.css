@@ -84,6 +84,26 @@
   .link-contact {
     @apply rounded-lg p-1 text-gray-300 transition-colors duration-300 hover:scale-105 hover:text-teal-300 hover:drop-shadow-cyan focus:shadow-gcyan focus:outline-none;
   }
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 1000px;
+    @media (max-width: 768px) {
+      .cv-auto {
+        contain-intrinsic-size: 1300px;
+      }
+    }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* Kolory bazowe – LIGHT */

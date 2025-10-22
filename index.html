@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600;700;900&display=swap"
       rel="stylesheet"
@@ -168,7 +170,7 @@
      
     </main>
     <!-- o mnie -->
-    <section id="abaut" class="mt-52 md:mt-80 flex w-full flex-col items-center justify-center space-y-10">
+    <section inert id="abaut" class="mt-52 md:mt-80 flex w-full flex-col items-center justify-center space-y-10 cv-auto reveal">
       <h1 class="lg:text-[10rem] md:text-9xl text-gradient-hero mb-10 text-7xl font-bold">O Mnie</h1>
       <!-- bento Grid -->
       <div id="bento-grid" class="relative w-full md:grid  flex flex-col  md:w-[90%] md:grid-cols-2 gap-6 xl:grid-cols-3">
@@ -195,6 +197,7 @@
           <img
             src="images/gradient.png"
             alt="Gradient"
+            loading="lazy"
             class="absolute -inset-[1%] -z-10 h-[110%] w-[110%] object-cover"
           />
           <div class="absolute xl:right-[15%] xl:top-[-45%] md:top-[-58%] right-[10%] top-[-35%] h-[30rem] w-[30rem]">
@@ -253,11 +256,13 @@
           <img
             src="images/gradient 2.png"
             alt="Second Gradient"
+            loading="lazy"
             class="absolute -inset-[1%] -z-10 h-[110%] w-[110%] object-cover"
           />
           <img
             src="images/skills group.png"
             alt="Skills"
+            loading="lazy"
             class="w-7/10 absolute bottom-[-8%] w-[110%] opacity-30"
           />
         </div>
@@ -273,6 +278,7 @@
           <img
             src="images/gradient3&4.png"
             alt="Gradient 3&4"
+            loading="lazy"
             class="absolute -inset-[1%] -z-10 h-[110%] w-[110%] object-cover"
           />
           <button
@@ -299,15 +305,17 @@
           <img
             src="images/gradient3&4.png"
             alt="Gradient 3&4"
+            loading="lazy"
             class="absolute -inset-[1%] -z-10 h-[110%] w-[110%] object-cover"
           />
         </div>
       </div>
     </section>
     <!-- Projeckty -->
-    <section
+    <section 
+      inert
       id="projects"
-      class="mt-52 md:mt-80 flex w-full flex-col items-center justify-center space-y-3 overflow-hidden"
+      class="mt-52 md:mt-80 flex w-full flex-col items-center justify-center space-y-3 overflow-hidden cv-auto reveal"
     >
       <h3 id="projects-title" class="lg:text-[10rem] md:text-9xl text-gradient-hero mb-10 text-7xl font-bold">Projekty</h3>
       <div class="slider group [--height:25rem] [--quantity:4] [--width:30rem]
@@ -322,8 +330,10 @@
               class="mt-8 w-full rounded-xl"
               loop
               id="vid1"
-              playsinline
               src="video/POWERTASKFILM.mp4"
+              muted
+              playsinline
+              preload="metadata"
             ></video>
           </li>
           <li
@@ -334,7 +344,10 @@
               class="mt-8 w-full rounded-xl"
               loop
               id="vid2"
+              
+              muted
               playsinline
+              preload="metadata"
               src="video/project-1.mp4"
             ></video>
           </li>
@@ -346,7 +359,9 @@
               class="mt-8 w-full rounded-xl"
               loop
               id="vid3"
+              muted
               playsinline
+              preload="metadata"
               src="video/project-2.mp4"
             ></video>
           </li>
@@ -358,7 +373,9 @@
               class="mt-8 w-full rounded-xl"
               loop
               id="vid4"
+              muted
               playsinline
+              preload="metadata"
               src="video/project-3.mp4"
             ></video>
           </li>
@@ -366,7 +383,7 @@
       </div>
     </section>
     <!-- Kontakt -->
-    <section id="contact" class="mt-20 md:mt-80 mb-40  py-14">
+    <section inert id="contact" class="mt-20 md:mt-80 mb-40 py-14 cv-auto reveal">
       <!-- header -->
       <header class="mb-10 text-center">
         <h3
@@ -478,7 +495,10 @@
               </div>
               <button type="submit" id="contact-form__submitBtn" class="w-full p-5  text-cyber rounded-lg text-base font-semibold cursor-pointer transition-all  ease-linear bg-[rgba(124,233,230,0.1)]  text-center text-cyber-soft/80 duration-300 hover:bg-cyber-strong hover:text-black focus:shadow-gcyan focus:outline-none hover:-translate-y-1 hover:shadow-black/80">Wyślij!</button>
               <!-- Toast div -->
-              <div id="contact-form__succes" class="bg-[rgba(16,185,129,0.2)] text-[#10b981] p-4 rounded-lg  hidden transition-all duration-[3000] opacity-0">Wiadomość wysłana! wkrótce odpowiem!</div>
+              <div aria-live="polite"
+                   role="status"
+                   id="contact-form__succes"
+                   class="bg-[rgba(16,185,129,0.2)] text-[#10b981] p-4 rounded-lg  hidden transition-all duration-[3000] opacity-0"></div>
             </form>
           </div>
         </div>
