@@ -4,23 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600;700;900&display=swap"
       rel="stylesheet"
     />
-    <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+    <link href="https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="css/style.css" />
     <script defer type="module" src="./JS/app.js"></script>
 
     <title>Mateusz Kabaja</title>
   </head>
-  <body class="relative bg-app-gradient dark:bg-app-gradient p-10 md:p-12 text-white  overflow-x-hidden w-full ">
+  <body
+    class="bg-app-gradient dark:bg-app-gradient relative w-full overflow-x-hidden p-10 text-white md:p-12"
+  >
     <div id="site-overlay" class="overlay-base"></div>
     <!-- Header -->
-    <header id="header" class="flex items-center justify-between pb-8 md:flex-row">
+    <header
+      id="header"
+      class="flex items-center justify-between pb-8 md:flex-row"
+      data-aos="fade-down"
+      data-aos-easing="linear"
+      data-aos-duration="1500"
+    >
       <!-- Główny kontener -->
       <div class="container flex flex-row justify-between">
         <!-- LOGO + IMIe -->
@@ -78,14 +86,14 @@
         <!-- Navbar -->
         <nav class="relative flex flex-col items-end justify-between md:h-5 md:flex-row">
           <!-- hamburger -->
-          <button id="header-hamburger" class=" group relative md:hidden p-4 " aria-expanded="false">
+          <button id="header-hamburger" class="group relative p-4 md:hidden" aria-expanded="false">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-6 transition-all duration-150 group-aria-expanded:rotate-90 group-aria-expanded:opacity-0"
+              class="absolute left-1/2 top-1/2 size-6 -translate-x-1/2 -translate-y-1/2 transition-all duration-150 group-aria-expanded:rotate-90 group-aria-expanded:opacity-0"
             >
               <path
                 stroke-linecap="round"
@@ -99,7 +107,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-6 rotate-90 opacity-0 transition-all duration-150 group-aria-expanded:rotate-0 group-aria-expanded:opacity-100"
+              class="absolute left-1/2 top-1/2 size-6 -translate-x-1/2 -translate-y-1/2 rotate-90 opacity-0 transition-all duration-150 group-aria-expanded:rotate-0 group-aria-expanded:opacity-100"
             >
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
@@ -132,35 +140,58 @@
     <!-- hero  -->
     <main class="flex min-h-[85vw] flex-1 flex-col justify-between overflow-hidden">
       <!-- Nagłówek -->
-      <section class="mt-12 uppercase relative" aria-labelledby="hero-title">
+      <section
+        class="relative mt-12 uppercase"
+        aria-labelledby="hero-title"
+        data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="1500"
+      >
         <h1
           id="hero-title"
-          class="text-gradient-hero-dark text-center lg:text-[12rem] font-black leading-none lg:tracking-[5px] text-7xl md:text-9xl md:tracking-wider"
+          class="text-gradient-hero-dark text-center text-7xl font-black leading-none md:text-9xl md:tracking-wider lg:text-[12rem] lg:tracking-[5px]"
         >
-          web <br/>developer
+          web <br />developer
         </h1>
         <!-- sekcja lokalizacji -->
         <address class="mt-8 flex flex-col items-start not-italic">
-          <p class="text-gradient-muted-dark text-gradient-muted  text-xl md:text-2xl">
-            Lokalizacja:<br/>
+          <p class="text-gradient-muted-dark text-gradient-muted text-xl md:text-2xl">
+            Lokalizacja:<br />
             Polska
           </p>
         </address>
-         <!-- 3d Model -->
-          <div id="hero-3d"
-               data-spline="https://prod.spline.design/5WiJXakP8n7uKDRs/scene.splinecode"
-               class="flex justify-center items-center  -z-10  absolute top-0 h-[250%] w-full" >
-            
-            <spline-viewer
-            
+        <!-- 3d Model -->
+        <div
+          id="hero-3d"
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in-back"
+          data-aos-delay="300"
+          data-aos-offset="0"
+          data-aos-duration="3000"
+          data-spline="https://prod.spline.design/5WiJXakP8n7uKDRs/scene.splinecode"
+          class="absolute top-0 -z-10 flex h-[250%] w-full items-center justify-center"
+        >
+          <!-- <spline-viewer
             url="https://prod.spline.design/5WiJXakP8n7uKDRs/scene.splinecode"
-          ></spline-viewer>
-          </div>
-      
+          ></spline-viewer> -->
+        </div>
+        <div
+          id="hero-gif"
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in-back"
+          data-aos-delay="300"
+          data-aos-offset="0"
+          data-aos-duration="3000"
+          class="absolute top-1/3 -z-10 flex w-full items-center justify-center"
+        >
+          <!-- <img src="video/spinning-fireball-21048.gif" alt="fire" class="w-3/4" /> -->
+        </div>
       </section>
       <!-- Bio Section -->
-      <section class="uppercase pb-5">
-        <p class="max-w-[22rem] text-sm md:text-base lg:text-lg font-normal leading-[1.6] tracking-wider mt-48">
+      <section data-aos="fade-up" data-aos-duration="1500" class="pb-5 uppercase">
+        <p
+          class="mt-48 max-w-[22rem] text-sm font-normal leading-[1.6] tracking-wider md:text-base lg:text-lg"
+        >
           Od <span class="text-accent-strong">roku</span> uczę się
           <span class="text-accent-soft">JavaScriptu</span> i rozwijam swoje umiejętności w
           tworzeniu nowoczesnych aplikacji. Lubię też
@@ -169,22 +200,45 @@
         </p>
       </section>
       <!-- scroll down element -->
-      <div class="scroll-down">
+      <div class="scroll-down" data-aos="fade-up" data-aos-duration="1500">
         <!-- anty purge -->
         <span class="hidden animate-scroll-down"></span>
       </div>
-     
     </main>
     <!-- o mnie -->
-    <section inert id="abaut" class="mt-52 md:mt-80 flex w-full flex-col items-center justify-center space-y-10 cv-auto reveal">
-      <h1 class="lg:text-[10rem] md:text-9xl text-gradient-hero mb-10 text-7xl font-bold">O Mnie</h1>
+    <section
+      inert
+      id="abaut"
+      class="cv-auto reveal mt-52 flex w-full flex-col items-center justify-center space-y-10 md:mt-80"
+    >
+      <h1
+        class="text-gradient-hero mb-10 text-7xl font-bold md:text-9xl lg:text-[10rem]"
+        data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="1500"
+      >
+        O Mnie
+      </h1>
       <!-- bento Grid -->
-      <div id="bento-grid" class="relative w-full md:grid  flex flex-col  md:w-[90%] md:grid-cols-2 gap-6 xl:grid-cols-3">
+      <div
+        id="bento-grid"
+        class="relative flex w-full flex-col gap-6 md:grid md:w-[90%] md:grid-cols-2 xl:grid-cols-3"
+      >
         <!-- cards -->
         <!-- intro -->
-        <div id="intro" class="card-overlay card md:col-span-2 xl:min-h-[300px] ">
-          <h2 class="md:mt-12  mt-24  text-3xl font-light tracking-wide ">Cześć!,<br> jestem Mateusz!</h2>
-          <p class="mt-8  max-w-lg text-sm leading-relaxed text-gray-400">
+        <div
+          id="intro"
+          data-aos="fade-right"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+          data-aos-duration="1500"
+          class="card-overlay card md:col-span-2 xl:min-h-[300px]"
+        >
+          <h2 class="mt-24 text-3xl font-light tracking-wide md:mt-12">
+            Cześć!,<br />
+            jestem Mateusz!
+          </h2>
+          <p class="mt-8 max-w-lg text-sm leading-relaxed text-gray-400">
             Od ponad roku rozwijam się w kierunku front-endu, łącząc ciekawość kodu z zamiłowaniem
             do estetyki i nowoczesnego designu. Tworzenie stron internetowych daje mi ogromną
             satysfakcję — szczególnie wtedy, gdy połączenie funkcjonalności i wyglądu tworzy coś, co
@@ -206,16 +260,29 @@
             loading="lazy"
             class="absolute -inset-[1%] -z-10 h-[110%] w-[110%] object-cover"
           />
-          <div id="abaut-3d" class="absolute xl:right-[15%] xl:top-[-45%] md:top-[-58%] right-[10%] top-[-35%] h-[30rem] w-[30rem] ">
+          <!-- <div
+            id="abaut-3d"
+            class="absolute right-[10%] top-[-35%] hidden h-[30rem] w-[30rem] md:top-[-58%] xl:right-[15%] xl:top-[-45%]"
+          >
             <spline-viewer
               class="h-[150%] w-[150%] mix-blend-lighten"
               url="https://prod.spline.design/akDHOzTo50SWLgPr/scene.splinecode"
             ></spline-viewer>
+          </div> -->
+          <div id="foto" class="absolute right-[5%] top-[-1%] h-44 w-44">
+            <img src="images/M.Kabaja-beztła.png" alt="Mateusz" />
           </div>
         </div>
         <!-- tech -->
-        <div id="tech" class="card-overlay card md:row-span-2 xl:min-h-[450px] ">
-          <h2 class="md:mt-2 mt-12 text-3xl font-light tracking-wide">Stack technologiczny</h2>
+        <div
+          id="tech"
+          data-aos="fade-left"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+          data-aos-duration="1500"
+          class="card-overlay card md:row-span-2 xl:min-h-[450px]"
+        >
+          <h2 class="mt-12 text-3xl font-light tracking-wide md:mt-2">Stack technologiczny</h2>
           <p class="mt-8 max-w-lg text-sm leading-relaxed text-gray-400">
             Rozwijam się w obszarze dwóch języków programowania —
             <span class="font-semibold text-[#F7DF1E]">JavaScript</span>
@@ -273,7 +340,12 @@
           />
         </div>
         <!-- time -->
-        <div id="time" class="card-overlay card min-h-[220px] space-y-2">
+        <div
+          id="time"
+          data-aos="fade-up"
+          data-aos-duration="1500"
+          class="card-overlay card min-h-[220px] space-y-2"
+        >
           <h2 class="mt-2 text-xl font-light tracking-wide">
             Elastyczny w zakresie komunikacji i miejsca współpracy
           </h2>
@@ -295,7 +367,12 @@
           </button>
         </div>
         <!-- passion -->
-        <div id="passion" class="card-overlay card min-h-[220px] space-y-2">
+        <div
+          id="passion"
+          data-aos="fade-up"
+          data-aos-duration="1500"
+          class="card-overlay card min-h-[220px] space-y-2"
+        >
           <h2 class="mt-2 text-xl font-light tracking-wide">
             Z pasją rozwijam się w świecie technologii
           </h2>
@@ -318,15 +395,23 @@
       </div>
     </section>
     <!-- Projeckty -->
-    <section 
+    <section
       inert
       id="projects"
-      class="mt-52 md:mt-80 flex w-full flex-col items-center justify-center space-y-3 overflow-hidden cv-auto reveal"
+      class="cv-auto reveal mt-52 flex w-full flex-col items-center justify-center space-y-3 overflow-hidden md:mt-80"
     >
-      <h3 id="projects-title" class="lg:text-[10rem] md:text-9xl text-gradient-hero mb-10 text-7xl font-bold">Projekty</h3>
-      <div class="slider group [--height:25rem] [--quantity:4] [--width:30rem]
-      md:[--height:34rem] md:[--width:48rem]
-      lg:[--height:40rem] lg:[--width:60rem]">
+      <h3
+        id="projects-title"
+        data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="1500"
+        class="text-gradient-hero mb-10 text-7xl font-bold md:text-9xl lg:text-[10rem]"
+      >
+        Projekty
+      </h3>
+      <div
+        class="slider group [--height:25rem] [--quantity:4] [--width:30rem] md:[--height:34rem] md:[--width:48rem] lg:[--height:40rem] lg:[--width:60rem]"
+      >
         <ul class="list">
           <li
             class="item animate-auto-run [--position:1] hover:scale-[1.2] group-hover:[animation-play-state:paused]"
@@ -350,7 +435,6 @@
               class="mt-8 w-full rounded-xl"
               loop
               id="vid2"
-              
               muted
               playsinline
               preload="metadata"
@@ -389,9 +473,14 @@
       </div>
     </section>
     <!-- Kontakt -->
-    <section inert id="contact" class="mt-20 md:mt-80 mb-40 py-14 cv-auto reveal">
+    <section inert id="contact" class="cv-auto reveal mb-40 mt-20 py-14 md:mt-80">
       <!-- header -->
-      <header class="mb-10 text-center">
+      <header
+        data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="1500"
+        class="mb-10 text-center"
+      >
         <h3
           class="mb-4 bg-gradient-to-r from-cyber via-sky-400 to-slate-700/90 bg-clip-text text-7xl font-bold text-transparent"
         >
@@ -402,58 +491,44 @@
         </p>
       </header>
       <!-- Treść -->
-      <div id="contact-grid" class="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <div class="info-card hover:translate-y-1 transition-all duration-500">
+      <div
+        id="contact-grid"
+        class="grid grid-cols-1 gap-8 md:grid-cols-2"
+        data-aos="fade-zoom-in"
+        data-aos-easing="ease-in-back"
+        data-aos-delay="300"
+        data-aos-offset="0"
+        data-aos-duration="1500"
+      >
+        <div class="info-card transition-all duration-500 hover:translate-y-1">
           <h3 class="mb-16 text-2xl text-gray-300">Kontakt</h3>
           <div id="contact-item" class="mb-12">
             <p class="mb-3 font-semibold text-cyber-strong">E-mail:</p>
-            <a
-              class="link-contact"
-              href="#"
-              >m.kabaja.dev@gmail.com</a
-            >
+            <a class="link-contact" href="#">m.kabaja.dev@gmail.com</a>
           </div>
 
           <div id="contact-item" class="mb-12">
             <p class="mb-3 font-semibold text-cyber-strong">Telefon:</p>
-            <a
-              class="link-contact"
-              href="#"
-              >732-011-783</a
-            >
+            <a class="link-contact" href="#">732-011-783</a>
           </div>
 
           <div id="contact-item" class="mb-12">
             <p class="mb-3 font-semibold text-cyber-strong">Lokalizacja:</p>
-            <a
-              class="link-contact"
-              href="#"
-              >Polska, Wieliczka</a
-            >
+            <a class="link-contact" href="#">Polska, Wieliczka</a>
           </div>
           <div class="divider"></div>
-          <div id="social-link" class="mt-4 pt-5 space-y-4 md:space-y-0">
+          <div id="social-link" class="mt-4 space-y-4 pt-5 md:space-y-0">
             <p class="mt-5 py-2 text-gray-300">Skontakuj się ze mną przez</p>
-            <a
-              class="link-media"
-              href="#"
-              >gitHub</a
-            >
-            <a
-              class="link-media"
-              href="#"
-              >Linkedin</a
-            >
-            <a
-              class="link-media"
-              href="#"
-              >Facebook</a
-            >
+            <a class="link-media" href="#">gitHub</a>
+            <a class="link-media" href="#">Linkedin</a>
+            <a class="link-media" href="#">Facebook</a>
           </div>
         </div>
-        <div class="info-card hover:translate-y-1 ">
+        <div class="info-card hover:translate-y-1">
           <div id="info-card__content">
-            <h3 class="mb-16 text-2xl text-gray-300 transition-all duration-500">Wyślij wiadomość</h3>
+            <h3 class="mb-16 text-2xl text-gray-300 transition-all duration-500">
+              Wyślij wiadomość
+            </h3>
             <form id="contact-form" class="space-y-5" autocomplete="off">
               <div id="contact-form__group1">
                 <input
@@ -496,39 +571,49 @@
                   required
                   class="form-control"
                   autocomplete="off"
-                />
+                >
                 </textarea>
               </div>
-              <button type="submit" id="contact-form__submitBtn" class="w-full p-5  text-cyber rounded-lg text-base font-semibold cursor-pointer transition-all  ease-linear bg-[rgba(124,233,230,0.1)]  text-center text-cyber-soft/80 duration-300 hover:bg-cyber-strong hover:text-black focus:shadow-gcyan focus:outline-none hover:-translate-y-1 hover:shadow-black/80">Wyślij!</button>
+              <button
+                type="submit"
+                id="contact-form__submitBtn"
+                class="w-full cursor-pointer rounded-lg bg-[rgba(124,233,230,0.1)] p-5 text-center text-base font-semibold text-cyber text-cyber-soft/80 transition-all duration-300 ease-linear hover:-translate-y-1 hover:bg-cyber-strong hover:text-black hover:shadow-black/80 focus:shadow-gcyan focus:outline-none"
+              >
+                Wyślij!
+              </button>
               <!-- Toast div -->
-              <div aria-live="polite"
-                   role="status"
-                   id="contact-form__succes"
-                   class="bg-[rgba(16,185,129,0.2)] text-[#10b981] p-4 rounded-lg  hidden transition-all duration-[3000] opacity-0"></div>
+              <div
+                aria-live="polite"
+                role="status"
+                id="contact-form__succes"
+                class="hidden rounded-lg bg-[rgba(16,185,129,0.2)] p-4 text-[#10b981] opacity-0 transition-all duration-[3000]"
+              ></div>
             </form>
           </div>
         </div>
       </div>
     </section>
     <!-- Stopka -->
-     <footer class="flex justify-between absolute bottom-0 right-0 left-0 px-8 py-14 bg-[rgba(124,233,230,0.1)]">
+    <footer
+      class="absolute bottom-0 left-0 right-0 flex justify-between bg-[rgba(124,233,230,0.1)] px-8 py-14"
+    >
       <h3>© 2025. Wykonanie: Mateusz Kabaja</h3>
       <div class="flex gap-8">
-        <a href="#" class="text-gray-500 text-xl transition-all hover:text-cyber">
-        <i class="bxl bx-github "></i>  
+        <a href="#" class="text-xl text-gray-500 transition-all hover:text-cyber">
+          <i class="bxl bx-github"></i>
         </a>
-        <a href="#" class="text-gray-500 text-xl transition-all hover:text-cyber">
-          <i class='bxl  bx-linkedin-square'  ></i> 
+        <a href="#" class="text-xl text-gray-500 transition-all hover:text-cyber">
+          <i class="bxl bx-linkedin-square"></i>
         </a>
-        <a href="#" class="text-gray-500 text-xl transition-all hover:text-cyber">
-          <i class='bxl  bx-facebook'  ></i> 
+        <a href="#" class="text-xl text-gray-500 transition-all hover:text-cyber">
+          <i class="bxl bx-facebook"></i>
         </a>
       </div>
-     </footer>
+    </footer>
 
-    <script
+    <!-- <script
       type="module"
       src="https://unpkg.com/@splinetool/viewer@1.10.81/build/spline-viewer.js"
-    ></script>
+    ></script> -->
   </body>
 </html>
