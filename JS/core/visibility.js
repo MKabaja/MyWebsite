@@ -39,6 +39,4 @@ export function initVisibility() {
   wire(document.getElementById('abaut'));
   wire(document.getElementById('projects'));
   wire(document.getElementById('contact'));
-
-  import('./spline-hero.js').then((m) => m.initSplineHero?.());
 }
