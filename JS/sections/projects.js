@@ -1,4 +1,4 @@
-import { createObserver } from '../observer-manager';
+import { createObserver } from '../observer-manager.js';
 let ready = false;
 export function initProject() {
   if (ready) return;

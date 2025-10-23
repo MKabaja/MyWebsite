@@ -1,6 +1,3 @@
-// /JS/features/spline_hero.js
-import { createObserver } from '../observer-manager.js';
-
 let ready = false;
 let scriptLoaded = false;
 let viewer = null;

@@ -1,4 +1,4 @@
-import { createObserver } from '../observer-manager';
+import { createObserver } from '../observer-manager.js';
 
 let initialized = false;
 export function initVisibility() {

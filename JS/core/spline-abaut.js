@@ -1,4 +1,3 @@
-// /JS/features/spline_about.js
 let ready = false;
 let scriptLoaded = false;
 let viewer = null;

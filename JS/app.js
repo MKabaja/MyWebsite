@@ -1,7 +1,6 @@
 import { initHeader } from './header.js';
 import { initVisibility } from './core/visibility.js';
-import { createObserver } from './observer-manager.js';
-// odpal tylko jeśli na stronie jest <header>
+
 window.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('header')) {
     initHeader();

@@ -67,7 +67,7 @@
       linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.6));
   }
   .card {
-    @apply relative transform overflow-hidden rounded-md border border-gray-900 p-8 duration-150 hover:-translate-y-[5px] hover:shadow-gcyan;
+    @apply relative transform overflow-hidden rounded-md border border-gray-900 p-8 duration-150 hover:-translate-y-[5px] md:hover:shadow-gcyan;
   }
   .info-card {
     @apply overflow-hidden rounded-md bg-[#1e1e1e] p-8 shadow-[inset_-1px_20px_20px_7px_rgba(0,0,0,0.6)] transition-transform duration-300 ease-linear;
