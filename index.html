@@ -147,10 +147,16 @@
           </p>
         </address>
          <!-- 3d Model -->
-      <spline-viewer
-        class="pointer-events-none -z-10  absolute top-0 h-[250%]"
-        url="https://prod.spline.design/5WiJXakP8n7uKDRs/scene.splinecode"
-      ></spline-viewer>
+          <div id="hero-3d"
+               data-spline="https://prod.spline.design/5WiJXakP8n7uKDRs/scene.splinecode"
+               class="flex justify-center items-center  -z-10  absolute top-0 h-[250%] w-full" >
+            
+            <!-- <spline-viewer
+            
+            url="https://prod.spline.design/5WiJXakP8n7uKDRs/scene.splinecode"
+          ></spline-viewer> -->
+          </div>
+      
       </section>
       <!-- Bio Section -->
       <section class="uppercase pb-5">
@@ -200,7 +206,7 @@
             loading="lazy"
             class="absolute -inset-[1%] -z-10 h-[110%] w-[110%] object-cover"
           />
-          <div class="absolute xl:right-[15%] xl:top-[-45%] md:top-[-58%] right-[10%] top-[-35%] h-[30rem] w-[30rem]">
+          <div id="abaut-3d" class="absolute xl:right-[15%] xl:top-[-45%] md:top-[-58%] right-[10%] top-[-35%] h-[30rem] w-[30rem] ">
             <spline-viewer
               class="h-[150%] w-[150%] mix-blend-lighten"
               url="https://prod.spline.design/akDHOzTo50SWLgPr/scene.splinecode"
@@ -520,9 +526,9 @@
       </div>
      </footer>
 
-    <script
+    <!-- <script
       type="module"
       src="https://unpkg.com/@splinetool/viewer@1.10.81/build/spline-viewer.js"
-    ></script>
+    ></script> -->
   </body>
 </html>

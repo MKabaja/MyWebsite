@@ -40,5 +40,5 @@ export function initVisibility() {
   wire(document.getElementById('projects'));
   wire(document.getElementById('contact'));
 
-  const hero = document.querySelector('section[aria-labelledby="hero-title"]');
+  import('./spline-hero.js').then((m) => m.initSplineHero?.());
 }
