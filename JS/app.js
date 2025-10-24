@@ -1,6 +1,6 @@
 import { initHeader } from './header.js';
 import { initVisibility } from './core/visibility.js';
-import { initHero3D } from './core/spline.controler.js';
+import { initModels3D } from './core/spline.controler.js';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 AOS.init();
@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('header')) {
     initHeader();
     initVisibility();
-    initHero3D();
+    initModels3D();
   }
 });
 

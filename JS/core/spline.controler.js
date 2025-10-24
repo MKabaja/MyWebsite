@@ -1,8 +1,12 @@
-export async function initHero3D() {
+export async function initModels3D() {
   const splineHeroSlot = document.getElementById('hero-3d');
+  const splineAbautSlot = document.getElementById('abaut-3d');
   const gifSlot = document.getElementById('hero-gif');
+  const imgSlot = document.getElementById('foto');
   const splineHeroURL = 'https://prod.spline.design/5WiJXakP8n7uKDRs/scene.splinecode';
+  const splineAbautURL = 'https://prod.spline.design/akDHOzTo50SWLgPr/scene.splinecode';
   const gifURL = 'video/spinning-fireball-21048.gif';
+  const imgURL = 'images/M.Kabaja-beztła.png';
 
   let initialized_s = false;
   let initialized_g = false;
@@ -35,18 +39,15 @@ export async function initHero3D() {
   function isLowPerformanceGPU() {
     return new Promise((resolve) => {
       try {
-        // 1. Spróbuj utworzyć kontekst WebGL (to jest API dla 3D)
         const canvas = document.createElement('canvas');
-        // Zdobądź kontekst WebGL lub jego eksperymentalną wersję
+
         const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
 
         if (!gl) {
-          // Jeśli brak wsparcia WebGL - jest bardzo źle
           console.warn('Brak wsparcia WebGL. Ładowanie najprostszej wersji.');
           return resolve(true);
         }
 
-        // 2. Pobranie informacji o GPU
         const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
         if (debugInfo) {
           // To jest nazwa karty graficznej lub renderera
@@ -56,7 +57,7 @@ export async function initHero3D() {
 
           // Lista słabych/programowych rendererów, które mogą oznaczać problem
           const lowPerformanceKeywords = [
-            'SwiftShader', // Oznacza czysto software'owy rendering (bardzo wolny)
+            'SwiftShader',
             'Mesa', // Często software'owy rendering na Linuxie
             'Adreno', // Starsze/słabsze GPU w Androidach
             'Mali', // Starsze/słabsze GPU w Androidach
@@ -70,8 +71,7 @@ export async function initHero3D() {
           }
           return resolve(isLow);
         }
-        // Jeśli nie możemy sprawdzić (np. przeglądarka blokuje dostęp do nazwy GPU),
-        // zakładamy, że jest bezpiecznie (false), ale logujemy to.
+
         console.warn('Nie można pobrać nazwy GPU.');
         resolve(false);
       } catch (error) {
@@ -86,24 +86,33 @@ export async function initHero3D() {
     if (initialized_s) return;
     initialized_s = true;
     if (gifSlot) {
-      gifSlot.innerHTML = '';
-      gifSlot.classList.add('hidden');
+      hidePlaceholders();
     }
     try {
       await loadSplineScript();
-      loadSplineViewer(splineHeroURL, splineHeroSlot);
+      loadSplineViewers();
+      show3DSlots();
     } catch (error) {
       console.error('Błąd przy ładowaniu Spline:', error);
       gifInit();
     }
   }
 
-  function loadSplineViewer(url, slot) {
-    if (!slot) return;
-    slot.classList.remove('hidden');
+  function createSplineViewer(url, classes = []) {
     const spline = document.createElement('spline-viewer');
     spline.setAttribute('url', url);
-    slot.appendChild(spline);
+    if (classes.length > 0) {
+      spline.classList.add(...classes);
+    }
+    spline.addEventListener(
+      'error',
+      () => {
+        console.warn('Spline viewer error → fallback to GIF');
+        gifInit();
+      },
+      { once: true },
+    );
+    return spline;
   }
 
   function loadSplineScript() {
@@ -124,22 +133,68 @@ export async function initHero3D() {
     if (initialized_g) return;
     initialized_g = true;
     if (splineHeroSlot) {
-      splineHeroSlot.innerHTML = '';
-      splineHeroSlot.classList.add('hidden');
+      hide3DSlots();
     }
-    if (!gifSlot) return;
-    gifSlot.classList.remove('hidden');
-    const img = createImg(gifURL, 'firegif', ['w-3/4']);
-    gifSlot.appendChild(img);
+    if (!gifSlot || !imgSlot) return;
+    loadPlaceholders();
+    showPlaceholders();
   }
 
   function createImg(imageURL, altinfo, classes = []) {
     const imgElement = document.createElement('img');
     imgElement.setAttribute('src', imageURL);
     imgElement.setAttribute('alt', altinfo);
+    imgElement.loading = 'lazy';
+    imgElement.decoding = 'async';
+    imgElement.fetchPriority = 'high';
     if (classes.length > 0) {
       imgElement.classList.add(...classes);
     }
     return imgElement;
+  }
+  function hidePlaceholders() {
+    if (gifSlot) {
+      gifSlot.innerHTML = '';
+      gifSlot.classList.add('hidden');
+    }
+    if (imgSlot) {
+      imgSlot.innerHTML = '';
+      imgSlot.classList.add('hidden');
+    }
+  }
+  function hide3DSlots() {
+    if (splineHeroSlot) {
+      splineHeroSlot.innerHTML = '';
+      splineHeroSlot.classList.add('hidden');
+    }
+    if (splineAbautSlot) {
+      splineAbautSlot.innerHTML = '';
+      splineAbautSlot.classList.add('hidden');
+    }
+  }
+
+  function show3DSlots() {
+    splineHeroSlot?.classList.remove('hidden');
+    splineAbautSlot?.classList.remove('hidden');
+  }
+  function showPlaceholders() {
+    gifSlot?.classList.remove('hidden');
+    imgSlot?.classList.remove('hidden');
+  }
+  function loadSplineViewers() {
+    const SP_HERO = createSplineViewer(splineHeroURL);
+    const SP_ABAUT = createSplineViewer(splineAbautURL, [
+      'h-[150%]',
+      'w-[150%]',
+      'mix-blend-lighten',
+    ]);
+    splineHeroSlot?.appendChild(SP_HERO);
+    splineAbautSlot?.appendChild(SP_ABAUT);
+  }
+  function loadPlaceholders() {
+    const gif = createImg(gifURL, 'Fireball', ['w-3/4']);
+    const img = createImg(imgURL, 'Mateusz');
+    gifSlot?.appendChild(gif);
+    imgSlot?.appendChild(img);
   }
 }
