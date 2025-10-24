@@ -1,18 +1,43 @@
 <!doctype html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="pl" class="dark scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio Mateusza Kabaja — front-end / full-stack developer. Projekty webowe, JavaScript, PHP, React, design i 3D."
+    />
+    <link rel="icon" href="images/favicon-32x32.png" sizes="any" />
+
     <link rel="preconnect" href="https://unpkg.com" crossorigin />
     <link rel="preconnect" href="https://prod.spline.design" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
-      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600;700;900&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;900&display=swap"
+      onload="this.rel='stylesheet'"
     />
-    <link href="https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css" rel="stylesheet" />
+
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;900&display=swap"
+      />
+    </noscript>
+
+    <link
+      rel="preload"
+      href="https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+    <noscript
+      ><link rel="stylesheet" href="https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css"
+    /></noscript>
 
     <link rel="stylesheet" href="css/style.css" />
     <script defer type="module" src="./JS/app.js"></script>
@@ -24,21 +49,17 @@
   >
     <div id="site-overlay" class="overlay-base"></div>
     <!-- Header -->
-    <header
-      id="header"
-      class="flex items-center justify-between pb-8 md:flex-row"
-      data-aos="fade-down"
-      data-aos-easing="linear"
-      data-aos-duration="1500"
-    >
+    <header id="header" class="flex w-full items-center justify-between pb-8 md:flex-row">
       <!-- Główny kontener -->
       <div class="container flex flex-row justify-between">
         <!-- LOGO + IMIe -->
-        <div class="flex flex-col justify-start text-2xl tracking-wide">
+        <div class="flex flex-col justify-start text-2xl tracking-wide" aria-label="Strona główna">
           <span
             class="flex h-10 duration-150 md:hover:scale-105 md:hover:drop-shadow-neon"
             id="header-logo"
             ><svg
+              aria-hidden="true"
+              focusable="false"
               class="h-10 text-accent"
               width="100"
               height="164"
@@ -83,12 +104,22 @@
               />
             </svg>
           </span>
+
           <span>Mateusz Kabaja</span>
         </div>
         <!-- Navbar -->
-        <nav class="relative flex flex-col items-end justify-between md:h-5 md:flex-row">
+        <nav
+          aria-label="Główna nawigacja"
+          class="relative z-50 flex flex-col items-end justify-between md:h-5 md:flex-row"
+        >
           <!-- hamburger -->
-          <button id="header-hamburger" class="group relative p-4 md:hidden" aria-expanded="false">
+          <button
+            id="header-hamburger"
+            class="group relative p-4 md:hidden"
+            aria-expanded="false"
+            type="button"
+            aria-controls="header-nav"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -116,20 +147,20 @@
           </button>
           <!-- menu -->
 
-          <ul id="header-nav" class="md:offmenu-md offmenu offmenu-closed">
-            <li class="group px-2 duration-300 hover:scale-95">
+          <ul id="header-nav" class="md:offmenu-md offmenu offmenu-closed z-50">
+            <li class="group px-2 duration-300 hover:scale-95 focus:ring-1">
               <a href="#projects">Projekty</a>
               <div
                 class="mx-1 mt-1 w-12 border-b-2 border-accent-strong opacity-0 duration-150 group-hover:opacity-100"
               ></div>
             </li>
-            <li class="group px-2 duration-300 hover:scale-95">
+            <li class="group px-2 duration-300 hover:scale-95 focus:ring-1">
               <a href="#abaut">O mnie</a>
               <div
                 class="mx-1 mt-1 w-12 border-b-2 border-accent-strong opacity-0 duration-150 group-hover:opacity-100"
               ></div>
             </li>
-            <li class="group px-2 duration-300 hover:scale-95">
+            <li class="group px-2 duration-300 hover:scale-95 focus:ring-1">
               <a href="#contact">Kontakt</a>
               <div
                 class="mx-1 mt-1 w-12 border-b-2 border-accent-strong opacity-0 duration-150 group-hover:opacity-100"
@@ -143,6 +174,7 @@
     <main class="flex min-h-[85vw] flex-1 flex-col justify-between overflow-hidden">
       <!-- Nagłówek -->
       <section
+        id="hero-section"
         class="relative mt-12 uppercase"
         aria-labelledby="hero-title"
         data-aos="fade-down"
@@ -156,7 +188,10 @@
           web <br />developer
         </h1>
         <!-- sekcja lokalizacji -->
-        <address class="mt-8 flex flex-col items-start not-italic">
+        <address
+          aria-label="Dane kontaktowe autora"
+          class="mt-8 flex flex-col items-start not-italic"
+        >
           <p class="text-gradient-muted-dark text-gradient-muted text-xl md:text-2xl">
             Lokalizacja:<br />
             Polska
@@ -165,6 +200,7 @@
         <!-- Miejsce na 3d Model -->
         <div
           id="hero-3d"
+          aria-hidden="true"
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in-back"
           data-aos-delay="300"
@@ -176,6 +212,7 @@
         <!-- Miejsce na Gif -->
         <div
           id="hero-gif"
+          aria-hidden="true"
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in-back"
           data-aos-delay="300"
@@ -185,7 +222,8 @@
         ></div>
       </section>
       <!-- Bio Section -->
-      <section data-aos="fade-up" data-aos-duration="1500" class="pb-5 uppercase">
+      <section id="bio" data-aos="fade-up" data-aos-duration="1500" class="pb-5 uppercase">
+        <h2 id="bio-title" class="sr-only">O mnie – skrót</h2>
         <p
           class="mt-48 max-w-[22rem] text-sm font-normal leading-[1.6] tracking-wider md:text-base lg:text-lg"
         >
@@ -197,7 +235,12 @@
         </p>
       </section>
       <!-- scroll down element -->
-      <div class="scroll-down" data-aos="fade-up" data-aos-duration="1500">
+      <div
+        id="scroll-down"
+        class="scroll-down transition focus:ring-2"
+        aria-label="Przewiń na sam dół"
+        tabindex="1"
+      >
         <!-- anty purge -->
         <span class="hidden animate-scroll-down"></span>
       </div>
@@ -205,25 +248,29 @@
     <!-- o mnie -->
     <section
       inert
+      aria-labelledby="about-title"
       id="abaut"
       class="cv-auto reveal mt-52 flex w-full flex-col items-center justify-center space-y-10 md:mt-80"
     >
-      <h1
-        class="text-gradient-hero mb-10 text-7xl font-bold md:text-9xl lg:text-[10rem]"
+      <h2
+        id="abaut-title"
+        class="text-gradient-hero mb-10 text-7xl font-semibold md:text-9xl lg:text-[10rem]"
         data-aos="fade-down"
         data-aos-easing="linear"
         data-aos-duration="1500"
       >
-        O Mnie
-      </h1>
+        O mnie...
+      </h2>
       <!-- bento Grid -->
       <div
+        role="list"
         id="bento-grid"
-        class="relative flex w-full flex-col gap-6 md:grid md:w-[90%] md:grid-cols-2 xl:grid-cols-3"
+        class="relative flex w-full flex-col gap-6 pb-10 md:grid md:w-[90%] md:grid-cols-2 xl:grid-cols-3"
       >
         <!-- cards -->
         <!-- intro -->
         <div
+          role="listitem"
           id="intro"
           data-aos="fade-right"
           data-aos-offset="300"
@@ -231,10 +278,10 @@
           data-aos-duration="1500"
           class="card-overlay card md:col-span-2 xl:min-h-[300px]"
         >
-          <h2 class="mt-24 text-3xl font-light tracking-wide md:mt-12">
+          <h3 class="mt-24 text-3xl font-normal tracking-wide md:mt-12">
             Cześć!,<br />
             jestem Mateusz!
-          </h2>
+          </h3>
           <p class="mt-8 max-w-lg text-sm leading-relaxed text-gray-400">
             Od ponad roku rozwijam się w kierunku front-endu, łącząc ciekawość kodu z zamiłowaniem
             do estetyki i nowoczesnego designu. Tworzenie stron internetowych daje mi ogromną
@@ -253,7 +300,8 @@
           </p>
           <img
             src="images/gradient.png"
-            alt="Gradient"
+            alt=""
+            aria-hidden="true"
             loading="lazy"
             class="absolute -inset-[1%] -z-10 h-[110%] w-[110%] object-cover"
           />
@@ -265,6 +313,7 @@
         </div>
         <!-- tech -->
         <div
+          role="listitem"
           id="tech"
           data-aos="fade-left"
           data-aos-offset="300"
@@ -272,7 +321,7 @@
           data-aos-duration="1500"
           class="card-overlay card md:row-span-2 xl:min-h-[450px]"
         >
-          <h2 class="mt-12 text-3xl font-light tracking-wide md:mt-2">Stack technologiczny</h2>
+          <h3 class="mt-12 text-3xl font-normal tracking-wide md:mt-2">Stack technologiczny</h3>
           <p class="mt-8 max-w-lg text-sm leading-relaxed text-gray-400">
             Rozwijam się w obszarze dwóch języków programowania —
             <span class="font-semibold text-[#F7DF1E]">JavaScript</span>
@@ -318,54 +367,60 @@
           </p>
           <img
             src="images/gradient 2.png"
-            alt="Second Gradient"
+            alt=""
+            aria-hidden="true"
             loading="lazy"
             class="absolute -inset-[1%] -z-10 h-[110%] w-[110%] object-cover"
           />
           <img
             src="images/skills group.png"
-            alt="Skills"
+            alt=""
+            aria-hidden="true"
             loading="lazy"
             class="w-7/10 absolute bottom-[-8%] w-[110%] opacity-30"
           />
         </div>
         <!-- time -->
         <div
+          role="listitem"
           id="time"
           data-aos="fade-up"
           data-aos-duration="1500"
           class="card-overlay card min-h-[220px] space-y-2"
         >
-          <h2 class="mt-2 text-xl font-light tracking-wide">
+          <h3 class="mt-2 text-xl font-normal tracking-wide">
             Elastyczny w zakresie komunikacji i miejsca współpracy
-          </h2>
+          </h3>
           <p class="max-w-lg text-sm leading-relaxed text-gray-400">
             Mieszkam w Polsce (Wieliczka) i jestem otwarty na zdalną współpracę z klientami z całego
             świata.
           </p>
           <img
             src="images/gradient3&4.png"
-            alt="Gradient 3&4"
+            alt=""
+            aria-hidden="true"
             loading="lazy"
             class="absolute -inset-[1%] -z-10 h-[110%] w-[110%] object-cover"
           />
-          <button
+
+          <a
+            href="#contact"
             class="ease bottom-[10%] mt-6 flex cursor-pointer items-center gap-2 rounded-3xl bg-[rgba(124,233,230,0.1)] px-5 py-4 text-center text-cyber-soft/80 duration-300 hover:bg-cyber-strong hover:text-black"
           >
-            <i class="bxr bx-send-alt"></i>
             Porozmawiajmy o współpracy
-          </button>
+          </a>
         </div>
         <!-- passion -->
         <div
+          role="listitem"
           id="passion"
           data-aos="fade-up"
           data-aos-duration="1500"
           class="card-overlay card min-h-[220px] space-y-2"
         >
-          <h2 class="mt-2 text-xl font-light tracking-wide">
+          <h3 class="mt-2 text-xl font-normal tracking-wide">
             Z pasją rozwijam się w świecie technologii
-          </h2>
+          </h3>
           <p class="max-w-lg text-sm leading-relaxed text-gray-400">
             Z pasją rozwijam się w świecie technologii — programowanie traktuję jako sposób na
             tworzenie czegoś nowego i użytecznego. Każdy projekt to dla mnie okazja do nauki,
@@ -377,45 +432,56 @@
           </p>
           <img
             src="images/gradient3&4.png"
-            alt="Gradient 3&4"
+            alt=""
+            aria-hidden="true"
             loading="lazy"
             class="absolute -inset-[1%] -z-10 h-[110%] w-[110%] object-cover"
           />
         </div>
       </div>
     </section>
-    <!-- Projeckty -->
+    <!-- Projekty -->
     <section
       inert
+      aria-labelledby="projects-title"
       id="projects"
       class="cv-auto reveal mt-52 flex w-full flex-col items-center justify-center space-y-3 overflow-hidden md:mt-80"
     >
-      <h3
+      <h2
         id="projects-title"
         data-aos="fade-down"
         data-aos-easing="linear"
         data-aos-duration="1500"
-        class="text-gradient-hero mb-10 text-7xl font-bold md:text-9xl lg:text-[10rem]"
+        class="text-gradient-hero mb-10 text-7xl font-semibold md:text-9xl lg:text-[10rem]"
       >
         Projekty
-      </h3>
+      </h2>
       <div
         class="slider group [--height:25rem] [--quantity:4] [--width:30rem] md:[--height:34rem] md:[--width:48rem] lg:[--height:40rem] lg:[--width:60rem]"
       >
-        <ul class="list">
+        <ul class="list" aria-roledescription="karuzela projektów">
           <li
             class="item animate-auto-run [--position:1] hover:scale-[1.2] group-hover:[animation-play-state:paused]"
             data-state="live"
+            aria-label="Projekt PowerTask, dostępny"
           >
-            <video
-              class="mt-8 w-full rounded-xl"
-              loop
-              id="vid1"
-              src="video/POWERTASKFILM.mp4"
-              muted
-              playsinline
-              preload="metadata"
-            ></video>
+            <article>
+              <h3 class="sr-only">PowerTask – To-Do/Roadmap (Firebase)</h3>
+
+              <video
+                class="mt-8 w-full rounded-xl"
+                loop
+                id="vid1"
+                src="video/POWERTASKFILM.mp4"
+                muted
+                playsinline
+                preload="metadata"
+                aria-describedby="vid1-desc"
+              ></video>
+              <p id="vid1-desc" class="sr-only">
+                Krótkie nagranie z działania aplikacji PowerTask.
+              </p>
+            </article>
           </li>
           <li
             class="item animate-auto-run [--position:2] hover:scale-[1.2] group-hover:[animation-play-state:paused]"
@@ -463,7 +529,12 @@
       </div>
     </section>
     <!-- Kontakt -->
-    <section inert id="contact" class="cv-auto reveal mb-40 mt-20 py-14 md:mt-80">
+    <section
+      aria-labelledby="contact-title"
+      inert
+      id="contact"
+      class="cv-auto reveal mb-40 mt-20 py-14 md:mt-80"
+    >
       <!-- header -->
       <header
         data-aos="fade-down"
@@ -471,11 +542,12 @@
         data-aos-duration="1500"
         class="mb-10 text-center"
       >
-        <h3
-          class="mb-4 bg-gradient-to-r from-cyber via-sky-400 to-slate-700/90 bg-clip-text text-7xl font-bold text-transparent"
+        <h2
+          id="contact-title"
+          class="mb-4 bg-gradient-to-r from-cyber via-sky-400 to-slate-700/90 bg-clip-text text-7xl font-semibold text-transparent"
         >
           Napisz do mnie
-        </h3>
+        </h2>
         <p class="mx-auto max-w-xl text-gray-500">
           Chcesz ożywić swój pomysł w sieci? Chętnie pomogę.
         </p>
@@ -492,26 +564,59 @@
       >
         <div class="info-card transition-all duration-500 hover:translate-y-1">
           <h3 class="mb-16 text-2xl text-gray-300">Kontakt</h3>
-          <div id="contact-item" class="mb-12">
-            <p class="mb-3 font-semibold text-cyber-strong">E-mail:</p>
-            <a class="link-contact" href="#">m.kabaja.dev@gmail.com</a>
-          </div>
+          <addressc class="not-italic">
+            <div id="contact-item" class="mb-12">
+              <p class="mb-3 font-semibold text-cyber-strong">E-mail:</p>
+              <a class="link-contact" href="mailto:m.kabaja.dev@gmail.com"
+                >m.kabaja.dev@gmail.com</a
+              >
+            </div>
 
-          <div id="contact-item" class="mb-12">
-            <p class="mb-3 font-semibold text-cyber-strong">Telefon:</p>
-            <a class="link-contact" href="#">732-011-783</a>
-          </div>
+            <div id="contact-item" class="mb-12">
+              <p class="mb-3 font-semibold text-cyber-strong">Telefon:</p>
+              <a class="link-contact" href="tel:+48-732-011-783"> +48-732-011-783</a>
+            </div>
 
-          <div id="contact-item" class="mb-12">
-            <p class="mb-3 font-semibold text-cyber-strong">Lokalizacja:</p>
-            <a class="link-contact" href="#">Polska, Wieliczka</a>
-          </div>
+            <div id="contact-item" class="mb-12">
+              <p class="mb-3 font-semibold text-cyber-strong">Lokalizacja:</p>
+              <a class="link-contact" href="https://maps.app.goo.gl/YKbvuTQTi8fjSZvMA"
+                >Polska, Wieliczka</a
+              >
+            </div>
+          </addressc>
           <div class="divider"></div>
+
           <div id="social-link" class="mt-4 space-y-4 pt-5 md:space-y-0">
-            <p class="mt-5 py-2 text-gray-300">Skontakuj się ze mną przez</p>
-            <a class="link-media" href="#">gitHub</a>
-            <a class="link-media" href="#">Linkedin</a>
-            <a class="link-media" href="#">Facebook</a>
+            <p class="mt-5 py-2 text-gray-300">Skontakuj się ze mną przez:</p>
+            <ul class="flex flex-row">
+              <li>
+                <a
+                  class="link-media"
+                  href="https://github.com/MKabaja"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >gitHub</a
+                >
+              </li>
+              <li>
+                <a
+                  class="link-media"
+                  href="https://www.linkedin.com/in/mateusz-kabaja-b9a399364/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Linkedin</a
+                >
+              </li>
+              <li>
+                <a
+                  class="link-media"
+                  href="https://www.facebook.com/mateusz.kabaja.5/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Facebook</a
+                >
+              </li>
+            </ul>
           </div>
         </div>
         <div class="info-card hover:translate-y-1">
@@ -520,7 +625,8 @@
               Wyślij wiadomość
             </h3>
             <form id="contact-form" class="space-y-5" autocomplete="off">
-              <div id="contact-form__group1">
+              <div id="contact-form__group-name">
+                <label for="name" class="sr-only">Imię</label>
                 <input
                   type="text"
                   id="name"
@@ -531,7 +637,8 @@
                   autocomplete="off"
                 />
               </div>
-              <div id="contact-form__group2">
+              <div id="contact-form__group-email">
+                <label for="email" class="sr-only">email</label>
                 <input
                   type="email"
                   id="email"
@@ -542,7 +649,8 @@
                   autocomplete="off"
                 />
               </div>
-              <div id="contact-form__group3">
+              <div id="contact-form__group-subject">
+                <label for="subject" class="sr-only">Temat</label>
                 <input
                   type="text"
                   id="subject"
@@ -553,7 +661,8 @@
                   autocomplete="off"
                 />
               </div>
-              <div id="contact-form__group2">
+              <div id="contact-form__group-message">
+                <label for="message" class="sr-only">Treść Wiadomości</label>
                 <textarea
                   id="message"
                   name="message"
@@ -585,25 +694,45 @@
     </section>
     <!-- Stopka -->
     <footer
+      id="footer"
+      aria-label="Stopka strony"
       class="absolute bottom-0 left-0 right-0 flex justify-between bg-[rgba(124,233,230,0.1)] px-8 py-14"
     >
-      <h3>© 2025. Wykonanie: Mateusz Kabaja</h3>
-      <div class="flex gap-8">
-        <a href="#" class="text-xl text-gray-500 transition-all hover:text-cyber">
-          <i class="bxl bx-github"></i>
+      <small class="text-sm text-gray-400">
+        &copy; <time datetime="2025">2025.</time> Wykonanie: Mateusz Kabaja
+      </small>
+      <div class="flex gap-8" aria-label="Linki społecznościowe">
+        <a
+          href="https://github.com/MKabaja"
+          target="_blank"
+          aria-label="GitHub"
+          rel="noopener noreferrer"
+          class="text-xl text-gray-500 transition-all hover:text-cyber"
+        >
+          <i class="bxl bx-github" aria-hidden="true"></i>
+          <span class="sr-only">GitHub</span>
         </a>
-        <a href="#" class="text-xl text-gray-500 transition-all hover:text-cyber">
-          <i class="bxl bx-linkedin-square"></i>
+        <a
+          target="_blank"
+          aria-label="LinkedIn"
+          rel="noopener noreferrer"
+          href="https://www.linkedin.com/in/mateusz-kabaja-b9a399364/"
+          class="text-xl text-gray-500 transition-all hover:text-cyber"
+        >
+          <i class="bxl bx-linkedin-square" aria-hidden="true"></i>
+          <span class="sr-only">LinkedIn</span>
         </a>
-        <a href="#" class="text-xl text-gray-500 transition-all hover:text-cyber">
-          <i class="bxl bx-facebook"></i>
+        <a
+          aria-label="Facebook"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.facebook.com/mateusz.kabaja.5/"
+          class="text-xl text-gray-500 transition-all hover:text-cyber"
+        >
+          <i class="bxl bx-facebook" aria-hidden="true"></i>
+          <span class="sr-only">Facebook</span>
         </a>
       </div>
     </footer>
-
-    <!-- <script
-      type="module"
-      src="https://unpkg.com/@splinetool/viewer@1.10.81/build/spline-viewer.js"
-    ></script> -->
   </body>
 </html>

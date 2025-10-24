@@ -4,7 +4,7 @@
 
 @layer utilities {
   .offmenu {
-    @apply fixed right-0 top-20 z-50 w-44 max-w-[85vw] rounded-l-xl bg-gray-100 p-3 shadow-xl transition-all duration-300 ease-out will-change-transform dark:bg-gray-900 md:transition-none;
+    @apply absolute right-0 top-20 z-50 w-44 max-w-[85vw] rounded-l-xl bg-gray-100 p-3 shadow-xl transition-all duration-300 ease-out will-change-transform dark:bg-gray-900 md:transition-none;
   }
   .offmenu-md {
     @apply md:pointer-events-auto md:static md:z-auto md:flex md:w-auto md:max-w-none md:translate-x-0 md:space-x-8 md:space-y-0 md:p-0 md:opacity-100 md:shadow-none;
@@ -41,7 +41,7 @@
     @apply bg-gradient-to-l from-zinc-300/90 via-zinc-400/70 to-zinc-500/40 bg-clip-text text-transparent;
   }
   .scroll-down {
-    @apply absolute bottom-[5%] right-[2%] h-20 w-8 cursor-pointer rounded-xl shadow-scrol;
+    @apply fixed bottom-[5%] right-[2%] z-10 h-20 w-8 cursor-pointer rounded-xl shadow-scrol;
   }
   .scroll-down::before,
   .scroll-down::after {
@@ -67,7 +67,7 @@
       linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.6));
   }
   .card {
-    @apply relative transform overflow-hidden rounded-md border border-gray-900 p-8 duration-150 hover:-translate-y-[5px] md:hover:shadow-gcyan;
+    @apply relative transform overflow-hidden rounded-md border border-gray-900 p-8 duration-150 md:hover:-translate-y-[5px] md:hover:shadow-gcyan;
   }
   .info-card {
     @apply overflow-hidden rounded-md bg-[#1e1e1e] p-8 shadow-[inset_-1px_20px_20px_7px_rgba(0,0,0,0.6)] transition-transform duration-300 ease-linear;
