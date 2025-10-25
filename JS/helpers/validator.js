@@ -1,9 +1,9 @@
 // Obiekt przechowujący stałe komunikaty o błędach
 const ERRORS = {
   E_VALUE_TOO_LONG: 'Wartość jest za długa!',
-  E_VALUE_TOO_SHORT: 'Wartość jest za krótka! (Min. 3 znaki)',
-  E_VALUE_EMPTY: 'Pole jest wymagane i nie może być puste.',
-  E_ILLEGAL_CHAR: 'Pole zawiera niedozwolone symbole, takie jak cudzysłowy!',
+  E_VALUE_TOO_SHORT: 'Wartość jest za krótka! ',
+  E_VALUE_EMPTY: 'Pole jest wymagane!',
+  E_ILLEGAL_CHAR: 'Pole zawiera niedozwolone symbole!',
   E_INVALID_EMAIL: 'Wprowadzony e-mail ma nieprawidłowy format.',
   E_MESSAGE_TOO_SHORT: 'Wiadomość musi mieć minimum 20 znaków.',
 };
