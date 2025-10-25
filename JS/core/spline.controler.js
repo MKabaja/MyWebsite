@@ -5,8 +5,8 @@ export async function initModels3D() {
   const imgSlot = document.getElementById('foto');
   const splineHeroURL = 'https://prod.spline.design/5WiJXakP8n7uKDRs/scene.splinecode';
   const splineAbautURL = 'https://prod.spline.design/akDHOzTo50SWLgPr/scene.splinecode';
-  const gifURL = 'video/spinning-fireball-21048.gif';
-  const imgURL = 'images/M.Kabaja-beztła.png';
+  const gifURL = '/video/spinning-fireball-21048.gif';
+  const imgURL = '/images/M.Kabaja-beztła.png';
 
   let initialized_s = false;
   let initialized_g = false;
@@ -14,28 +14,62 @@ export async function initModels3D() {
   const shouldLoad = await shouldLoad3D();
 
   if (shouldLoad) {
+    console.log('powinien byc model', shouldLoad);
     await splineInit();
   } else {
     gifInit();
+    console.log('powinien byc  gif', shouldLoad);
   }
 
   async function shouldLoad3D() {
-    const isDesktop = window.matchMedia('(min-width:768px)').matches;
-    const cores = navigator.hardwareConcurrency || 2;
-    const ram = navigator.deviceMemory || 4;
-    const connection = navigator.connection || {};
-    const downlink = connection.downlink || 1;
-    const effectiveType = connection.effectiveType || 'unknown';
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
 
-    const goodInternet = downlink > 5 && !['2g', 'slow-2g'].includes(effectiveType);
+    // Sprzęt
+    const cores = navigator.hardwareConcurrency ?? 4; // jeśli brak – nie zaniżam
+    const ram = navigator.deviceMemory; // może być undefined
+    const goodHardware = cores >= 4 && (ram ? ram >= 4 : true);
 
-    const goodHardware = cores >= 4 && ram >= 4;
+    // Sieć
+    const conn = navigator.connection;
+    const downlink = typeof conn?.downlink === 'number' ? conn.downlink : null;
+    const eff = conn?.effectiveType;
+    const saveData = conn?.saveData === true;
+    const isFastType = eff ? ['4g', '5g'].includes(eff) : true; // unknown => OK
+    const hasEnoughDownlink = downlink === null ? true : downlink >= 2; // 2
+    const goodInternet = !saveData && (isFastType || hasEnoughDownlink);
 
-    const isLowGPU = await isLowPerformanceGPU();
+    // Preferencje dostępności
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    return isDesktop && goodHardware && goodInternet && !isLowGPU;
+    // GPU (jeśli nie da się ocenić – NIE blokuje)
+    let isLowGPU = false;
+    try {
+      isLowGPU = await isLowPerformanceGPU();
+    } catch {
+      isLowGPU = false;
+    }
+
+    const result = isDesktop && !prefersReducedMotion && goodHardware && goodInternet && !isLowGPU;
+
+    console.log(
+      '[3D gate] desktop:',
+      isDesktop,
+      '| hw:',
+      goodHardware,
+      `(cores=${cores}, ram=${ram ?? 'unknown'})`,
+      '| net:',
+      goodInternet,
+      `(downlink=${downlink ?? 'unknown'}, eff=${eff ?? 'unknown'})`,
+      '| reduceMotion:',
+      prefersReducedMotion,
+      '| lowGPU:',
+      isLowGPU,
+      '| =>',
+      result,
+    );
+
+    return result;
   }
-
   function isLowPerformanceGPU() {
     return new Promise((resolve) => {
       try {
