@@ -7,7 +7,7 @@
     "dev": "concurrently \"npm:vite-server\" \"npm:watch\"",
     "vite-server": "vite",
     "watch": "tailwindcss -i ./input.css -o ./css/style.css --watch",
-    "build": "tailwindcss -i ./input.css -o ./css/style.css --minify",
+    "build": "tailwindcss -i ./input.css -o ./css/style.css --minify && vite build",
     "preview": "vite preview"
   },
   "author": "Mateusz Kabaja",
