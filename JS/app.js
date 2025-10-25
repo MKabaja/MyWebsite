@@ -2,6 +2,7 @@ import { initHeader } from './header.js';
 import { initVisibility } from './core/visibility.js';
 import { initModels3D } from './core/spline.controler.js';
 import { createObserver } from './observer-manager.js';
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 AOS.init();

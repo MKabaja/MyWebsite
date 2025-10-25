@@ -73,8 +73,15 @@
     @apply overflow-hidden rounded-md bg-[#1e1e1e] p-8 shadow-[inset_-1px_20px_20px_7px_rgba(0,0,0,0.6)] transition-transform duration-300 ease-linear;
   }
   .form-control {
-    @apply w-full rounded-lg border border-[#333] bg-[#2d2d2d] px-3 py-4 text-base text-gray-500 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-black/80 focus:-translate-y-2 focus:text-cyber-soft focus:shadow-gcyan focus:outline-none;
+    @apply w-full rounded-lg border border-[#333] bg-[#2d2d2d] px-3 py-4 text-base text-gray-500 transition-all duration-300 hover:shadow-xl hover:shadow-black/80 focus:-translate-y-2 focus:text-cyber-soft focus:shadow-gcyan focus:outline-none;
   }
+  .input-error {
+    @apply focus:shadow-error border border-red-500;
+  }
+  .error-border {
+    @apply focus:shadow-error border border-red-500;
+  }
+
   textarea.form-control {
     @apply min-h-32 resize-y;
   }

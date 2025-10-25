@@ -81,6 +81,7 @@ module.exports = {
         gorange: '0 0 0 3px rgba(255,140,50,0.35), 0 0 30px rgba(255,140,50,0.45)',
         gcyan: '0 0 0 3px rgba(0,255,245,0.35), 0 0 30px rgba(0,255,245,0.45)',
         scrol: ' 0 0 10px rgba(255,255,255,0.5)',
+        error: '0 0 0 3px rgba(233,57,89,0.35), 0 0 30px rgba(235,31,69,0.45)',
       },
       backgroundImage: (theme) => ({
         'logo-dark-mode': "url('../images/logo-dark-mode.svg')",

@@ -40,6 +40,8 @@
     /></noscript>
 
     <link rel="stylesheet" href="css/style.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
     <script defer type="module" src="./JS/app.js"></script>
 
     <title>Mateusz Kabaja</title>
@@ -624,8 +626,8 @@
             <h3 class="mb-16 text-2xl text-gray-300 transition-all duration-500">
               Wyślij wiadomość
             </h3>
-            <form id="contact-form" class="space-y-5" autocomplete="off">
-              <div id="contact-form__group-name">
+            <form id="contact-form" class="space-y-5" autocomplete="off" novalidate>
+              <div id="contact-form__group-name" class="group relative">
                 <label for="name" class="sr-only">Imię</label>
                 <input
                   type="text"
@@ -633,11 +635,18 @@
                   name="name"
                   placeholder="imię"
                   required
-                  class="form-control"
+                  class="form-control group-hover:-translate-y-2"
                   autocomplete="off"
                 />
+                <!-- error MSG OBSŁUGUJE w JS -->
+                <p
+                  class="err-message absolute right-10 top-4 z-10 hidden font-semibold text-red-400 duration-300 group-hover:-translate-y-2"
+                  data-for="name"
+                  role="alert"
+                  aria-live="polite"
+                ></p>
               </div>
-              <div id="contact-form__group-email">
+              <div id="contact-form__group-email" class="group relative">
                 <label for="email" class="sr-only">email</label>
                 <input
                   type="email"
@@ -645,11 +654,17 @@
                   name="email"
                   placeholder="e-mail"
                   required
-                  class="form-control"
+                  class="form-control group-hover:-translate-y-2"
                   autocomplete="off"
                 />
+                <p
+                  class="err-message absolute right-10 top-4 z-10 hidden font-semibold text-red-400 duration-300 group-hover:-translate-y-2"
+                  data-for="email"
+                  role="alert"
+                  aria-live="polite"
+                ></p>
               </div>
-              <div id="contact-form__group-subject">
+              <div id="contact-form__group-subject" class="group relative">
                 <label for="subject" class="sr-only">Temat</label>
                 <input
                   type="text"
@@ -657,21 +672,33 @@
                   name="subject"
                   placeholder="temat"
                   required
-                  class="form-control"
+                  class="form-control group-hover:-translate-y-2"
                   autocomplete="off"
                 />
+                <p
+                  class="err-message absolute right-10 top-4 z-10 hidden font-semibold text-red-400 duration-300 group-hover:-translate-y-2"
+                  data-for="subject"
+                  role="alert"
+                  aria-live="polite"
+                ></p>
               </div>
-              <div id="contact-form__group-message">
+              <div id="contact-form__group-message" class="group relative">
                 <label for="message" class="sr-only">Treść Wiadomości</label>
                 <textarea
                   id="message"
                   name="message"
                   placeholder="wiadomość"
                   required
-                  class="form-control"
+                  class="form-control group-hover:-translate-y-2"
                   autocomplete="off"
-                >
-                </textarea>
+                ></textarea>
+
+                <p
+                  class="err-message absolute right-10 top-4 z-10 hidden font-semibold text-red-400 duration-300 group-hover:-translate-y-2"
+                  data-for="message"
+                  role="alert"
+                  aria-live="polite"
+                ></p>
               </div>
               <button
                 type="submit"
