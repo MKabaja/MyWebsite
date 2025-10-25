@@ -83,12 +83,6 @@ module.exports = {
         scrol: ' 0 0 10px rgba(255,255,255,0.5)',
         error: '0 0 0 3px rgba(233,57,89,0.35), 0 0 30px rgba(235,31,69,0.45)',
       },
-      backgroundImage: (theme) => ({
-        'logo-dark-mode': "url('../images/logo-dark-mode.svg')",
-        'logo-light-mode': "url('../images/logo-light-mode.svg')",
-        'curvy-dark-mode': "url('../images/bg-curvy-dark-mode.svg')",
-        'curvy-light-mode': "url('../images/bg-curvy-light-mode.svg')",
-      }),
     },
   },
   variants: {
