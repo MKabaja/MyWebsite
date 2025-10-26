@@ -1,19 +1,17 @@
-// Obiekt przechowujący stałe komunikaty o błędach
 const ERRORS = {
   E_VALUE_TOO_LONG: 'Wartość jest za długa!',
   E_VALUE_TOO_SHORT: 'Wartość jest za krótka! ',
   E_VALUE_EMPTY: 'Pole jest wymagane!',
-  E_ILLEGAL_CHAR: 'Pole zawiera niedozwolone symbole!',
-  E_INVALID_EMAIL: 'Wprowadzony e-mail ma nieprawidłowy format.',
-  E_MESSAGE_TOO_SHORT: 'Wiadomość musi mieć minimum 20 znaków.',
+  E_ILLEGAL_CHAR: 'Niedozwolone symbole!',
+  E_INVALID_EMAIL: 'Zły Format!',
+  E_MESSAGE_TOO_SHORT: 'Min 20 znaków.',
 };
 
 export class FormValidator {
   static emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  // Zakazane znaki (wszystko, co nie jest litera/cyfra/spacja/kropka/małpa/myślnik/podkreślenie/przecinek)
+
   static hostileChars = /[!#$%^&*(){}\[\]'";:<>\/\\?|~`]+/;
 
-  // Minimalne długości
   static minInputLength = 3;
   static minMessageLength = 20;
 
