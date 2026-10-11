@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { JetBrains_Mono, Rajdhani } from "next/font/google";
+import { Caveat, JetBrains_Mono, Rajdhani } from "next/font/google";
 import { routing, toLocale } from "@/i18n/routing";
 import { SiteShell } from "@/components/shell/SiteShell";
 import { localeAlternates } from "@/lib/seo";
@@ -21,11 +21,17 @@ const jetbrains = JetBrains_Mono({
   weight: ["400", "700"],
 });
 
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500"],
+});
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  themeColor: "#0d0d0d",
+  themeColor: "#1b1c1e",
 };
 
 export function generateStaticParams() {
@@ -62,7 +68,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={`${rajdhani.variable} ${jetbrains.variable}`}>
+    <html lang={locale} className={`${rajdhani.variable} ${jetbrains.variable} ${caveat.variable}`}>
       <body>
         <NextIntlClientProvider>
           <SiteShell>{children}</SiteShell>
