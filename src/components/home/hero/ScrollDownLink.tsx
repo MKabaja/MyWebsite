@@ -21,7 +21,10 @@ export function ScrollDownLink({
     event.preventDefault();
     const smoother = ScrollSmoother.get();
     if (smoother) smoother.scrollTo(target, true, "top top");
-    else target.scrollIntoView({ behavior: "smooth" });
+    else {
+      const reduced = window.matchMedia("(max-width: 991px) and (prefers-reduced-motion: reduce)").matches;
+      target.scrollIntoView({ behavior: reduced ? "instant" : "smooth" });
+    }
   };
 
   return (
