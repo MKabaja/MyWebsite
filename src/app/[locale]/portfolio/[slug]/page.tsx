@@ -4,6 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 import { routing, toLocale } from "@/i18n/routing";
 import { getProject, projects } from "@/content/projects";
 import { ProjectView } from "@/components/portfolio/ProjectView";
+import { localeAlternates } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -19,6 +20,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/portfoli
   return {
     title: `${project.title} — ${project.type[lang]} | Mateusz Kabaja`,
     description: project.lead[lang],
+    alternates: localeAlternates(lang, `/portfolio/${slug}`),
     openGraph: { title: project.title, description: project.lead[lang] },
   };
 }

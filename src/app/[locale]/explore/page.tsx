@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { toLocale } from "@/i18n/routing";
+import { localeAlternates } from "@/lib/seo";
 import { ExploreSlider } from "@/components/explore/ExploreSlider";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/explore">): Promise<Metadata> {
-  const t = await getTranslations({ locale: toLocale((await params).locale), namespace: "meta" });
-  return { title: t("exploreTitle") };
+  const locale = toLocale((await params).locale);
+  const t = await getTranslations({ locale, namespace: "meta" });
+  return { title: t("exploreTitle"), alternates: localeAlternates(locale, "/explore") };
 }
 
 export default async function ExplorePage({ params }: PageProps<"/[locale]/explore">) {

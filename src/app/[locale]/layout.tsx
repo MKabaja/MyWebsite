@@ -5,6 +5,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { JetBrains_Mono, Rajdhani } from "next/font/google";
 import { routing, toLocale } from "@/i18n/routing";
 import { SiteShell } from "@/components/shell/SiteShell";
+import { localeAlternates } from "@/lib/seo";
+import { site } from "@/lib/site";
 import "../globals.css";
 
 const rajdhani = Rajdhani({
@@ -35,10 +37,12 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
   const t = await getTranslations({ locale, namespace: "meta" });
 
   return {
+    metadataBase: new URL(site.url),
     title: t("title"),
     description: t("description"),
     icons: { icon: "/images/favicon-32x32.png" },
     robots: { index: true, follow: true },
+    alternates: localeAlternates(locale, "/"),
     openGraph: {
       type: "website",
       title: t("title"),
