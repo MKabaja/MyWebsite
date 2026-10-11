@@ -1,26 +1,310 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ------------------------------------------------------------------ */
+/* Design tokens (palette & fonts from the previous site)              */
+/* ------------------------------------------------------------------ */
+
+@theme {
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+  --breakpoint-3xl: 1680px;
+
+  --color-ink: #0d0d0d;
+  --color-graphite: #1c1c1c;
+  --color-graphite-2: #262626;
+  --color-pearl: #e6d7c8;
+  --color-accent: #ff8c32;
+  --color-accent-soft: #ffa86a;
+  --color-accent-strong: #ff6b00;
+  --color-cyber: #00fff5;
+  --color-cyber-soft: #7cfff7;
+  --color-cyber-strong: #00d4cc;
+  --color-text: #1c1c1c;
+  --color-muted: #6e6a66;
+  --color-on-dark: #f2f2f2;
+  --color-on-dark-muted: #c9c2bb;
+
+  --font-sans: var(--font-rajdhani), ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ------------------------------------------------------------------ */
+/* Base: Bootstrap reboot values the original relied on                */
+/* ------------------------------------------------------------------ */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+    overscroll-behavior-y: none;
+  }
+
+  body {
+    overflow-x: hidden !important;
+    overflow-y: hidden;
+    color: #ffffff;
+    cursor: crosshair;
+    margin: 0;
+    padding: 0;
+    overscroll-behavior-y: none;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    background: linear-gradient(90deg, #f0ece8 0%, #ebe6e1 11%, #e6e1dc 41%, #e4dfda 58%, #e9e4df 85%, #f2eeea 100%);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body.enable-scroll {
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+  }
+
+  body.enable-scroll::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  ol, ul, dl {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  dt {
+    font-weight: 700;
+  }
+
+  dd {
+    margin-bottom: 0.5rem;
+    margin-left: 0;
+  }
+
+  hr {
+    margin: 1rem 0;
+    color: inherit;
+    border: 0;
+    border-top: 1px solid;
+    opacity: 0.25;
+  }
+
+  img, svg, video, canvas {
+    vertical-align: middle;
+  }
+
+  img, video {
+    max-width: none;
+  }
+
+  h1, h2, h3, h4, h5, h6, p, span, li {
+    cursor: crosshair;
+    font-family: var(--font-sans);
+    color: var(--color-text);
+  }
+
+  :is(h1, h2, h3, h4, h5, h6, p, span, li) a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px dotted var(--color-text);
+  }
+
+  :is(h1, h2, h3, h4, h5, h6, p, span, li) a:hover {
+    color: #000000;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  button {
+    cursor: pointer;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ------------------------------------------------------------------ */
+/* Layout: Bootstrap container / row / col equivalents                 */
+/* ------------------------------------------------------------------ */
+
+@layer components {
+  .container-bs,
+  .container-xxxl {
+    width: 100%;
+    padding-inline: 30px;
+    margin-inline: auto;
+  }
+
+  @media (min-width: 576px) { .container-bs { max-width: 540px; } }
+  @media (min-width: 768px) { .container-bs { max-width: 720px; } }
+  @media (min-width: 992px) { .container-bs { max-width: 1040px; } }
+  @media (min-width: 1200px) { .container-bs { max-width: 1140px; } }
+  @media (min-width: 1400px) { .container-bs { max-width: 1320px; } }
+  @media (min-width: 1680px) { .container-bs, .container-xxxl { max-width: 1600px; } }
+
+  .row {
+    --gx: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin-inline: calc(var(--gx) * -0.5);
+  }
+
+  .row > * {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-inline: calc(var(--gx) * 0.5);
+  }
+
+  .row > .col {
+    flex: 1 0 0%;
+  }
+
+  .row > .col-auto {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  .gx-6 { --gx: 4rem; }
+
+  @media (min-width: 1200px) {
+    .gx-xl-8 { --gx: 8rem; }
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Typography (rfs values computed with Bootstrap's formula)           */
+/* ------------------------------------------------------------------ */
+
+@layer components {
+  h1 {
+    font-size: calc(1.365rem + 1.38vw);
+    line-height: calc(1.385rem + 1.62vw);
+    font-weight: 600;
+  }
+
+  h1.lead {
+    font-size: calc(1.525rem + 3.3vw);
+    line-height: calc(1.455rem + 2.46vw);
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  h1.lead.small {
+    font-size: calc(1.325rem + 0.9vw);
+    line-height: calc(1.325rem + 0.9vw);
+  }
+
+  h2 {
+    font-size: calc(1.285rem + 0.42vw);
+    line-height: calc(1.345rem + 1.14vw);
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    line-height: calc(1.265rem + 0.18vw);
+    font-weight: 600;
+  }
+
+  @media (min-width: 1200px) {
+    h1 { font-size: 2.4rem; line-height: 2.6rem; }
+    h1.lead { font-size: 4rem; line-height: 3.3rem; }
+    h1.lead.small { font-size: 2rem; line-height: 2rem; }
+    h2 { font-size: 1.6rem; line-height: 2.2rem; }
+    h3 { line-height: 1.4rem; }
+  }
+
+  .lead,
+  .lead > span {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .text-small {
+    font-size: 0.9rem;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    letter-spacing: 0.2px;
+  }
+
+  .code-tag,
+  .line-number__line {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    color: #a9a29b;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+  }
+
+  @media (min-width: 992px) {
+    .code-tag,
+    .line-number__line {
+      font-size: 0.9rem;
+      line-height: 0.9rem;
+    }
+  }
+
+  .back-link {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: var(--color-text);
+    font-size: 1rem;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .back-link svg {
+    pointer-events: none;
+  }
+
+  .back-link:hover {
+    color: #000000;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Page transitions (Nuxt "page" transition, mode out-in)              */
+/* ------------------------------------------------------------------ */
+
+.page {
+  position: absolute;
+  inset: 0;
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    filter: blur(1px);
+  }
+}
+
+@keyframes page-out {
+  to {
+    opacity: 0;
+    filter: blur(1px);
+  }
+}
+
+.page[data-phase="enter"] {
+  animation: page-in var(--page-enter-duration, 1s) ease var(--page-enter-delay, 0s) backwards;
+}
+
+.page[data-phase="leave"] {
+  animation: page-out var(--page-leave-duration, 1s) ease forwards;
 }
