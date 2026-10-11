@@ -1,0 +1,36 @@
+.backLink {
+  position: fixed;
+  top: 40px;
+  right: 60px;
+  z-index: 10;
+}
+
+@media (max-width: 992px) {
+  .backLink {
+    position: relative;
+    top: 0;
+    right: 0;
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .backLink {
+    justify-content: flex-start;
+  }
+}
+
+.headshot {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #e6d7c8;
+  object-fit: cover;
+}
+
+@media (max-width: 992px) {
+  .headshot {
+    width: 70px;
+    height: 70px;
+  }
+}
