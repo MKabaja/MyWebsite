@@ -14,8 +14,8 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" aria-labelledby="projects-heading">
-      <div aria-hidden className="bg-accent py-2.5 font-mono text-[0.85rem] font-semibold tracking-[0.12em] text-ink uppercase">
-        <Marquee repeat={8} duration={28}>
+      <div aria-hidden className="bg-accent py-[1.125rem] font-mono text-[0.85rem] font-semibold tracking-[0.12em] text-ink uppercase">
+        <Marquee repeat={16} duration={87}>
           <span className="px-5">{t("marquee")}</span>
           <X size={14} strokeWidth={3} />
         </Marquee>
