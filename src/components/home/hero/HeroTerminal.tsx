@@ -41,59 +41,80 @@ export function HeroTerminal({ label, className = "" }: { label: string; classNa
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
-    const instant = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const wait = (ms: number) => (instant ? 0 : ms);
+    const setup = () => {
+      const instant = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const wait = (ms: number) => (instant ? 0 : ms);
 
-    let visible = false;
-    let timer = 0;
-    let stepIndex = 0;
-    let charIndex = 0;
+      let visible = false;
+      let timer = 0;
+      let stepIndex = 0;
+      let charIndex = 0;
 
-    // Single timer chain, running only while the terminal is on screen.
-    const tick = () => {
-      if (!visible) return;
-      const step = SESSION[stepIndex];
-      if (!step) {
-        if (instant) return;
-        setLines([]);
-        stepIndex = 0;
-        timer = window.setTimeout(tick, AFTER_STEP_MS);
-        return;
-      }
-      if (!instant && charIndex < step.command.length) {
-        charIndex++;
-        setTyping(step.command.slice(0, charIndex));
-        timer = window.setTimeout(tick, TYPE_MS + Math.random() * 40);
-        return;
-      }
-      setTyping("");
-      setLines((prev) => [...prev, { kind: "command", text: step.command }]);
-      timer = window.setTimeout(() => {
-        setLines((prev) => [...prev, ...step.output.map((text) => ({ kind: "output" as const, text }))]);
-        stepIndex++;
-        charIndex = 0;
-        timer = window.setTimeout(tick, wait(stepIndex >= SESSION.length ? RESTART_MS : AFTER_STEP_MS));
-      }, wait(AFTER_COMMAND_MS));
-    };
-
-    const observer = new IntersectionObserver(([entry]) => {
-      const wasVisible = visible;
-      visible = entry.isIntersecting;
-      if (visible && !wasVisible) timer = window.setTimeout(tick, wait(600));
-      if (!visible && wasVisible) {
-        // Start over next time it scrolls into view.
-        window.clearTimeout(timer);
-        stepIndex = 0;
-        charIndex = 0;
-        setLines([]);
+      // Single timer chain, running only while the terminal is on screen.
+      const tick = () => {
+        if (!visible) return;
+        const step = SESSION[stepIndex];
+        if (!step) {
+          if (instant) return;
+          setLines([]);
+          stepIndex = 0;
+          timer = window.setTimeout(tick, AFTER_STEP_MS);
+          return;
+        }
+        if (!instant && charIndex < step.command.length) {
+          charIndex++;
+          setTyping(step.command.slice(0, charIndex));
+          timer = window.setTimeout(tick, TYPE_MS + Math.random() * 40);
+          return;
+        }
         setTyping("");
-      }
-    });
-    observer.observe(root);
+        setLines((prev) => [...prev, { kind: "command", text: step.command }]);
+        timer = window.setTimeout(() => {
+          setLines((prev) => [...prev, ...step.output.map((text) => ({ kind: "output" as const, text }))]);
+          stepIndex++;
+          charIndex = 0;
+          timer = window.setTimeout(tick, wait(stepIndex >= SESSION.length ? RESTART_MS : AFTER_STEP_MS));
+        }, wait(AFTER_COMMAND_MS));
+      };
 
+      const observer = new IntersectionObserver(([entry]) => {
+        const wasVisible = visible;
+        visible = entry.isIntersecting;
+        if (visible && !wasVisible) {
+          if (instant) {
+            setLines(SESSION.flatMap((step) => [{ kind: "command" as const, text: step.command },
+              ...step.output.map((text) => ({ kind: "output" as const, text }))]));
+            setTyping("");
+          } else timer = window.setTimeout(tick, wait(600));
+        }
+        if (!visible && wasVisible) {
+          // Start over next time it scrolls into view.
+          window.clearTimeout(timer);
+          stepIndex = 0;
+          charIndex = 0;
+          setLines([]);
+          setTyping("");
+        }
+      });
+      observer.observe(root);
+
+      return () => {
+        observer.disconnect();
+        window.clearTimeout(timer);
+      };
+    };
+    let cleanup = setup();
+    const reducedMobile = window.matchMedia("(max-width: 991px) and (prefers-reduced-motion: reduce)");
+    const onModeChange = () => {
+      cleanup();
+      setLines([]);
+      setTyping("");
+      cleanup = setup();
+    };
+    reducedMobile.addEventListener("change", onModeChange);
     return () => {
-      observer.disconnect();
-      window.clearTimeout(timer);
+      reducedMobile.removeEventListener("change", onModeChange);
+      cleanup();
     };
   }, []);
 

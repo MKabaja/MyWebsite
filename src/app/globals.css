@@ -147,3 +147,13 @@
     animation: none;
   }
 }
+
+/* Narrow screens keep every text surface opaque while decorative motion is optional. */
+@media (max-width: 991px) and (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

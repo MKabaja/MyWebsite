@@ -14,7 +14,10 @@ export function useSplitReveal(
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
-    const ctx = gsap.context(() => {
+    const media = gsap.matchMedia();
+    media.add({ narrow: "(max-width: 991px)", reduced: "(prefers-reduced-motion: reduce)",
+      wide: "(min-width: 992px)" }, (context) => {
+      if (context.conditions?.narrow && context.conditions?.reduced) return;
       const split = SplitText.create(element, { type: "words" });
       if (onScroll && !isDesktop()) {
         gsap.from(split.words, {
@@ -35,7 +38,7 @@ export function useSplitReveal(
         ease: "power3.out",
         scrollTrigger: onScroll ? { trigger: element, start: "top bottom-=100", once: true } : undefined,
       });
-    });
-    return () => ctx.revert();
+    }, element);
+    return () => media.revert();
   }, [ref, delay, onScroll]);
 }
