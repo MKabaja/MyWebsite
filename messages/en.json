@@ -68,7 +68,9 @@
     "portfolio": {
       "marquee": "Portfolio",
       "dragNote": "drag to explore",
-      "fps": "Rendering at: {fps} fps"
+      "fps": "Rendering at: {fps} fps",
+      "carousel": "Projects — drag to browse",
+      "open": "Open case"
     },
     "projects": {
       "marquee": "console.log",
@@ -127,7 +129,10 @@
     "repo": "Code on GitHub",
     "cta": "Let's talk",
     "copyright": "Copyright © {year} Mateusz Kabaja. All rights reserved.",
-    "placeholderNote": "A detailed case study is coming soon."
+    "placeholderNote": "A detailed case study is coming soon.",
+    "caseStudy": "case study",
+    "media": "Recording of the {title} app",
+    "ctaText": "Got a similar project in mind? I'd love to hear about it."
   },
   "notFound": {
     "title": "You got lost;",

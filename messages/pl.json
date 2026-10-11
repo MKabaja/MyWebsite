@@ -68,7 +68,9 @@
     "portfolio": {
       "marquee": "Portfolio",
       "dragNote": "przeciągnij, aby odkryć",
-      "fps": "Renderowanie: {fps} fps"
+      "fps": "Renderowanie: {fps} fps",
+      "carousel": "Projekty — przeciągnij, aby przeglądać",
+      "open": "Zobacz projekt"
     },
     "projects": {
       "marquee": "console.log",
@@ -127,7 +129,10 @@
     "repo": "Kod na GitHubie",
     "cta": "Porozmawiajmy",
     "copyright": "Copyright © {year} Mateusz Kabaja. Wszelkie prawa zastrzeżone.",
-    "placeholderNote": "Szczegółowe studium przypadku pojawi się wkrótce."
+    "placeholderNote": "Szczegółowe studium przypadku pojawi się wkrótce.",
+    "caseStudy": "studium przypadku",
+    "media": "Nagranie z aplikacji {title}",
+    "ctaText": "Masz podobny projekt? Chętnie o nim porozmawiam."
   },
   "notFound": {
     "title": "Zabłądziłeś;",
