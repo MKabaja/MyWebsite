@@ -34,6 +34,14 @@ Przepisanie strony **Marchant Web '24** (Nuxt 3 / Vue 3, autor: Simon Le Marchan
   + walidacja jak na starej stronie. Brak Calendly.
 - Hosting: własny serwer (Hetzner) — konfiguracją wdrożenia się nie zajmujemy; `output: "standalone"` w `next.config`.
 
+## Architektura (skrót)
+
+- `src/app/[locale]/` — trasy; `layout.tsx` owija wszystko w `SiteShell` (Hero, nav, bottom bar, preloader, kursor).
+- `src/components/transition/` — przejścia out-in (`TransitionLink` zamiast zwykłego `Link` dla linków wewnętrznych!).
+- `src/lib/routes.ts` — rodzaje tras, czasy przejść, klasy `body`; `src/lib/site.ts` — dane kontaktowe.
+- `src/content/` — projekty i stack; `messages/` — wszystkie teksty PL/EN.
+- `cacheComponents` jest celowo wyłączone (patrz `HANDOFF.md`).
+
 ## Mapowanie Vue → React
 
 | Vue / Nuxt | React / Next |
