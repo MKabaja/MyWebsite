@@ -76,10 +76,11 @@ Osobiste portfolio Mateusza Kabaji (dla rekruterów i klientów) w **Next.js (Ap
   `strong #FF6B00`), drugi akcent `cyber #00FFF5` (`soft #7CFFF7`, `strong #00D4CC`), `pearl #E6D7C8`.
 - Fonty: **Rajdhani** (tekst), JetBrains Mono („kod”), Caveat (odręczne podpisy).
 - Shader: bursztynowe okna, cyjanowe paski akcentu, delikatne ziarno; renderowany w 50% rozdzielczości
-  (35% na mobile) dla oszczędności GPU/RAM — kolory w `palette` w `src/components/background/shader.ts`.
+  dla oszczędności GPU/RAM — kolory w `palette` w `src/components/background/shader.ts`.
 - Bez przycisku „book a call”/Calendly, bez sekcji Talks/Recognition, bez bloga.
 - Projekty: PowerTask (wideo) + placeholdery ShiftFlow i PrintForge — prawdziwe dane dojdą później.
-- Wersja mobilna obowiązkowa (jedna kolumna, natywny scroll na dotyku).
+- Wersja mobilna obowiązkowa: natywny scroll na dotyku + własne efekty (`smooth/mobileEffects.ts`), układ hero jak na
+  desktopie. Zmiany mobilne nie mogą zmieniać desktopu. Historia i pułapki: `kontekst.md`.
 
 ## Siatka kafelków — zasady
 

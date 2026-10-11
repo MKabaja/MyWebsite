@@ -1,5 +1,7 @@
 # HANDOFF — stan prac
 
+Pełna historia, pułapki i zasady współpracy: `kontekst.md`.
+
 Ostatnia aktualizacja: 2026-10-11 · branch `nextjs-rewrite` (nie wypchnięty)
 
 ## Zrobione
@@ -19,8 +21,8 @@ Ostatnia aktualizacja: 2026-10-11 · branch `nextjs-rewrite` (nie wypchnięty)
 
 - `cacheComponents` wyłączone: w Next 16 ukrywa (`<Activity>`) zamiast odmontowywać poprzednią trasę — psuje out-in.
 - Tailwind przez `@tailwindcss/postcss` (reguła Turbopacka z szablonu psuła CSS Modules).
-- Shader rysowany w obniżonej rozdzielczości (0.5 / 0.35 mobile), 40 kroków raymarchingu, limit 60 fps, pauza gdy
-  karta w tle. Prostokąty kafelków `grain`/`accent` czytane co klatkę z `getBoundingClientRect` (max 16 + 16).
+- Shader rysowany w obniżonej rozdzielczości (0.5), 40 kroków raymarchingu, z `gsap.ticker`, pauza gdy karta w tle;
+  canvas stałego rozmiaru przycinany do `--grid-w`. Prostokąty kafelków `grain`/`accent` czytane co klatkę z `getBoundingClientRect` (max 16 + 16).
 - ScrollSmoother tylko na desktopie (`isDesktop()` w `src/lib/gsap.ts`), tworzony od nowa przy zmianie trasy/języka.
 - Skok do `#hash` po nawigacji odroczony o 400 ms (fonty i karuzela muszą się zmierzyć).
 - Wartości per klatka (mysz, uniformy, kursor, fps) w refach / obiektach GSAP, nie w stanie Reacta.
