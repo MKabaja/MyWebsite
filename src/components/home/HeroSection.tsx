@@ -28,7 +28,8 @@ const SOCIALS = [
 
 /**
  * Hero: two tile columns (45 / 55). Heights are viewport based on desktop because the grid widens
- * while this block scrolls by. On mobile the columns dissolve (`contents`) and tiles are re-ordered.
+ * while this block scrolls by. On mobile the columns dissolve (`contents`) into one 45 / 55 grid that
+ * keeps the desktop arrangement — logo | status + photo, the headline full width, window | socials.
  */
 export function HeroSection() {
   const t = useTranslations("home.hero");
@@ -39,12 +40,13 @@ export function HeroSection() {
   useSplitReveal(headlineRef, { delay: 0.6 });
 
   return (
-    <section data-m-recede className="grid-frame flex flex-col lg:grid lg:grid-cols-[minmax(0,45fr)_minmax(0,55fr)]">
+    <section data-m-recede className="grid-frame grid grid-cols-[minmax(0,45fr)_minmax(0,55fr)]">
       {/* Left column */}
       <div className="contents lg:flex lg:flex-col">
-        <Tile mode="grain" lines={["left"]} className="h-44 max-lg:order-1 lg:h-[50vh]">
-          <Logo label={tPerson("homeLink")} height={34} className="absolute top-8 left-5 text-accent! lg:top-10 lg:left-12" />
-          <Tile mode="accent" className="absolute bg-cyber/6! inset-x-0 bottom-0 h-12 lg:top-[56%] lg:bottom-auto lg:h-[33%]" />
+        <Tile mode="grain" lines={["left"]} className="max-lg:col-start-1 max-lg:row-span-2 max-lg:row-start-1 lg:h-[50vh]">
+          <Logo label={tPerson("homeLink")} height={34} className="absolute top-6 left-4 text-accent! lg:top-10 lg:left-12" />
+          <Tile mode="accent" className="absolute bg-cyber/6! inset-x-0 top-[50%] h-[24%] lg:top-[56%] lg:h-[33%]" />
+          <LanguageSwitch className="absolute bottom-4 left-4 font-mono text-sm text-white lg:hidden" />
           <div className="absolute top-[63%] right-[calc(100%-2.5rem)] hidden w-32 lg:block" aria-hidden>
             <Scribble variant="arrow" className="text-[1.4rem] leading-[0.9] text-white/55" strokeClassName="ml-10 -mt-1 w-20! rotate-6">
               {t("shaderNote")}
@@ -52,7 +54,7 @@ export function HeroSection() {
           </div>
         </Tile>
 
-        <Tile mode="solid" lines={["left", "top"]} data-m-expand className="flex flex-col max-lg:order-3 lg:h-[74vh]">
+        <Tile mode="solid" lines={["left", "top"]} className="flex flex-col max-lg:col-span-2 max-lg:row-start-3 lg:h-[74vh]">
           <GuideOut side="left" className="top-0" />
           <div className="px-5 pt-12 pb-14 sm:px-8 lg:px-12 lg:pt-[8vh] lg:pb-0">
             <div data-speed="clamp(1.15)" data-m-speed="0.05">
@@ -104,22 +106,22 @@ export function HeroSection() {
 
       {/* Right column */}
       <div className="contents lg:flex lg:flex-col">
-        <div className="flex h-16 max-lg:order-2 lg:h-20">
-          <Tile mode="window" lines={["bottom"]} className="flex flex-1 items-center px-5 lg:px-10">
-            <StatusIndicator label={t("status")} className="text-white!" />
+        <div className="flex h-16 max-lg:col-start-2 max-lg:row-start-1 lg:h-20">
+          <Tile mode="window" lines={["bottom"]} className="flex flex-1 items-center px-4 lg:px-10">
+            <StatusIndicator label={t("status")} className="text-white! max-lg:text-[0.8rem] max-lg:leading-tight" />
           </Tile>
-          <Tile mode="solid" lines={["left", "bottom"]} className="flex w-28 items-center justify-center lg:w-[30%]">
+          <Tile mode="solid" lines={["left", "bottom"]} className="hidden items-center justify-center lg:flex lg:w-[30%]">
             <LanguageSwitch className="font-mono text-sm text-white" />
           </Tile>
         </div>
 
-        <Tile mode="window" className="h-[38svh] max-lg:order-4 lg:h-[calc(60vh-5rem)]">
+        <Tile mode="window" lines={["top"]} className="h-44 max-lg:col-start-1 max-lg:row-start-4 lg:h-[calc(60vh-5rem)] lg:border-t-0">
           <span aria-hidden className="absolute inset-y-0 left-[180px] hidden border-l border-dashed border-white/25 lg:block" />
           <span aria-hidden className="absolute inset-y-0 right-[30%] hidden border-l border-dashed border-white/25 lg:block" />
         </Tile>
 
-        <div className="flex h-[140px] max-lg:order-5 lg:h-[180px]">
-          <Tile mode="solid" className="aspect-square h-full overflow-hidden bg-graphite-2">
+        <div className="contents lg:flex lg:h-[180px]">
+          <Tile mode="solid" className="aspect-square overflow-hidden bg-graphite-2 max-lg:col-start-2 max-lg:row-start-2 lg:h-full">
             <div
               aria-hidden
               className="absolute inset-0 bg-[radial-gradient(circle_at_50%_95%,rgb(255_140_50/0.6),rgb(255_107_0/0.12)_45%,transparent_70%)]"
@@ -129,13 +131,13 @@ export function HeroSection() {
               alt={t("photoAlt")}
               width={400}
               height={400}
-              sizes="180px"
+              sizes="(min-width: 992px) 180px, 55vw"
               priority
               className="relative size-full object-cover object-bottom"
             />
           </Tile>
-          <Tile mode="window" lines={["top"]} className="flex flex-1 items-end px-6 pb-8 lg:px-10 lg:pb-11">
-            <ul className="flex items-center gap-7" data-lag="0.1">
+          <Tile mode="window" lines={["top", "left"]} className="flex flex-1 items-end px-6 pb-8 max-lg:col-start-2 max-lg:row-start-4 lg:border-l-0 lg:px-10 lg:pb-11">
+            <ul className="flex items-center gap-5 lg:gap-7" data-lag="0.1">
               {SOCIALS.map(({ key, href, Icon }) => (
                 <li key={key}>
                   <a
@@ -155,7 +157,7 @@ export function HeroSection() {
 
         <Tile
           mode="solid"
-          className="p-5 max-lg:order-6 sm:p-8 lg:h-[calc(80vh-180px)] lg:p-0"
+          className="p-5 max-lg:col-span-2 max-lg:row-start-5 sm:p-8 lg:h-[calc(80vh-180px)] lg:p-0"
           style={{ backgroundImage: HERO_GRADIENT, backgroundSize: "100% 100%" }}
         >
           <GuideOut side="right" className="bottom-0" />
