@@ -14,11 +14,11 @@ const MAX_TILT = 7;
 
 const LINK = "mouse-sm inline-flex items-center gap-1.5 font-mono text-[0.78rem] uppercase tracking-wide transition-colors";
 
-/** Project tile of the home "Projects" grid: tab label + badge above, card that tilts toward the cursor. */
+/** Project tile of the home "Projects" grid: tab label + badge above the card; all of it tilts toward the cursor. */
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
   const t = useTranslations("home.projects");
   const locale = toLocale(useLocale());
-  const cardRef = useRef<HTMLElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const card = cardRef.current;
@@ -57,59 +57,60 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
 
   return (
     <li className="flex flex-col" data-fade>
-      <div aria-hidden className="flex items-end justify-between gap-4 font-mono text-[0.72rem] leading-none">
-        <span className="border border-b-0 border-white/10 bg-white/[0.04] px-2 py-1 text-on-dark-muted">
-          .project#index_{index}
-        </span>
-        <span className="truncate bg-accent px-2 py-1 lowercase text-ink">{project.type[locale]}</span>
-      </div>
-
-      <article
-        ref={cardRef}
-        className="group relative flex min-h-[20rem] flex-1 flex-col border border-white/12 bg-graphite-2 p-7 transition-[border-color,background-color] duration-300 will-change-transform hover:border-white/45 hover:bg-[#28292d] sm:p-9 md:min-h-[25rem]"
-      >
-        <ArrowUpRight
-          aria-hidden
-          strokeWidth={1.25}
-          className="absolute top-6 right-6 size-10 text-on-dark-muted transition-[color,transform] duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
-        />
-        <h3 className="pr-12 text-[1.9rem] leading-[1.1] font-semibold">
-          <TransitionLink href={href} className="mouse-md transition-colors hover:text-accent">
-            {project.title}
-          </TransitionLink>
-        </h3>
-        <p className="mt-4 max-w-[34ch] text-[1.15rem] leading-snug text-on-dark-muted">{project.lead[locale]}</p>
-
-        <StackChips stack={project.stack} className="mt-auto pt-10" />
-
-        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-dashed border-guide pt-5">
-          {live && (
-            <a href={live} target="_blank" rel="noopener noreferrer" className={`${LINK} text-on-dark hover:text-accent`}>
-              <ExternalLink size={14} aria-hidden />
-              {t("live")}
-            </a>
-          )}
-          {repo && (
-            <a href={repo} target="_blank" rel="noopener noreferrer" className={`${LINK} text-on-dark hover:text-accent`}>
-              <GithubIcon size={14} />
-              {t("repo")}
-            </a>
-          )}
-          {project.placeholder && (
-            <span className="border border-cyber/40 px-2 py-1 font-mono text-[0.7rem] uppercase leading-none text-cyber-soft">
-              {t("soon")}
-            </span>
-          )}
-          <TransitionLink
-            href={href}
-            aria-label={`${t("details")}: ${project.title}`}
-            className={`${LINK} ms-auto text-accent hover:text-accent-soft`}
-          >
-            {t("details")}
-            <ArrowUpRight size={14} aria-hidden />
-          </TransitionLink>
+      <div ref={cardRef} className="group flex flex-1 flex-col will-change-transform">
+        <div aria-hidden className="flex items-end justify-between gap-4 font-mono text-[0.72rem] leading-none">
+          <span className="border border-b-0 border-white/10 bg-white/[0.04] px-2 py-1 text-on-dark-muted">
+            {t("label")} {String(index + 1).padStart(2, "0")}
+          </span>
+          <span className="truncate bg-accent px-2 py-1 lowercase text-ink">{project.type[locale]}</span>
         </div>
-      </article>
+
+        <article
+          className="relative flex min-h-[20rem] flex-1 flex-col border border-white/12 bg-graphite-2 p-7 transition-[border-color,background-color] duration-300 group-hover:border-white/45 group-hover:bg-[#28292d] sm:p-9 md:min-h-[25rem]"
+        >
+          <ArrowUpRight
+            aria-hidden
+            strokeWidth={1.25}
+            className="absolute top-6 right-6 size-10 text-on-dark-muted transition-[color,transform] duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+          />
+          <h3 className="pr-12 text-[1.9rem] leading-[1.1] font-semibold">
+            <TransitionLink href={href} className="mouse-md transition-colors hover:text-accent">
+              {project.title}
+            </TransitionLink>
+          </h3>
+          <p className="mt-4 max-w-[34ch] text-[1.15rem] leading-snug text-on-dark-muted">{project.lead[locale]}</p>
+
+          <StackChips stack={project.stack} className="mt-auto pt-10" />
+
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-dashed border-guide pt-5">
+            {live && (
+              <a href={live} target="_blank" rel="noopener noreferrer" className={`${LINK} text-on-dark hover:text-accent`}>
+                <ExternalLink size={14} aria-hidden />
+                {t("live")}
+              </a>
+            )}
+            {repo && (
+              <a href={repo} target="_blank" rel="noopener noreferrer" className={`${LINK} text-on-dark hover:text-accent`}>
+                <GithubIcon size={14} />
+                {t("repo")}
+              </a>
+            )}
+            {project.placeholder && (
+              <span className="border border-cyber/40 px-2 py-1 font-mono text-[0.7rem] uppercase leading-none text-cyber-soft">
+                {t("soon")}
+              </span>
+            )}
+            <TransitionLink
+              href={href}
+              aria-label={`${t("details")}: ${project.title}`}
+              className={`${LINK} ms-auto text-accent hover:text-accent-soft`}
+            >
+              {t("details")}
+              <ArrowUpRight size={14} aria-hidden />
+            </TransitionLink>
+          </div>
+        </article>
+      </div>
     </li>
   );
 }

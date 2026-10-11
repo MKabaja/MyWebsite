@@ -74,6 +74,7 @@
       "open": "Zobacz projekt"
     },
     "projects": {
+      "label": "projekt",
       "marquee": "console.log",
       "heading": "Projekty",
       "text": "Aplikacje i strony, nad którymi pracowałem — z opisem, kodem i wersją demo.",

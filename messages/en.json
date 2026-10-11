@@ -74,6 +74,7 @@
       "open": "Open case"
     },
     "projects": {
+      "label": "project",
       "marquee": "console.log",
       "heading": "Projects",
       "text": "Apps and websites I've worked on — with a description, code and a live demo.",
