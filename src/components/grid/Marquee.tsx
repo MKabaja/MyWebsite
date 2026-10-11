@@ -24,7 +24,7 @@ export function Marquee({
 
   return (
     <div className={`${styles.marquee} ${className}`}>
-      <div className={styles.track} style={{ animationDuration: `${duration}s`, animationDirection: reverse ? "reverse" : "normal" }}>
+      <div data-marquee className={styles.track} style={{ animationDuration: `${duration}s`, animationDirection: reverse ? "reverse" : "normal" }}>
         {items}
       </div>
     </div>

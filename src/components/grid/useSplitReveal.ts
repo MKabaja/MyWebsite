@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect, type RefObject } from "react";
-import { gsap, SplitText } from "@/lib/gsap";
+import { gsap, isDesktop, SplitText } from "@/lib/gsap";
 
-/** Word-by-word reveal of a heading (SplitText), on mount or when scrolled into view. */
+/**
+ * Word-by-word reveal of a heading (SplitText), on mount or when scrolled into view.
+ * On touch screens the scroll variant is scrubbed, so the words follow the finger.
+ */
 export function useSplitReveal(
   ref: RefObject<HTMLElement | null>,
   { delay = 0.4, onScroll = false }: { delay?: number; onScroll?: boolean } = {},
@@ -13,6 +16,16 @@ export function useSplitReveal(
     if (!element) return;
     const ctx = gsap.context(() => {
       const split = SplitText.create(element, { type: "words" });
+      if (onScroll && !isDesktop()) {
+        gsap.from(split.words, {
+          y: 24,
+          autoAlpha: 0,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: { trigger: element, start: "top 92%", end: "top 55%", scrub: 0.5 },
+        });
+        return;
+      }
       gsap.from(split.words, {
         duration: 1.5,
         y: 20,

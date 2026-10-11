@@ -4,9 +4,11 @@ import { useEffect, type ReactNode } from "react";
 import { useLocale } from "next-intl";
 import { usePathname } from "@/i18n/navigation";
 import { gsap, isDesktop, ScrollSmoother, ScrollTrigger } from "@/lib/gsap";
+import { createMobileEffects } from "./mobileEffects";
 
 /**
- * GSAP ScrollSmoother around the page (desktop only — touch keeps native scrolling).
+ * GSAP ScrollSmoother around the page (desktop only — touch keeps native scrolling and gets
+ * `createMobileEffects` instead).
  * `data-speed` / `data-lag` on any element give it parallax; `data-fade` reveals it once
  * when it scrolls into view. Recreated per route so new content gets its effects.
  */
@@ -29,6 +31,8 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     window.scrollTo(0, 0);
 
     const ctx = gsap.context(() => {
+      // Touch / narrow screens scroll natively and get their own scrubbed effects instead.
+      if (!smoother && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) createMobileEffects();
       gsap.utils.toArray<HTMLElement>("[data-fade]").forEach((element) => {
         gsap.fromTo(
           element,
