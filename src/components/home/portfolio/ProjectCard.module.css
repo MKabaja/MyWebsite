@@ -223,7 +223,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .card {
     aspect-ratio: 4 / 5;
   }
@@ -252,8 +252,34 @@
   }
 }
 
+/* Phones: the centred card of the carousel gets the desktop hover state (set by PortfolioCarousel). */
+@media (max-width: 991px) {
+  .slide[data-active] .lift {
+    transform: translate3d(0, -14px, 40px);
+  }
+
+  .slide[data-active] .card {
+    box-shadow:
+      0 60px 100px -30px rgb(0 0 0 / 0.85),
+      0 0 0 1px rgb(255 140 50 / 0.35);
+  }
+
+  .slide[data-active] .video,
+  .slide[data-active] .cover {
+    transform: scale(1.035);
+  }
+}
+
 @keyframes pulse {
   50% {
     opacity: 0.35;
   }
+}
+
+@media (max-width: 991px) {
+  .counter { color: #f2f2f2; background: rgb(27 28 30 / 0.96); padding: 4px 8px; font-size: 0.8rem; }
+  .bar { background: linear-gradient(to bottom, transparent, #0d0d0d 45%); }
+  .barType { color: #b3b4b9; }
+  .chips li { color: #f2f2f2; background: #1b1c1e; }
+  .badge { background: #1b1c1e; }
 }

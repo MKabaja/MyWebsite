@@ -71,6 +71,9 @@
       "dragNote": "drag to explore",
       "fps": "Rendering at: {fps} fps",
       "carousel": "Projects — drag to browse",
+      "previous": "Previous project",
+      "next": "Next project",
+      "current": "{index}/{total} · {title}",
       "open": "Open case"
     },
     "projects": {

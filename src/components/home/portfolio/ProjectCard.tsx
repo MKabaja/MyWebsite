@@ -9,6 +9,7 @@ import styles from "./ProjectCard.module.css";
 
 type ProjectCardProps = {
   project: Project;
+  slideIndex: number;
   index: number;
   total: number;
   /** Repeated copies only fill the infinite loop: hidden from assistive tech and the tab order. */
@@ -19,17 +20,18 @@ type ProjectCardProps = {
 
 const pad = (value: number) => String(value).padStart(2, "0");
 
-export function ProjectCard({ project, index, total, isDuplicate, wasDragged }: ProjectCardProps) {
+export function ProjectCard({ project, slideIndex, index, total, isDuplicate, wasDragged }: ProjectCardProps) {
   const locale = useLocale();
   const t = useTranslations("home.portfolio");
   const tExplore = useTranslations("explore");
 
   const onClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    if (wasDragged()) event.preventDefault();
+    const mobileKeyboard = event.detail === 0 && window.matchMedia("(max-width: 991px)").matches;
+    if (wasDragged() && !mobileKeyboard) event.preventDefault();
   };
 
   return (
-    <li className={styles.slide} aria-hidden={isDuplicate || undefined}>
+    <li data-slide-index={slideIndex} className={styles.slide} aria-hidden={isDuplicate || undefined}>
       <div className={styles.lift}>
         <span className={styles.counter} aria-hidden>
           {pad(index + 1)}/{pad(total)}

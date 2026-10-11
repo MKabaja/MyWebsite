@@ -71,6 +71,9 @@
       "dragNote": "przeciągnij, aby odkryć",
       "fps": "Renderowanie: {fps} fps",
       "carousel": "Projekty — przeciągnij, aby przeglądać",
+      "previous": "Poprzedni projekt",
+      "next": "Następny projekt",
+      "current": "{index}/{total} · {title}",
       "open": "Zobacz projekt"
     },
     "projects": {

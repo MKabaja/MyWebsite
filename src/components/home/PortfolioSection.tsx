@@ -55,7 +55,7 @@ export function PortfolioSection() {
         <PortfolioCarousel />
       </div>
 
-      <div className="absolute bottom-16 left-0 z-20 lg:bottom-0 lg:left-[30%]">
+      <div className="max-lg:hidden absolute bottom-16 left-0 z-20 lg:bottom-0 lg:left-[30%]">
         <Tile mode="solid" lines={["top", "right"]} className="px-4 py-3 lg:px-5 lg:py-4">
           <FpsMeter />
         </Tile>
