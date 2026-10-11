@@ -1,28 +1,34 @@
 # HANDOFF — stan prac
 
-Ostatnia aktualizacja: 2026-10-11 · branch `nextjs-rewrite`
+Ostatnia aktualizacja: 2026-10-11 · branch `nextjs-rewrite` (nie wypchnięty)
 
 ## Zrobione
 
-- Szkielet: Next.js 16.4, TS strict, Tailwind v4 (PostCSS), next-intl (pl domyślny bez prefiksu, en pod `/en`), `output: standalone`.
-- Wspólny układ (`src/components/shell/SiteShell.tsx`): Hero WebGL, kursor, menu z przełącznikiem języka, dolny pasek, ekran ładowania, klasy `body` per trasa, AOS.
-- Przejścia stron (`src/components/transition/`): `TransitionProvider` (out-in: animacja wyjścia → `router.push`), `TransitionLink`, `PageFrame` (animacja wejścia), `Presence` (port Vue `<Transition>`). Czasy per strona w `src/lib/routes.ts`.
-- Strony: `/`, `/explore` (karuzela GSAP), `/about`, `/contact` (formularz EmailJS + walidacja ze starej strony), `/portfolio/[slug]`, 404.
-- Treści: PL/EN w `messages/`, projekty w `src/content/projects.ts` (PowerTask + placeholdery ShiftFlow, PrintForge).
-- SEO: metadane per strona, canonical + hreflang, `sitemap.xml`, `robots.txt`.
-- Weryfikacja: `lint`, `tsc`, `build` przechodzą; zrzuty Playwright desktop 1440 px i mobile 390 px dla wszystkich tras.
+- Etap 1: port Marchant Web '24 (Nuxt → Next.js 16, TS, Tailwind v4, next-intl PL/EN, przejścia out-in).
+- Etap 2: redesign w stylu marchantweb.com (2025) — jedna długa ciemna strona z siatki kafelków:
+  - fundament: `ShaderBackground` + rejestr kafelków (`grain`/`accent`), `SmoothScroll` (ScrollSmoother, parallax,
+    `data-fade`, skok do `#hash`), prymitywy w `src/components/grid/`, poszerzanie siatki 1280 px → 100vw;
+  - sekcje: Hero (zdjęcie, nagłówek, stack, sociale, status, język), About (React spotlight, tekst, marquee logotypów),
+    Hire (otwarty na zatrudnienie, stack, umiejętności, osiągnięcia), Portfolio („PORTFOLIO ×”, przeciągana karuzela 3D,
+    licznik fps), Projects (kafelki z linkami), Contact (formularz EmailJS, dane, sociale, stopka);
+  - ciemna strona projektu `/portfolio/[slug]` i 404.
+- Usunięte: `/about`, `/contact`, `/explore`, stary Hero, NavMenu, BottomBar, AOS.
+- Weryfikacja: `tsc`, `lint`, `build` przechodzą; zrzuty Playwright 1440×900 i 390×844 (bez poziomego scrolla).
 
 ## Decyzje techniczne
 
-- `cacheComponents` wyłączone: w Next 16 ukrywa (`<Activity>`) zamiast odmontowywać poprzednią trasę, co psuje przejścia out-in; dla statycznej strony nic nie daje.
-- Reguła Turbopacka `@tailwindcss/turbopack` z szablonu usunięta: przetwarzała `*.module.css` jako globalny CSS (moduły nie działały). Tailwind idzie przez `@tailwindcss/postcss`.
-- Wartości per klatka (mysz, uniformy shadera, rozmiar kursora) są w refach i obiektach tweenowanych przez GSAP, nie w stanie Reacta.
-- `onWheelStart` / `onWheelEnd` z oryginalnego slidera nie istnieją w GSAP Observer (martwy kod w oryginale), więc zostały pominięte.
+- `cacheComponents` wyłączone: w Next 16 ukrywa (`<Activity>`) zamiast odmontowywać poprzednią trasę — psuje out-in.
+- Tailwind przez `@tailwindcss/postcss` (reguła Turbopacka z szablonu psuła CSS Modules).
+- Shader rysowany w obniżonej rozdzielczości (0.5 / 0.35 mobile), 40 kroków raymarchingu, limit 60 fps, pauza gdy
+  karta w tle. Prostokąty kafelków `grain`/`accent` czytane co klatkę z `getBoundingClientRect` (max 16 + 16).
+- ScrollSmoother tylko na desktopie (`isDesktop()` w `src/lib/gsap.ts`), tworzony od nowa przy zmianie trasy/języka.
+- Skok do `#hash` po nawigacji odroczony o 400 ms (fonty i karuzela muszą się zmierzyć).
+- Wartości per klatka (mysz, uniformy, kursor, fps) w refach / obiektach GSAP, nie w stanie Reacta.
 
 ## Do zrobienia / pomysły
 
-- Prawdziwe opisy, media i linki projektów (ShiftFlow, PrintForge to placeholdery z przypuszczalnym opisem — do weryfikacji).
-- Poster (`video.poster`) i lżejsza wersja `webm` filmu PowerTask.
-- Nawigacja mobilna: jak w oryginale, menu jest ukryte < 992 px (About/Contact niedostępne z telefonu).
-- `NEXT_PUBLIC_SITE_URL` po zakupie domeny; obraz OG (`opengraph-image`).
-- Ewentualne dostrojenie kolorów shadera: `palette` w `src/components/hero/shaders.ts`.
+- Prawdziwe osiągnięcia (`home.hire.achievements`) — obecne są tymczasowe.
+- Prawdziwe opisy, media i linki projektów (ShiftFlow, PrintForge — placeholdery; PowerTask bez linków live/repo).
+- Poster i lżejszy `webm` filmu PowerTask (ma czarne pasy w samym pliku).
+- `NEXT_PUBLIC_SITE_URL` po zakupie domeny; obraz OG.
+- Teksty EN przetłumaczone automatycznie — do przejrzenia.

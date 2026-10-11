@@ -4,43 +4,45 @@ Zasady dla agentów (Claude, Codex, subagenci) pracujących w tym repo.
 
 ## Cel projektu
 
-Przepisanie strony **Marchant Web '24** (Nuxt 3 / Vue 3, autor: Simon Le Marchant) na
-**Next.js (App Router) + React + TypeScript** jako osobistego portfolio Mateusza Kabaji
-— dla rekruterów i klientów indywidualnych.
+Osobiste portfolio Mateusza Kabaji (dla rekruterów i klientów) w **Next.js (App Router) + React + TypeScript**.
 
-- Źródło (tylko do odczytu, NIE modyfikować): `/home/mateusz/projects/Marchant-Web-main/Marchant-Web-main`
-- Cel: to repo (`MyWebsite`), branch `nextjs-rewrite`. `main` zawiera starą stronę (Vite + Tailwind) — nie ruszać.
-- Treści, zdjęcia, wideo i dane o Mateuszu bierzemy ze starej strony (historia `main`: `index.html`, `public/`).
-
-**Priorytet nr 1: wygląd i animacje 1:1 z oryginałem.** Zmieniamy technologię i treść, nie design.
+- Etap 1 (zrobiony): port **Marchant Web '24** (Nuxt 3, Simon Le Marchant, open source) — źródło tylko do odczytu:
+  `/home/mateusz/projects/Marchant-Web-main/Marchant-Web-main`.
+- Etap 2 (obecny design): jedna długa strona w stylu **marchantweb.com (wersja 2025, kod zamknięty)** — przenosimy
+  TECHNIKI i odczucie (siatka kafelków, shader prześwitujący przez „okna”, ziarniste szare kafelki, odręczne
+  podpisy, ScrollSmoother z parallaxą), NIE teksty, branding ani 1:1 układ autora. Zrzuty referencyjne:
+  `~/projects/marchant-live-nagrania/`.
+- Repo: to (`MyWebsite`), branch `nextjs-rewrite`. `main` zawiera starą stronę (Vite + Tailwind) — nie ruszać.
+- Treści, zdjęcia, wideo i dane o Mateuszu — ze starej strony (historia `main`).
 
 ## Stack
 
-- Next.js (najnowsza stabilna, App Router, `src/`), React, TypeScript `strict`
-- Style: **Tailwind CSS v4** (layout, spacing, typografia, kolory jako tokeny w `@theme`) + zwykły CSS w
-  `@layer components` / CSS Modules dla rzeczy, których nie da się czytelnie zapisać klasami (keyframes, `nth-child`
-  delay'e, `::before/::after`, stany Hero zależne od trasy). Bootstrapa nie używamy — jego reboot, spacery,
-  siatkę i `rfs` odtwarzamy w Tailwindzie (patrz „Tailwind — zgodność z oryginałem”)
-- Animacje: `gsap` (publiczny pakiet z npm — Draggable/InertiaPlugin/Observer są darmowe; nie używać
-  prywatnego registry ani tokenu z `.npmrc` oryginału), animacje CSS/keyframes przeniesione bez zmian, `aos`
-- WebGL: czysty WebGL + shadery z oryginału (bez three.js)
-- Ikony: **wyłącznie `lucide-react`** (zamiast Font Awesome). Ikon marek (GitHub, LinkedIn itp.) lucide nie ma
-  → małe inline SVG w `src/components/icons/`
-- Treść: typowane dane lokalne w `src/content/` (zamiast Notion API / `api.marchantweb.com`)
-- i18n: `next-intl`, języki **pl** (domyślny, bez prefiksu) i **en** (`/en/...`), przełącznik języka w UI.
+- Next.js 16 (App Router, `src/`), React 19, TypeScript `strict`
+- Style: **Tailwind CSS v4** (tokeny w `@theme` w `src/app/globals.css`) + CSS Modules dla keyframes / złożonych stanów.
+- Animacje: `gsap` z publicznego npm (ScrollSmoother, ScrollTrigger, SplitText, Draggable, InertiaPlugin — darmowe).
+  Importy WYŁĄCZNIE z `src/lib/gsap.ts` (tam rejestracja pluginów).
+- WebGL: czysty WebGL (bez three.js), shader „blob” z oryginału w `src/components/background/shader.ts`.
+- Ikony UI: `lucide-react`. Logotypy marek/technologii: `simple-icons` (CC0) przez `TechIcon`, sociale w `BrandIcons`.
+- Treść: typowane dane w `src/content/`, i18n `next-intl` — **pl** (domyślny, bez prefiksu) i **en** (`/en`).
   Wszystkie teksty w `messages/pl.json` i `messages/en.json` — zero tekstów zahardkodowanych w komponentach.
-  Logika zależna od trasy (Hero, nawigacja, klasy `body`) operuje na ścieżce BEZ prefiksu języka.
-- Formularz kontaktowy: EmailJS (darmowy plan, klucze ze starej strony — klucz publiczny z założenia jest jawny)
-  + walidacja jak na starej stronie. Brak Calendly.
-- Hosting: własny serwer (Hetzner) — konfiguracją wdrożenia się nie zajmujemy; `output: "standalone"` w `next.config`.
+- Formularz kontaktowy: EmailJS (klucz publiczny ze starej strony) + walidacja `src/lib/validation.ts`. Brak Calendly.
+- Hosting: własny serwer (Hetzner) — wdrożeniem się nie zajmujemy; `output: "standalone"`.
 
 ## Architektura (skrót)
 
-- `src/app/[locale]/` — trasy; `layout.tsx` owija wszystko w `SiteShell` (Hero, nav, bottom bar, preloader, kursor).
-- `src/components/transition/` — przejścia out-in (`TransitionLink` zamiast zwykłego `Link` dla linków wewnętrznych!).
-- `src/lib/routes.ts` — rodzaje tras, czasy przejść, klasy `body`; `src/lib/site.ts` — dane kontaktowe.
-- `src/content/` — projekty i stack; `messages/` — wszystkie teksty PL/EN.
-- `cacheComponents` jest celowo wyłączone (patrz `HANDOFF.md`).
+- `src/app/[locale]/` — trasy: `/` (jedna długa strona), `/portfolio/[slug]`, 404. `layout.tsx` → `SiteShell`.
+- `SiteShell`: `ShaderBackground` (stałe płótno WebGL za treścią), `SmoothScroll` (ScrollSmoother `smooth: 2`,
+  `effects: true`; `data-speed` / `data-lag` = parallax, `data-fade` = odsłonięcie; skok do `#hash` po nawigacji),
+  `PageFrame` (przejścia out-in), preloader, kursor, znaczniki „+”.
+- `src/components/grid/` — prymitywy: `Tile` (`solid | window | grain | accent` — tryb rejestruje kafelek w
+  `background/cells.ts`, a shader co klatkę czyta prostokąty i szarzy/barwi obraz pod nimi), `Scribble`,
+  `Marquee`, `LineNumbers`, `useSplitReveal`.
+- `src/components/home/` — sekcje: Hero, About, Hire, Portfolio (karuzela 3D), Projects (kafelki), Contact (+ stopka).
+  `HomePage` poszerza siatkę (`--grid-w`) z 1280 px do 100vw w pierwszych 300% przewinięcia → w tym obszarze
+  wysokości kafelków w `vh`/px, nie zależne od treści.
+- `src/components/transition/` — `TransitionLink` zamiast zwykłego `Link` dla linków wewnętrznych.
+- `src/content/` — projekty i stack; `src/lib/site.ts` — dane kontaktowe.
+- `cacheComponents` celowo wyłączone (patrz `HANDOFF.md`).
 
 ## Mapowanie Vue → React
 
@@ -59,7 +61,7 @@ Przepisanie strony **Marchant Web '24** (Nuxt 3 / Vue 3, autor: Simon Le Marchan
 
 ## Zasady kodu
 
-- Komponenty: function components, typowane `props`, brak `any`. Pliki `PascalCase.tsx` + `PascalCase.module.scss`.
+- Komponenty: function components, typowane `props`, brak `any`. Pliki `PascalCase.tsx` + `PascalCase.module.css`.
 - `"use client"` tylko tam, gdzie potrzebne (WebGL, kursor, slider, nawigacja zależna od myszy).
 - **Wydajność:** pozycja myszy, scroll i wartości animowane co klatkę trzymamy w `useRef` i aplikujemy w
   `requestAnimationFrame` / `gsap.ticker` bezpośrednio do DOM/uniformów — NIE w `useState` (bez re-renderów co ruch myszy).
@@ -70,33 +72,27 @@ Przepisanie strony **Marchant Web '24** (Nuxt 3 / Vue 3, autor: Simon Le Marchan
 
 ## Decyzje Mateusza (2026-10-11)
 
-- **Kolory i fonty ze starej strony**, nie autora oryginału:
-  - `ink #0D0D0D` (tło), `graphite #1C1C1C` / `graphite-2 #262626` (karty), `pearl #E6D7C8`
-  - akcent `accent #FF8C32` (`soft #FFA86A`, `strong #FF6B00`) — zastępuje fiolet `#7A4FEE`
-  - drugi akcent `cyber #00FFF5` (`soft #7CFFF7`, `strong #00D4CC`)
-  - jasne tło stron about/contact/portfolio: gradient `#f0ece8 → #e6e1dc → #f2eeea` (zamiast białego)
-  - font: **Rajdhani** (400/600/900) zamiast Inter i N27; JetBrains Mono zostaje dla elementów „kodu”
-  - kolory shadera WebGL przestroić na tę paletę (ciemny grafit + pomarańcz/cyjan zamiast fioletu)
-- **Projekty:** na razie tylko placeholdery — PowerTask (z filmem `POWERTASKFILM.mp4`), ShiftFlow i PrintForge
-  (bez mediów, krótki opis). Struktura danych gotowa na dodanie kolejnych.
-- **Blog/artykuły:** usunięte (strona wizytówka + portfolio). Renderer Notion też nie jest przenoszony.
+- **Ciemny motyw**, kolory ze starej strony: tło `graphite #1B1C1E`, akcent `accent #FF8C32` (`soft #FFA86A`,
+  `strong #FF6B00`), drugi akcent `cyber #00FFF5` (`soft #7CFFF7`, `strong #00D4CC`), `pearl #E6D7C8`.
+- Fonty: **Rajdhani** (tekst), JetBrains Mono („kod”), Caveat (odręczne podpisy).
+- Shader: bursztynowe okna, cyjanowe paski akcentu, delikatne ziarno; renderowany w 50% rozdzielczości
+  (35% na mobile) dla oszczędności GPU/RAM — kolory w `palette` w `src/components/background/shader.ts`.
+- Bez przycisku „book a call”/Calendly, bez sekcji Talks/Recognition, bez bloga.
+- Projekty: PowerTask (wideo) + placeholdery ShiftFlow i PrintForge — prawdziwe dane dojdą później.
+- Wersja mobilna obowiązkowa (jedna kolumna, natywny scroll na dotyku).
 
-## Tailwind — zgodność z oryginałem
+## Siatka kafelków — zasady
 
-- `html { font-size: 15px }` jak w oryginale → `rem` znaczy to samo.
-- Spacery Bootstrapa ≠ Tailwind: `1→0.25rem, 2→0.5rem, 3→1rem, 4→1.5rem, 5→3rem, 6→4rem, 7→6rem, 8→8rem, 9→10rem`
-  (np. BS `mt-5` = TW `mt-12`, BS `mt-8` = TW `mt-32`). Przeliczać, nie kopiować nazw klas.
-- Breakpointy w `@theme`: `sm 576, md 768, lg 992, xl 1200, 2xl 1400, 3xl 1680`; kontenery jak w oryginale
-  (`xxxl: 1600px`, padding 30px na stronę).
-- Reboot Bootstrapa (marginesy nagłówków, `p { margin-bottom: 1rem }`, `line-height: 1.6`, `hr`, `dl/dd`) odtworzyć w `@layer base`.
-- `rfs` (responsywne rozmiary fontów) → `clamp()`/`calc(… + …vw)` wyliczone z tej samej formuły co `rfs`.
-- Spójność weryfikujemy zrzutami (układ i animacje mają się zgadzać; kolory i font są celowo inne).
+- Sekcje składamy z `Tile` wewnątrz `grid-frame`; przerywane linie przez `lines`, wzór kratki `grid-paper`.
+- Maks. 16 kafelków `grain` i 16 `accent` widocznych naraz (`MAX_CELLS`).
+- Parallax: `data-speed="clamp(1.03…1.7)"` jak w oryginale; nie tworzyć własnego ScrollSmoothera.
+- Własne ScrollTriggery w `gsap.context` z `revert()` w cleanupie.
 
 ## Czego NIE przenosimy / co podmieniamy
 
-- Imię, teksty, zdjęcia, projekty, logotypy klientów, linki (Calendly, Twitter, e-mail) autora → dane Mateusza.
-- Badge Awwwards, ID Google Analytics (`G-E1LXB89D1E`), `api.marchantweb.com`, Cloudinary, logo „MW” → usunąć / zastąpić logo MK.
-- Font N27 (komercyjny) — nie kopiujemy, zastępuje go Rajdhani.
+- Teksty, zdjęcia, projekty, logotypy klientów, linki autora → dane Mateusza.
+- Badge Awwwards, Google Analytics, API autora, Cloudinary, logo „MW” → usunięte / logo MK.
+- Komercyjny font N27 → Rajdhani.
 
 ## Git
 
