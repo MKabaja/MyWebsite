@@ -26,6 +26,7 @@
     "facebook": "Znajdź mnie na Facebooku"
   },
   "home": {
+    "lead": "Jestem web developerem, który łączy kod z designem, tworząc nowoczesne strony;",
     "scrollHint": "Przewiń, aby odkryć",
     "tapHint": "Dotknij, aby odkryć ->"
   },

@@ -26,6 +26,7 @@
     "facebook": "Find me on Facebook"
   },
   "home": {
+    "lead": "I'm a web developer who blends code with design to build modern websites;",
     "scrollHint": "Scroll to Explore",
     "tapHint": "Tap to Explore ->"
   },
