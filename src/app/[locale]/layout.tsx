@@ -4,6 +4,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { JetBrains_Mono, Rajdhani } from "next/font/google";
 import { routing, toLocale } from "@/i18n/routing";
+import { SiteShell } from "@/components/shell/SiteShell";
 import "../globals.css";
 
 const rajdhani = Rajdhani({
@@ -59,7 +60,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   return (
     <html lang={locale} className={`${rajdhani.variable} ${jetbrains.variable}`}>
       <body>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <SiteShell>{children}</SiteShell>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
