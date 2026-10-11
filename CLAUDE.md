@@ -93,7 +93,9 @@ Przepisanie strony **Marchant Web '24** (Nuxt 3 / Vue 3, autor: Simon Le Marchan
 ## Git
 
 - Pracujemy wyłącznie na branchu `nextjs-rewrite`. Nie pushować bez zgody Mateusza.
-- Commity małe, po każdym zakończonym etapie, w formacie Conventional Commits (`feat:`, `fix:`, `chore:`, `refactor:`, `style:`).
+- Commity **atomowe** (jedna logiczna zmiana = jeden commit) i **maksymalnie krótkie**, zawsze ze scope:
+  `typ(zakres): opis` — np. `chore(deps): add gsap`, `feat(hero): port webgl shader`, `fix(nav): hover area`.
+  Typy: `feat`, `fix`, `chore`, `refactor`, `style`, `docs`, `perf`. Opis po angielsku, małą literą, bez kropki, bez treści commita (body).
 - **ZAKAZ dopisków o AI** w commitach, PR-ach i kodzie: żadnych `Co-Authored-By: Claude`, „Generated with Claude Code”,
   „with Codex” itp. Autor commitów to wyłącznie Mateusz (z `git config`).
 - Nie commitować sekretów, `.env*`, `node_modules`, `.next`.
