@@ -53,7 +53,8 @@
     padding: 0;
     overscroll-behavior-y: none;
     font-family: var(--font-sans);
-    font-size: 1rem;
+    /* Rajdhani has a smaller x-height than the original Inter, so the base size is bumped. */
+    font-size: 1.1rem;
     line-height: 1.6;
     background: linear-gradient(90deg, #f0ece8 0%, #ebe6e1 11%, #e6e1dc 41%, #e4dfda 58%, #e9e4df 85%, #f2eeea 100%);
     -webkit-font-smoothing: antialiased;
@@ -80,6 +81,7 @@
   p {
     margin-top: 0;
     margin-bottom: 1rem;
+    font-weight: 500;
   }
 
   ol, ul, dl {
