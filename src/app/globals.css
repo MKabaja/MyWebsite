@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./transitions.css";
 
 /* ------------------------------------------------------------------ */
 /* Design tokens (palette & fonts from the previous site)              */

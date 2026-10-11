@@ -1,0 +1,36 @@
+/* Global classes used by <Presence> (ports of the original Vue <Transition> styles). */
+
+.icon-pop-enter-active,
+.icon-pop-leave-active {
+  transition: all 1s cubic-bezier(0.7, 0, 0, 1);
+}
+
+.icon-pop-enter-from,
+.icon-pop-leave-to {
+  opacity: 0;
+  transform: scale(0.3);
+}
+
+.bottom-bar-enter-active,
+.bottom-bar-leave-active,
+.navigation-enter-active,
+.navigation-leave-active {
+  transition: all 1s;
+}
+
+.bottom-bar-enter-active,
+.navigation-enter-active {
+  transition-delay: 1.5s;
+}
+
+.bottom-bar-enter-from,
+.bottom-bar-leave-to {
+  transform: translate3d(0, 100%, 0);
+  opacity: 0;
+}
+
+.navigation-enter-from,
+.navigation-leave-to {
+  transform: translate3d(100%, 0, 0);
+  opacity: 0;
+}
