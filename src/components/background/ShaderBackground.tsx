@@ -5,11 +5,14 @@ import { gsap } from "@/lib/gsap";
 import { collectCells, MAX_CELLS } from "./cells";
 import { createProgram } from "./shader";
 
-const FRAME_INTERVAL = 1000 / 60;
-
 /**
  * Fixed WebGL background shared by every page. It is drawn at a fraction of the CSS size —
  * the upscale softens the image and keeps GPU/memory use low.
+ *
+ * The canvas always covers the whole viewport and is only clipped to `--grid-w`: resizing it
+ * while the grid widens would clear the buffer (black flashes) and stretch the blob.
+ * Frames are drawn from the GSAP ticker, right after ScrollSmoother moved the content,
+ * so the grain/accent cells never lag behind their tiles.
  */
 export default function ShaderBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -41,13 +44,13 @@ export default function ShaderBackground() {
     const accent = new Float32Array(MAX_CELLS * 4);
 
     const scale = window.matchMedia("(min-width: 992px)").matches ? 0.5 : 0.35;
+    // Called from the render loop, so a resize (which clears the buffer) is redrawn in the same frame.
     const resize = () => {
-      canvas.width = Math.max(1, Math.round(canvas.clientWidth * scale));
-      canvas.height = Math.max(1, Math.round(canvas.clientHeight * scale));
+      const width = Math.max(1, Math.round(canvas.clientWidth * scale));
+      const height = Math.max(1, Math.round(canvas.clientHeight * scale));
+      if (canvas.width !== width) canvas.width = width;
+      if (canvas.height !== height) canvas.height = height;
     };
-    const observer = new ResizeObserver(resize);
-    observer.observe(canvas);
-    resize();
 
     const target = { x: 0.5, y: 0.5 };
     const mouse = { x: 0.5, y: 0.5 };
@@ -60,21 +63,16 @@ export default function ShaderBackground() {
     const intro = { value: 2 };
     const introTween = gsap.to(intro, { duration: 10, value: 0, ease: "expo.out" });
 
-    let time = 0;
-    let then = 0;
-    let frameId = 0;
-    const render = (now: number) => {
-      frameId = requestAnimationFrame(render);
-      if (document.hidden || now - then < FRAME_INTERVAL) return;
-      then = now - ((now - then) % FRAME_INTERVAL);
-
+    // `time` is the ticker's clock in seconds, so the animation speed doesn't depend on the refresh rate.
+    const render = (time: number) => {
+      if (document.hidden) return;
+      resize();
       mouse.x += (target.x - mouse.x) * 0.1;
       mouse.y += (target.y - mouse.y) * 0.1;
       collectCells(canvas.getBoundingClientRect(), grain, accent);
 
       gl.viewport(0, 0, canvas.width, canvas.height);
-      time++;
-      gl.uniform1f(uniforms.time, time * 0.01);
+      gl.uniform1f(uniforms.time, time * 0.6);
       gl.uniform2f(uniforms.resolution, canvas.width, canvas.height);
       gl.uniform2f(uniforms.mouse, mouse.x, mouse.y);
       gl.uniform1f(uniforms.intro, intro.value);
@@ -82,12 +80,11 @@ export default function ShaderBackground() {
       gl.uniform4fv(uniforms.accent, accent);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
     };
-    frameId = requestAnimationFrame(render);
+    gsap.ticker.add(render);
 
     return () => {
-      cancelAnimationFrame(frameId);
+      gsap.ticker.remove(render);
       introTween.kill();
-      observer.disconnect();
       window.removeEventListener("mousemove", onMouseMove);
       gl.deleteBuffer(buffer);
       gl.deleteProgram(program);
@@ -98,7 +95,7 @@ export default function ShaderBackground() {
     <canvas
       ref={canvasRef}
       aria-hidden
-      className="pointer-events-none fixed top-0 left-1/2 -z-10 h-lvh w-(--grid-w,100vw) -translate-x-1/2"
+      className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-lvh w-full [clip-path:inset(0_max(0px,calc(50%-var(--grid-w,100vw)/2)))]"
     />
   );
 }
