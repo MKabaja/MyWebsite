@@ -60,6 +60,25 @@ export default function ShaderBackground() {
     };
     window.addEventListener("mousemove", onMouseMove, { passive: true });
 
+    // Touch devices steer the blob by tilting the phone instead of the mouse.
+    const onOrientation = (event: DeviceOrientationEvent) => {
+      if (event.gamma === null || event.beta === null) return;
+      target.x = gsap.utils.clamp(0, 1, 0.5 + event.gamma / 60);
+      target.y = gsap.utils.clamp(0, 1, 0.5 + (event.beta - 45) / 60);
+    };
+    // iOS only delivers orientation after a permission prompt, which must come from a user gesture.
+    const Orientation = window.DeviceOrientationEvent as unknown as { requestPermission?: () => Promise<string> };
+    const askPermission = () => {
+      Orientation.requestPermission?.()
+        .then((state) => state === "granted" && window.addEventListener("deviceorientation", onOrientation))
+        .catch(() => {});
+    };
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
+    if (coarse && Orientation) {
+      if (Orientation.requestPermission) window.addEventListener("touchend", askPermission, { once: true });
+      else window.addEventListener("deviceorientation", onOrientation);
+    }
+
     const intro = { value: 2 };
     const introTween = gsap.to(intro, { duration: 10, value: 0, ease: "expo.out" });
 
@@ -86,6 +105,8 @@ export default function ShaderBackground() {
       gsap.ticker.remove(render);
       introTween.kill();
       window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("deviceorientation", onOrientation);
+      window.removeEventListener("touchend", askPermission);
       gl.deleteBuffer(buffer);
       gl.deleteProgram(program);
     };
