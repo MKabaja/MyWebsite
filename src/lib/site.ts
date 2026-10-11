@@ -1,5 +1,7 @@
 /** Personal contact details and links (single source of truth). */
 export const site = {
+  /** Public origin, e.g. https://example.com — set NEXT_PUBLIC_SITE_URL once the domain is live. */
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   name: "Mateusz Kabaja",
   email: "m.kabaja.dev@gmail.com",
   phone: "+48 732 011 783",
