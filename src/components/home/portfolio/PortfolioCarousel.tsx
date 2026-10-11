@@ -61,12 +61,18 @@ export function PortfolioCarousel() {
 
     let pressed = false;
     let drift = reducedMotion ? 0 : 1;
+    // Phones: a swipe lands on a card, and the strip leans into fast swipes.
+    const skew = gsap.quickTo(track, "skewX", { duration: 0.5, ease: "power3.out" });
+    const lean = (deltaX: number) => {
+      if (mobile && !reducedMotion) skew(gsap.utils.clamp(-9, 9, deltaX * -0.5));
+    };
     const [draggable] = Draggable.create(proxy, {
       type: "x",
       trigger: viewport,
       inertia: true,
       minimumMovement: 6,
       allowNativeTouchScrolling: true,
+      snap: mobile ? { x: (value: number) => Math.round(value / step) * step } : undefined,
       onPress() {
         pressed = true;
         draggedRef.current = false;
@@ -77,9 +83,19 @@ export function PortfolioCarousel() {
       onDragStart() {
         draggedRef.current = true;
       },
-      onDrag: render,
-      onThrowUpdate: render,
+      onDrag() {
+        render();
+        lean(this.deltaX);
+      },
+      onThrowUpdate() {
+        render();
+        lean(this.deltaX);
+      },
+      onThrowComplete() {
+        lean(0);
+      },
       onRelease() {
+        lean(0);
         pressed = false;
         delete viewport.dataset.pressed;
       },
@@ -159,7 +175,7 @@ export function PortfolioCarousel() {
       videoObserver.disconnect();
       window.removeEventListener("resize", onResize);
       draggable.kill();
-      gsap.killTweensOf([proxy, intro]);
+      gsap.killTweensOf([proxy, intro, track]);
     };
   }, []);
 
