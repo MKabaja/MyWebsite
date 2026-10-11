@@ -38,11 +38,22 @@ uniform vec4 iAccentCells[${MAX_CELLS}];
 #define DEPTH 30.
 #define SEGMENT_QUALITY 5.
 #define BRIGHTNESS .024
+#define BAND_EDGE .25
 
 float blob(vec3 q) {
     float f = DEPTH;
     f *= (cos(q.z * 1.1)) * (atan(q.x) + 0.5) * (cos(q.z * cos(q.z * 20.)) + 1.0) + cos(q.z * 12. + iTime * ANIMATION_SPEED) * cos(q.x) * sin(q.y) * 1.5;
     return f;
+}
+
+vec4 light(vec3 q) {
+    vec3 e = vec3(.1, .0, 2.);
+    vec3 n = vec3(.0);
+    n.x = blob(q) - blob(q + e.xyy);
+    n.y = blob(q) - blob(q + e.yxy);
+    n.z = blob(q) - blob(q + e.yxx) + 1.0;
+    n = normalize(n);
+    return vec4(max(dot(vec3(0.2 + iIntro + (iMouse.x * 0.1), 1.5, -1.), n), .0) + min(dot(vec3(3., 10.2, -11.), n), .1) * 0.14);
 }
 
 float gaussian(float z, float u, float o) {
@@ -65,23 +76,30 @@ void main(void) {
     vec3 d = vec3(p.x * 8. + ((1.0 - iMouse.x) * 0.5), p.y + 0.5 + ((1.0 - iMouse.y) * 0.25), 0.8) / 140.;
     vec4 c = vec4(0.);
     float t = 0.;
+    float shade = 0.;
     for (int i = 0; i < 40; i++) {
         if (blob(o + d * t) < 30.) {
-            vec3 e = vec3(.1, .0, 2.);
-            vec3 n = vec3(.0);
-            n.x = blob(o + d * t) - blob(vec3(o + d * t + e.xyy));
-            n.y = blob(o + d * t) - blob(vec3(o + d * t + e.yxy));
-            n.z = blob(o + d * t) - blob(vec3(o + d * t + e.yxx)) + 1.0;
-            n = normalize(n);
-            c += max(dot(vec3(0.2 + iIntro + (iMouse.x * 0.1), 1.5, -1.), n), .0) + min(dot(vec3(3., 10.2, -11.), n), .1) * 0.14;
+            // Light and brightness step per segment — that gives the bands. To keep the bands without their
+            // pixel-stepped edges, find the exact hit by bisection and, close to a band edge, blend towards the
+            // band below (what the neighbouring pixel across the edge shows).
+            float a = max(t - SEGMENT_QUALITY, 0.);
+            float b = t;
+            for (int j = 0; j < 4; j++) {
+                float m = (a + b) * 0.5;
+                if (blob(o + d * m) < 30.) b = m; else a = m;
+            }
+            float edge = t > 0. ? 1. - smoothstep(0., BAND_EDGE, (b - (t - SEGMENT_QUALITY)) / SEGMENT_QUALITY) : 0.;
+            c = mix(light(o + d * t), light(o + d * (t - SEGMENT_QUALITY)), edge);
+            shade = t - SEGMENT_QUALITY * edge;
             break;
         }
         t += SEGMENT_QUALITY;
+        shade = t;
     }
 
     gl_FragColor += ${palette.base};
     gl_FragColor += c * SPECULAR_STRENGTH * ${palette.specular};
-    gl_FragColor *= t * BRIGHTNESS;
+    gl_FragColor *= shade * BRIGHTNESS;
 
     bool grain = false;
     bool accent = false;

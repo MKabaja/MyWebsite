@@ -43,7 +43,7 @@ export default function ShaderBackground() {
     const grain = new Float32Array(MAX_CELLS * 4);
     const accent = new Float32Array(MAX_CELLS * 4);
 
-    const scale = window.matchMedia("(min-width: 992px)").matches ? 0.5 : 0.35;
+    const scale = 0.5;
     // Called from the render loop, so a resize (which clears the buffer) is redrawn in the same frame.
     const resize = () => {
       const width = Math.max(1, Math.round(canvas.clientWidth * scale));
