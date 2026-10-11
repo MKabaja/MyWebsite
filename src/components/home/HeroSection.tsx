@@ -16,6 +16,7 @@ import { coreStack } from "@/content/stack";
 import { site } from "@/lib/site";
 import { HERO_GRADIENT } from "./hero/gradient";
 import { GuideOut } from "./hero/GuideOut";
+import { HeroTerminal } from "./hero/HeroTerminal";
 import { ScrollDownLink } from "./hero/ScrollDownLink";
 import { ScrollHint } from "./hero/ScrollHint";
 
@@ -154,10 +155,14 @@ export function HeroSection() {
 
         <Tile
           mode="solid"
-          className="h-16 max-lg:order-6 lg:h-[calc(80vh-180px)]"
+          className="p-5 max-lg:order-6 sm:p-8 lg:h-[calc(80vh-180px)] lg:p-0"
           style={{ backgroundImage: HERO_GRADIENT, backgroundSize: "100% 100%" }}
         >
           <GuideOut side="right" className="bottom-0" />
+          <HeroTerminal
+            label={t("terminalLabel")}
+            className="h-56 lg:absolute lg:inset-x-[clamp(2.5rem,6%,5rem)] lg:top-[calc(40vh-180px+1.5rem)] lg:bottom-[clamp(2.5rem,8vh,5rem)] lg:h-auto"
+          />
           {/* Sits at the bottom edge of the first viewport. */}
           <ScrollHint label={t("scrollHint")} className="absolute top-[calc(40vh-180px-3.5rem)] right-10 hidden text-white/80! lg:flex" />
         </Tile>

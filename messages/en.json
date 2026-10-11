@@ -32,7 +32,8 @@
       "headline": "Web developer blending code with design to build modern websites 🔥",
       "shaderNote": "rendered with a shader",
       "photoAlt": "Mateusz Kabaja",
-      "scrollHint": "scroll"
+      "scrollHint": "scroll",
+      "terminalLabel": "Ubuntu terminal — Linux is my daily driver"
     },
     "about": {
       "spotlightNote": "what I build with",
