@@ -24,6 +24,8 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
           normalizeScroll: false,
         })
       : null;
+    // Land on `#section` when navigating to e.g. "/#contact", otherwise start at the top.
+    const target = window.location.hash ? document.querySelector(window.location.hash) : null;
     window.scrollTo(0, 0);
 
     const ctx = gsap.context(() => {
@@ -44,8 +46,25 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
       });
     });
     ScrollTrigger.refresh();
+    if (target) {
+      if (smoother) smoother.scrollTo(target, false, "top top");
+      else target.scrollIntoView();
+    }
+
+    // In-page anchors glide with the smoother instead of jumping.
+    const onClick = (event: MouseEvent) => {
+      const link = (event.target as Element).closest?.<HTMLAnchorElement>('a[href^="#"]');
+      const section = link && document.querySelector(link.hash);
+      if (!section) return;
+      event.preventDefault();
+      if (smoother) smoother.scrollTo(section, true, "top top");
+      else section.scrollIntoView({ behavior: "smooth" });
+      history.replaceState(null, "", link.hash);
+    };
+    document.addEventListener("click", onClick);
 
     return () => {
+      document.removeEventListener("click", onClick);
       ctx.revert();
       smoother?.kill();
     };
