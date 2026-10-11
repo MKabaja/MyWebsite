@@ -73,7 +73,7 @@ export function ContactForm() {
     };
 
     return (
-      <div key={field} className={styles.group}>
+      <div key={field} className={`${styles.group} ${field === "subject" || field === "message" ? styles.wide : ""}`}>
         <label htmlFor={`contact-${field}`} className={styles.label}>
           {t(`form.${field}`)}
           {isValid && <Check size={14} className={styles.valid} aria-hidden />}
@@ -95,14 +95,16 @@ export function ContactForm() {
   return (
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
       {FIELDS.map(renderField)}
-      <button type="submit" className={`${styles.submit} mouse-md`} disabled={status === "sending"}>
-        <Send size={16} aria-hidden />
-        {status === "sending" ? t("form.sending") : t("form.submit")}
-      </button>
-      <p role="status" aria-live="polite" className={styles.status} data-status={status}>
-        {status === "sent" && t("form.success")}
-        {status === "failed" && t("form.failure")}
-      </p>
+      <div className={styles.footer}>
+        <button type="submit" className={`${styles.submit} mouse-md`} disabled={status === "sending"}>
+          {status === "sending" ? t("form.sending") : t("form.submit")}
+          <Send size={16} aria-hidden />
+        </button>
+        <p role="status" aria-live="polite" className={styles.status} data-status={status}>
+          {status === "sent" && t("form.success")}
+          {status === "failed" && t("form.failure")}
+        </p>
+      </div>
     </form>
   );
 }
