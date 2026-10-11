@@ -113,12 +113,12 @@ export function HeroSection() {
           </Tile>
         </div>
 
-        <Tile mode="window" className="h-28 max-lg:order-5 lg:h-[calc(60vh-5rem)]">
+        <Tile mode="window" className="h-[38svh] max-lg:order-4 lg:h-[calc(60vh-5rem)]">
           <span aria-hidden className="absolute inset-y-0 left-[180px] hidden border-l border-dashed border-white/25 lg:block" />
           <span aria-hidden className="absolute inset-y-0 right-[30%] hidden border-l border-dashed border-white/25 lg:block" />
         </Tile>
 
-        <div className="flex h-[140px] max-lg:order-4 lg:h-[180px]">
+        <div className="flex h-[140px] max-lg:order-5 lg:h-[180px]">
           <Tile mode="solid" className="aspect-square h-full overflow-hidden bg-graphite-2">
             <div
               aria-hidden
