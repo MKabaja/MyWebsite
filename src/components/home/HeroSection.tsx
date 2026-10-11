@@ -34,19 +34,18 @@ const SOCIALS = [
 export function HeroSection() {
   const t = useTranslations("home.hero");
   const tPerson = useTranslations("person");
-  const tSocial = useTranslations("social");
   const tNav = useTranslations("nav");
   const headlineRef = useRef<HTMLHeadingElement>(null);
   useSplitReveal(headlineRef, { delay: 0.6 });
 
   return (
-    <section data-m-recede className="grid-frame grid grid-cols-[minmax(0,45fr)_minmax(0,55fr)]">
+    <section data-m-hero className="grid-frame grid grid-cols-[minmax(0,45fr)_minmax(0,55fr)]">
       {/* Left column */}
       <div className="contents lg:flex lg:flex-col">
         <Tile mode="grain" lines={["left"]} className="max-lg:col-start-1 max-lg:row-span-2 max-lg:row-start-1 lg:h-[50vh]">
           <Logo label={tPerson("homeLink")} height={34} className="absolute top-6 left-4 text-accent! lg:top-10 lg:left-12" />
           <Tile mode="accent" className="absolute bg-cyber/6! inset-x-0 top-[50%] h-[24%] lg:top-[56%] lg:h-[33%]" />
-          <LanguageSwitch className="absolute bottom-4 left-4 font-mono text-sm text-white lg:hidden" />
+          <SocialLinks className="absolute bottom-2 left-2 gap-1 lg:hidden" />
           <div className="absolute top-[63%] right-[calc(100%-2.5rem)] hidden w-32 lg:block" aria-hidden>
             <Scribble variant="arrow" className="text-[1.4rem] leading-[0.9] text-white/55" strokeClassName="ml-10 -mt-1 w-20! rotate-6">
               {t("shaderNote")}
@@ -72,7 +71,7 @@ export function HeroSection() {
           </div>
 
           <div className="mt-auto flex items-center justify-between gap-6 border-t border-dashed border-guide px-5 py-5 sm:px-8 lg:h-20 lg:px-12 lg:py-0">
-            <ul className="flex flex-wrap items-center gap-x-6 gap-y-4 lg:gap-x-8">
+            <ul className="flex flex-wrap items-center gap-x-1 gap-y-1 lg:gap-x-8 lg:gap-y-4">
               {coreStack.map((tech) => (
                 <li key={tech.name}>
                   <a
@@ -81,7 +80,7 @@ export function HeroSection() {
                     rel="noreferrer"
                     title={tech.name}
                     aria-label={tech.name}
-                    className="mouse-sm block text-white/40 transition-colors hover:text-white"
+                    className="mouse-sm flex max-lg:min-h-11 max-lg:min-w-11 items-center justify-center text-white/40 max-lg:text-white/75 transition-colors hover:text-white"
                   >
                     <TechIcon icon={tech.icon} className="size-6 lg:size-7" />
                   </a>
@@ -108,7 +107,8 @@ export function HeroSection() {
       <div className="contents lg:flex lg:flex-col">
         <div className="flex h-16 max-lg:col-start-2 max-lg:row-start-1 lg:h-20">
           <Tile mode="window" lines={["bottom"]} className="flex flex-1 items-center px-4 lg:px-10">
-            <StatusIndicator label={t("status")} className="text-white! max-lg:text-[0.8rem] max-lg:leading-tight" />
+            <StatusIndicator label={t("status")} className="text-white! max-lg:hidden" />
+            <LanguageSwitch className="bg-graphite/95 px-2 font-mono text-sm text-white lg:hidden" />
           </Tile>
           <Tile mode="solid" lines={["left", "bottom"]} className="hidden items-center justify-center lg:flex lg:w-[30%]">
             <LanguageSwitch className="font-mono text-sm text-white" />
@@ -133,25 +133,12 @@ export function HeroSection() {
               height={400}
               sizes="(min-width: 992px) 180px, 55vw"
               priority
-              className="relative size-full object-cover object-bottom"
+              data-m-portrait
+              className="relative size-full origin-bottom object-cover object-bottom"
             />
           </Tile>
           <Tile mode="window" lines={["top", "left"]} className="flex flex-1 items-end px-6 pb-8 max-lg:col-start-2 max-lg:row-start-4 lg:border-l-0 lg:px-10 lg:pb-11">
-            <ul className="flex items-center gap-5 lg:gap-7" data-lag="0.1">
-              {SOCIALS.map(({ key, href, Icon }) => (
-                <li key={key}>
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={tSocial(key)}
-                    className="mouse-sm block text-white/80 transition-colors hover:text-white"
-                  >
-                    <Icon size={22} />
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <SocialLinks className="gap-7 max-lg:hidden" data-lag="0.1" />
           </Tile>
         </div>
 
@@ -170,5 +157,27 @@ export function HeroSection() {
         </Tile>
       </div>
     </section>
+  );
+}
+
+/** GitHub / LinkedIn / Facebook icons: next to the photo on desktop, in the logo tile on phones. */
+function SocialLinks({ className = "", ...props }: { className?: string; "data-lag"?: string }) {
+  const tSocial = useTranslations("social");
+  return (
+    <ul className={`flex items-center ${className}`} {...props}>
+      {SOCIALS.map(({ key, href, Icon }) => (
+        <li key={key}>
+          <a
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={tSocial(key)}
+            className="mouse-sm flex max-lg:min-h-11 max-lg:min-w-11 items-center justify-center text-white/80 transition-colors hover:text-white"
+          >
+            <Icon size={22} />
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 }
