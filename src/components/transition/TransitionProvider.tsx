@@ -35,19 +35,32 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
     (href: string, options: NavigateOptions = {}) => {
       const targetLocale = options.locale ?? locale;
       if (isLeaving || (href === pathname && targetLocale === locale)) return;
+      const targetPath = href.split(/[?#]/)[0] || pathname;
+      if (targetPath === pathname && targetLocale === locale && href.includes("#")) {
+        router.push(href, { scroll: false });
+        // pushState does not emit hashchange. Let the scroll owner settle the anchor.
+        window.clearTimeout(timeoutRef.current);
+        timeoutRef.current = window.setTimeout(() => window.dispatchEvent(new Event("site:anchor")), 0);
+        return;
+      }
 
       setHasNavigated(true);
       setLeavingFrom(currentKey);
       window.clearTimeout(timeoutRef.current);
       timeoutRef.current = window.setTimeout(() => {
-        router.push(href, { locale: targetLocale, scroll: true });
+        if (targetLocale !== locale) router.push(href, { locale: targetLocale, scroll: true });
+        else router.push(href, { scroll: !href.includes("#") });
       }, pageTimings[getRouteKind(pathname)].leave);
     },
     [currentKey, isLeaving, locale, pathname, router],
   );
 
   useEffect(() => {
-    const onPopState = () => setHasNavigated(true);
+    const onPopState = () => {
+      window.clearTimeout(timeoutRef.current);
+      setLeavingFrom(null);
+      setHasNavigated(true);
+    };
     window.addEventListener("popstate", onPopState);
     return () => {
       window.removeEventListener("popstate", onPopState);
