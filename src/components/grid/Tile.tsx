@@ -37,12 +37,14 @@ export function Tile({ as = "div", mode = "solid", lines = [], className = "", .
 
   const surface = mode === "solid" ? "bg-graphite grid-paper" : "bg-transparent";
   const borders = lines.map((side) => LINE_CLASSES[side]).join(" ");
+  // `relative` would beat a passed `absolute`/`fixed`/`sticky` in the generated CSS order.
+  const position = /\b(absolute|fixed|sticky)\b/.test(className) ? "" : "relative";
 
   return (
     <Component
       ref={ref}
       data-tile={mode}
-      className={`relative ${surface} ${borders} border-dashed border-guide ${className}`}
+      className={`${position} ${surface} ${borders} border-dashed border-guide ${className}`}
       {...props}
     />
   );
