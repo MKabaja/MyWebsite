@@ -46,9 +46,14 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
       });
     });
     ScrollTrigger.refresh();
+    // Jump once fonts and late-measuring sections have settled, so the offset is final.
+    let jumpTimer = 0;
     if (target) {
-      if (smoother) smoother.scrollTo(target, false, "top top");
-      else target.scrollIntoView();
+      jumpTimer = window.setTimeout(() => {
+        ScrollTrigger.refresh();
+        if (smoother) smoother.scrollTo(target, false, "top top");
+        else target.scrollIntoView();
+      }, 400);
     }
 
     // In-page anchors glide with the smoother instead of jumping.
@@ -64,6 +69,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     document.addEventListener("click", onClick);
 
     return () => {
+      window.clearTimeout(jumpTimer);
       document.removeEventListener("click", onClick);
       ctx.revert();
       smoother?.kill();
