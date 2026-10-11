@@ -26,27 +26,67 @@
     "facebook": "Find me on Facebook"
   },
   "home": {
-    "lead": "I'm a web developer who blends code with design to build modern websites;",
-    "scrollHint": "Scroll to Explore",
-    "tapHint": "Tap to Explore ->"
-  },
-  "about": {
-    "back": "Back",
-    "headshotAlt": "Hi, I'm Mateusz",
-    "intro": "Hi, I'm Mateusz — a web developer who blends curiosity for code with a love of aesthetics and modern design.",
-    "p1": "For over a year I've been growing as a front-end developer. Building websites gives me real satisfaction — especially when functionality and looks come together into something that truly works and looks great.",
-    "p2": "I enjoy projects that let me learn and experiment — with animations, responsive layouts or application logic. What motivates me most is the moment an idea from my notebook comes alive in the browser.",
-    "p3": "Beyond code I'm into graphic and 3D design — I often use Figma and Spline to give projects depth and character. I'm growing towards full-stack, combining React with a PHP backend.",
-    "stackHeading": "What I work with:",
-    "availabilityHeading": "Availability",
-    "availability1": "I live in Poland (Wieliczka) and I'm open to remote collaboration with clients from all over the world — flexible about communication and where we work.",
-    "availability2": "I'm looking for new challenges: both a permanent role in a team and projects for individual clients. If you have a project in mind, don't hesitate to reach out.",
-    "cta": "Get in touch"
+    "hero": {
+      "status": "Open to work & projects",
+      "intro": "< intro >",
+      "headline": "Web developer blending code with design to build modern websites 🔥",
+      "shaderNote": "rendered with a shader",
+      "photoAlt": "Mateusz Kabaja",
+      "scrollHint": "scroll"
+    },
+    "about": {
+      "spotlightNote": "what I build with",
+      "spotlightTitle": "React",
+      "spotlightText": "Components, hooks and state — my everyday toolkit.",
+      "heading": "Code, design and a bit of 3D 🔥",
+      "note": "about me",
+      "text": "For over a year I've been growing as a front-end developer and moving steadily towards full-stack — React on the front, PHP and Laravel on the back. My favourite moment is when an idea from my notebook comes alive in the browser: with animations, a responsive layout and polished details."
+    },
+    "hire": {
+      "headingStart": "Open to work — looking for a role as a",
+      "headingRoles": "Front-end / React developer",
+      "headingEnd": "👀",
+      "stackHeading": "Core stack",
+      "skillsHeading": "Skills",
+      "skills": [
+        "Responsive, accessible interfaces",
+        "Animation — GSAP, CSS, WebGL",
+        "API and Firebase integrations",
+        "PHP / Laravel backend",
+        "UI design in Figma",
+        "3D design in Spline",
+        "Git and teamwork"
+      ],
+      "achievementsHeading": "Achievements",
+      "achievements": [
+        "PowerTask — a to-do app with a project roadmap (Firebase)",
+        "ShiftFlow & PrintForge — Laravel + React + Inertia.js apps",
+        "Over a year of consistent front-end learning and practice"
+      ],
+      "cta": "Get in touch"
+    },
+    "portfolio": {
+      "marquee": "Portfolio",
+      "dragNote": "drag to explore",
+      "fps": "Rendering at: {fps} fps"
+    },
+    "projects": {
+      "marquee": "console.log",
+      "heading": "Projects",
+      "text": "Apps and websites I've worked on — with a description, code and a live demo.",
+      "live": "Live demo",
+      "repo": "Code",
+      "details": "Details",
+      "soon": "Coming soon"
+    },
+    "contact": {
+      "heading": "Let's talk",
+      "note": "drop me a line",
+      "text": "Looking for a developer to join your team, or have an idea for a website? Write to me — I'll reply as soon as I can.",
+      "copyright": "© {year} Mateusz Kabaja"
+    }
   },
   "contact": {
-    "back": "Back",
-    "title": "Let's Chat",
-    "intro": "Want to bring your idea to life on the web? I'd be happy to help. Briefly describe what you need — I'll reply as soon as possible.",
     "form": {
       "name": "Name",
       "namePlaceholder": "name",
@@ -68,12 +108,10 @@
       "invalidEmail": "Invalid format!",
       "messageTooShort": "Min. 20 characters."
     },
-    "altHeading": "Other ways to reach me",
     "email": "Email",
     "phone": "Phone",
     "location": "Location",
-    "locationValue": "Wieliczka, Poland",
-    "socials": "You can also find me on:"
+    "locationValue": "Wieliczka, Poland"
   },
   "explore": {
     "comingSoon": "Coming soon"

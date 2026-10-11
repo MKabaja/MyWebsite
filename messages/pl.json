@@ -26,27 +26,67 @@
     "facebook": "Znajdź mnie na Facebooku"
   },
   "home": {
-    "lead": "Jestem web developerem, który łączy kod z designem, tworząc nowoczesne strony;",
-    "scrollHint": "Przewiń, aby odkryć",
-    "tapHint": "Dotknij, aby odkryć ->"
-  },
-  "about": {
-    "back": "Wróć",
-    "headshotAlt": "Cześć, jestem Mateusz",
-    "intro": "Cześć, jestem Mateusz — web developer, który łączy ciekawość kodu z zamiłowaniem do estetyki i nowoczesnego designu.",
-    "p1": "Od ponad roku rozwijam się w kierunku front-endu. Tworzenie stron internetowych daje mi ogromną satysfakcję — szczególnie wtedy, gdy połączenie funkcjonalności i wyglądu tworzy coś, co naprawdę „działa” i dobrze wygląda.",
-    "p2": "Lubię projekty, które pozwalają mi się uczyć czegoś nowego i eksperymentować — czy to z animacjami, responsywnym układem, czy logiką aplikacji. Najbardziej motywuje mnie moment, gdy pomysł z notatnika zaczyna żyć w przeglądarce.",
-    "p3": "Poza kodem interesuję się projektowaniem graficznym i 3D — często wykorzystuję Figmę i Spline, by nadać projektom głębi i indywidualnego charakteru. Rozwijam się w kierunku full-stacku, łącząc Reacta z backendem w PHP.",
-    "stackHeading": "Z czym pracuję:",
-    "availabilityHeading": "Dostępność",
-    "availability1": "Mieszkam w Polsce (Wieliczka) i jestem otwarty na zdalną współpracę z klientami z całego świata — elastycznie w zakresie komunikacji i miejsca pracy.",
-    "availability2": "Szukam nowych wyzwań: zarówno stałej współpracy w zespole, jak i projektów dla klientów indywidualnych. Jeśli masz pomysł na projekt — śmiało napisz.",
-    "cta": "Napisz do mnie"
+    "hero": {
+      "status": "Otwarty na pracę i zlecenia",
+      "intro": "< intro >",
+      "headline": "Web developer, który łączy kod z designem, tworząc nowoczesne strony 🔥",
+      "shaderNote": "renderowane shaderem",
+      "photoAlt": "Mateusz Kabaja",
+      "scrollHint": "przewiń"
+    },
+    "about": {
+      "spotlightNote": "na czym buduję",
+      "spotlightTitle": "React",
+      "spotlightText": "Komponenty, hooki i stan — mój codzienny warsztat.",
+      "heading": "Kod, design i odrobina 3D 🔥",
+      "note": "o mnie",
+      "text": "Od ponad roku rozwijam się w front-endzie i coraz mocniej idę w stronę full-stacku — React na froncie, PHP i Laravel na backendzie. Najbardziej lubię moment, gdy pomysł z notatnika zaczyna żyć w przeglądarce: z animacjami, responsywnym układem i dopracowanym detalem."
+    },
+    "hire": {
+      "headingStart": "Otwarty na zatrudnienie — szukam pracy jako",
+      "headingRoles": "Front-end / React developer",
+      "headingEnd": "👀",
+      "stackHeading": "Główny stack",
+      "skillsHeading": "Umiejętności",
+      "skills": [
+        "Responsywne i dostępne interfejsy",
+        "Animacje — GSAP, CSS, WebGL",
+        "Integracje z API i Firebase",
+        "Backend w PHP / Laravel",
+        "Projektowanie UI w Figmie",
+        "Grafika 3D w Spline",
+        "Git i praca w zespole"
+      ],
+      "achievementsHeading": "Osiągnięcia",
+      "achievements": [
+        "PowerTask — aplikacja To-Do z roadmapą projektów (Firebase)",
+        "ShiftFlow i PrintForge — aplikacje Laravel + React + Inertia.js",
+        "Ponad rok regularnej nauki i praktyki front-endu"
+      ],
+      "cta": "Napisz do mnie"
+    },
+    "portfolio": {
+      "marquee": "Portfolio",
+      "dragNote": "przeciągnij, aby odkryć",
+      "fps": "Renderowanie: {fps} fps"
+    },
+    "projects": {
+      "marquee": "console.log",
+      "heading": "Projekty",
+      "text": "Aplikacje i strony, nad którymi pracowałem — z opisem, kodem i wersją demo.",
+      "live": "Live demo",
+      "repo": "Kod",
+      "details": "Szczegóły",
+      "soon": "Wkrótce"
+    },
+    "contact": {
+      "heading": "Porozmawiajmy",
+      "note": "napisz do mnie",
+      "text": "Szukasz developera do zespołu albo masz pomysł na stronę? Napisz — odpowiem najszybciej, jak to możliwe.",
+      "copyright": "© {year} Mateusz Kabaja"
+    }
   },
   "contact": {
-    "back": "Wróć",
-    "title": "Napisz do mnie",
-    "intro": "Chcesz ożywić swój pomysł w sieci? Chętnie pomogę. Opisz krótko, czego potrzebujesz — odpowiem najszybciej, jak to możliwe.",
     "form": {
       "name": "Imię",
       "namePlaceholder": "imię",
@@ -68,12 +108,10 @@
       "invalidEmail": "Zły format!",
       "messageTooShort": "Min. 20 znaków."
     },
-    "altHeading": "Inne formy kontaktu",
     "email": "E-mail",
     "phone": "Telefon",
     "location": "Lokalizacja",
-    "locationValue": "Polska, Wieliczka",
-    "socials": "Znajdziesz mnie też na:"
+    "locationValue": "Polska, Wieliczka"
   },
   "explore": {
     "comingSoon": "Wkrótce"
