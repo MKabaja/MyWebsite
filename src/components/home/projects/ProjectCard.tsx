@@ -6,15 +6,21 @@ import { useLocale, useTranslations } from "next-intl";
 import { GithubIcon } from "@/components/icons/BrandIcons";
 import { TransitionLink } from "@/components/transition/TransitionLink";
 import { toLocale } from "@/i18n/routing";
-import { gsap } from "@/lib/gsap";
+import { subscribeTilt } from "@/lib/deviceTilt";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import type { Project } from "@/content/projects";
 import { StackChips } from "./StackChips";
 
 const MAX_TILT = 7;
+/** Phones: the card leans back on the way in and forward on the way out, on top of the phone's tilt. */
+const SCROLL_TILT = 6;
 
 const LINK = "mouse-sm inline-flex items-center gap-1.5 font-mono text-[0.78rem] uppercase tracking-wide transition-colors";
 
-/** Project tile of the home "Projects" grid: tab label + badge above the card; all of it tilts toward the cursor. */
+/**
+ * Project tile of the home "Projects" grid: tab label + badge above the card; all of it tilts toward the cursor.
+ * Touch screens have no cursor, so there it follows the phone's tilt and the scroll position instead.
+ */
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
   const t = useTranslations("home.projects");
   const locale = toLocale(useLocale());
@@ -23,8 +29,8 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
   useEffect(() => {
     const card = cardRef.current;
     if (!card) return;
-    const canTilt = window.matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
-    if (!canTilt.matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return tiltOnTouch(card);
 
     gsap.set(card, { transformPerspective: 900 });
     const rotateX = gsap.quickTo(card, "rotationX", { duration: 0.6, ease: "power3.out" });
@@ -69,6 +75,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           className="relative flex min-h-[20rem] flex-1 flex-col border border-white/12 bg-graphite-2 p-7 transition-[border-color,background-color] duration-300 group-hover:border-white/45 group-hover:bg-[#28292d] sm:p-9 md:min-h-[25rem]"
         >
           <ArrowUpRight
+            data-m-depth
             aria-hidden
             strokeWidth={1.25}
             className="absolute top-6 right-6 size-10 text-on-dark-muted transition-[color,transform] duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
@@ -113,4 +120,47 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       </div>
     </li>
   );
+}
+
+function tiltOnTouch(card: HTMLElement) {
+  gsap.set(card, { transformPerspective: 900 });
+  const rotateX = gsap.quickTo(card, "rotationX", { duration: 0.6, ease: "power3.out" });
+  const rotateY = gsap.quickTo(card, "rotationY", { duration: 0.6, ease: "power3.out" });
+  const state = { scroll: 0, tiltX: 0, tiltY: 0 };
+  const apply = () => {
+    rotateX(state.scroll + state.tiltY * MAX_TILT);
+    rotateY(state.tiltX * MAX_TILT);
+  };
+
+  const trigger = ScrollTrigger.create({
+    trigger: card,
+    start: "top bottom",
+    end: "bottom top",
+    onUpdate: ({ progress }) => {
+      state.scroll = (0.5 - progress) * 2 * SCROLL_TILT;
+      apply();
+    },
+  });
+
+  // The phone's tilt is only listened to while the card is on screen.
+  let unsubscribe: (() => void) | undefined;
+  const observer = new IntersectionObserver(([entry]) => {
+    unsubscribe?.();
+    unsubscribe = entry.isIntersecting
+      ? subscribeTilt(({ x, y }) => {
+          state.tiltX = x;
+          state.tiltY = y;
+          apply();
+        })
+      : undefined;
+  });
+  observer.observe(card);
+
+  return () => {
+    observer.disconnect();
+    unsubscribe?.();
+    trigger.kill();
+    gsap.killTweensOf(card);
+    gsap.set(card, { clearProps: "transform" });
+  };
 }
