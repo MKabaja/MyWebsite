@@ -1,0 +1,200 @@
+:global(body.fixed-webgl) .hero {
+  position: fixed;
+  bottom: unset;
+}
+
+.hero {
+  position: absolute;
+  inset: 0;
+  transition: transform 2s cubic-bezier(0.65, 0, 0.15, 1);
+}
+
+.hero[data-route="about"] {
+  transition-delay: 0.8s;
+  transform: translateX(60vw);
+}
+
+.hero[data-route="contact"] {
+  transition-delay: 0.8s;
+  transform: translateX(-50vw);
+}
+
+@media (max-width: 1200px) {
+  .hero[data-route="about"] { transform: translateX(70vw); }
+  .hero[data-route="contact"] { transform: translateX(-65vw); }
+}
+
+@media (max-width: 768px) {
+  .hero[data-route="about"] { transition-delay: 0s; transform: translateX(120vw); }
+  .hero[data-route="contact"] { transition-delay: 0s; transform: translateX(-120vw); }
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: all 1.8s cubic-bezier(0.7, 0, 0, 1);
+  border-radius: 0;
+  box-shadow: transparent 0 0 0 0, transparent 0 0 0 0;
+  object-fit: cover;
+  z-index: -1;
+  clip-path: polygon(-10% -10%, 110% -10%, 110% 110%, -10% 110%);
+  background-color: #0a0a0a;
+  overflow: hidden;
+}
+
+.container[data-route="about"],
+.container[data-route="contact"] {
+  transform: scale(0.8) perspective(400px) rotateX(2deg);
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: rgb(20 14 10 / 25%) 0 40px 20px -20px, #ff8c32 -80px 13px 156px -120px;
+  clip-path: polygon(-10% -10%, 110% -10%, 110% 110%, -10% 110%);
+}
+
+.container[data-route="about"] {
+  transition: all 2.5s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.container[data-route="contact"] {
+  transition: all 1.5s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+@media (max-width: 1200px) {
+  .container[data-route="about"],
+  .container[data-route="contact"] {
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .container[data-route="about"],
+  .container[data-route="contact"] {
+    transform: scale(0.9);
+  }
+}
+
+.container[data-route="portfolio"] {
+  clip-path: polygon(0 0, 100% 0, 100% 400px, 0 600px);
+}
+
+@media (max-width: 992px) {
+  .container[data-route="portfolio"] {
+    clip-path: polygon(0 0, 100% 0, 100% 350px, 0 450px);
+  }
+}
+
+@media (min-width: 1680px) {
+  .container[data-route="portfolio"] {
+    clip-path: polygon(0 0, 100% 0, 100% 500px, 0 700px);
+  }
+}
+
+.canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 220px;
+  background-color: #ece4dc;
+  height: 100%;
+  z-index: 2;
+  transition: transform 2s cubic-bezier(0.65, 0, 0.15, 1);
+  transform: translateX(-100%);
+  padding: 20px;
+}
+
+.sidebar[data-route="about"],
+.sidebar[data-route="contact"] {
+  transition: transform 1s cubic-bezier(0.65, 0, 0.15, 1);
+  transform: translateX(0);
+}
+
+@media (max-width: 1200px) {
+  .sidebar[data-route="about"],
+  .sidebar[data-route="contact"] {
+    transform: translateX(-170px);
+  }
+}
+
+.lineNumbers {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+  opacity: 0.8;
+}
+
+.helloWorld,
+.expertise,
+.fetchContact,
+.clickCollab {
+  position: absolute;
+}
+
+.helloWorld { top: 200px; left: 120px; }
+.expertise { top: 260px; left: 40px; }
+.fetchContact { bottom: 260px; right: 280px; }
+.clickCollab { bottom: 200px; right: 80px; }
+
+@media (max-width: 1200px) {
+  .helloWorld,
+  .expertise,
+  .fetchContact,
+  .clickCollab {
+    display: none;
+  }
+}
+
+.accentBar {
+  position: absolute;
+  bottom: 7.8%;
+  left: 25%;
+  width: 20%;
+  height: 8px;
+  background: linear-gradient(to right, #ffa86a, #ff6b00);
+  z-index: 1;
+  border-radius: 1px;
+  box-shadow: rgba(99, 99, 99, 0.1) 0 2px 8px 0;
+  transform: scaleX(0);
+  transform-origin: center right;
+  animation: accentBarIn 1s cubic-bezier(0.65, 0, 0.15, 1) forwards;
+  animation-delay: 0.8s;
+}
+
+@keyframes accentBarIn {
+  0% { transform: scaleX(0) translateZ(0); }
+  100% { transform: scaleX(1) translateZ(0); }
+}
+
+.jsIcon {
+  position: absolute;
+  top: 160px;
+  right: 120px;
+  width: 140px;
+  z-index: 1;
+}
+
+.reactIcon {
+  position: absolute;
+  bottom: 140px;
+  left: 130px;
+  width: 60px;
+  z-index: 1;
+}
+
+@media (max-width: 992px) {
+  .jsIcon,
+  .reactIcon {
+    display: none;
+  }
+}
