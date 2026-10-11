@@ -28,7 +28,7 @@ export function LanguageSwitch({ className = "", linkClassName = "" }: { classNa
             aria-label={t("switchTo", { language: LANGUAGE_NAMES[code] })}
             disabled={code === locale}
             onClick={() => navigate(pathname, { locale: code })}
-            className={`mouse-sm cursor-pointer text-inherit uppercase transition-opacity disabled:cursor-default ${
+            className={`mouse-sm max-lg:min-h-11 max-lg:min-w-11 cursor-pointer text-inherit uppercase transition-opacity disabled:cursor-default ${
               code === locale ? "opacity-100" : "opacity-60 hover:opacity-100"
             } ${linkClassName}`}
           >
