@@ -31,7 +31,13 @@ export function ContactForm() {
     event.preventDefault();
     const nextErrors = Object.fromEntries(FIELDS.map((field) => [field, validateField(field, values[field])])) as Errors;
     setErrors(nextErrors);
-    if (FIELDS.some((field) => nextErrors[field])) return;
+    const firstInvalid = FIELDS.find((field) => nextErrors[field]);
+    if (firstInvalid) {
+      if (window.matchMedia("(max-width: 991px)").matches) {
+        event.currentTarget.querySelector<HTMLElement>(`#contact-${firstInvalid}`)?.focus();
+      }
+      return;
+    }
 
     setStatus("sending");
     try {

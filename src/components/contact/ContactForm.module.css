@@ -159,3 +159,12 @@ textarea.control {
     width: 100%;
   }
 }
+
+@media (max-width: 991px) {
+  .label { font-size: 0.84rem; letter-spacing: 0.08em; }
+  .control { border-color: #888b91; }
+  .control::placeholder { color: #b3b4b9; opacity: 1; }
+  .control:hover { border-color: #a7a9af; }
+  .control:focus { border-color: var(--color-accent); }
+  .invalid, .invalid:hover, .invalid:focus { border-color: var(--color-accent-strong); }
+}
