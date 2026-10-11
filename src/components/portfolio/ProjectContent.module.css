@@ -1,0 +1,20 @@
+.content p {
+  font-size: 1.15rem;
+}
+
+@media (min-width: 992px) {
+  .content p {
+    text-align: justify;
+  }
+}
+
+.content img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.content figcaption {
+  font-size: 0.9rem;
+  color: #6e6a66;
+}
