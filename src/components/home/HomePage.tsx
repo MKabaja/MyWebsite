@@ -10,16 +10,24 @@ import { PortfolioSection } from "./PortfolioSection";
 import { ProjectsSection } from "./ProjectsSection";
 
 const START_WIDTH = 1280;
+/** On phones the grid starts with this gutter on each side. */
+const MOBILE_GUTTER = 16;
 
-/** Single long-scroll home page. The grid starts 1280px wide and widens to the viewport while scrolling. */
+/**
+ * Single long-scroll home page. The grid starts narrower than the viewport (1280px on desktop,
+ * a 16px gutter on phones) and widens to full width while scrolling.
+ */
 export function HomePage() {
   useEffect(() => {
     const root = document.documentElement;
-    if (!isDesktop() || window.innerWidth <= START_WIDTH) return;
+    const desktop = isDesktop();
+    if (desktop && window.innerWidth <= START_WIDTH) return;
+    if (!desktop && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    const startWidth = () => (desktop ? START_WIDTH : window.innerWidth - MOBILE_GUTTER * 2);
     const state = { progress: 0 };
     const apply = () => {
-      const width = START_WIDTH + (window.innerWidth - START_WIDTH) * state.progress;
+      const width = startWidth() + (window.innerWidth - startWidth()) * state.progress;
       root.style.setProperty("--grid-w", `${width}px`);
     };
     apply();
@@ -27,7 +35,7 @@ export function HomePage() {
       progress: 1,
       ease: "none",
       onUpdate: apply,
-      scrollTrigger: { trigger: document.body, start: "20px top", end: "+=300%", scrub: true },
+      scrollTrigger: { trigger: document.body, start: "20px top", end: desktop ? "+=300%" : "+=100%", scrub: true },
     });
     window.addEventListener("resize", apply);
 
