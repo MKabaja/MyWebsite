@@ -1,0 +1,116 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: lowercase;
+  color: #6e6a66;
+}
+
+.valid {
+  color: #00b3ab;
+}
+
+.control {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid rgba(28, 28, 28, 0.12);
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 12px 14px;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #1c1c1c;
+  cursor: text;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.control::placeholder {
+  color: #a9a29b;
+}
+
+.control:hover {
+  box-shadow: rgba(20, 14, 10, 0.12) 0 8px 12px -6px;
+}
+
+.control:focus {
+  outline: none;
+  transform: translateY(-3px);
+  border-color: #ff8c32;
+  box-shadow: 0 0 0 3px rgba(255, 140, 50, 0.25), rgba(20, 14, 10, 0.12) 0 10px 14px -6px;
+}
+
+textarea.control {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.invalid,
+.invalid:focus {
+  border-color: #e5394f;
+  box-shadow: 0 0 0 3px rgba(229, 57, 79, 0.2);
+}
+
+.error {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #c62a3f;
+}
+
+.submit {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ff8c32;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 45px;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 5px;
+  box-shadow: rgba(20, 14, 10, 0.25) 0 11px 5px -6px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.submit:hover:not(:disabled) {
+  background-color: #1c1c1c;
+  color: #ffffff;
+  transform: translateY(-5px);
+  box-shadow: rgba(20, 14, 10, 0.15) 0 14px 10px 0;
+}
+
+.submit:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.status {
+  min-height: 1.6em;
+  margin: 0;
+  font-weight: 600;
+}
+
+.status[data-status="sent"] {
+  color: #00857f;
+}
+
+.status[data-status="failed"] {
+  color: #c62a3f;
+}
