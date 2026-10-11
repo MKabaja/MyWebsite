@@ -29,7 +29,7 @@ export function AboutSection() {
           </div>
         </Tile>
 
-        <Tile mode="solid" lines={["left"]} data-fade className="aspect-square max-lg:order-3 lg:aspect-auto lg:h-[70vh]">
+        <Tile mode="solid" lines={["left"]} data-fade className="aspect-[4/5] max-lg:order-3 sm:aspect-square lg:aspect-auto lg:h-[70vh]">
           <ReactSpotlight title={t("spotlightTitle")} text={t("spotlightText")} className="size-full" />
         </Tile>
       </div>
