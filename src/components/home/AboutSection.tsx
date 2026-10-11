@@ -29,7 +29,7 @@ export function AboutSection() {
           </div>
         </Tile>
 
-        <Tile mode="solid" lines={["left"]} data-fade data-m-expand className="aspect-[4/5] max-lg:order-3 sm:aspect-square lg:aspect-auto lg:h-[70vh]">
+        <Tile mode="solid" lines={["left"]} data-fade data-m-expand data-m-media className="aspect-[4/5] max-lg:order-3 sm:aspect-square lg:aspect-auto lg:h-[70vh]">
           <ReactSpotlight title={t("spotlightTitle")} text={t("spotlightText")} className="size-full" />
         </Tile>
       </div>
@@ -41,7 +41,7 @@ export function AboutSection() {
             <h2 ref={headingRef} id="about-heading" className="max-w-[18ch] text-[clamp(2rem,2.6vw,2.6rem)] leading-[1.1] text-white">
               {t("heading")}
             </h2>
-            <div className="mt-12 lg:mt-auto" data-fade data-m-speed="0.04">
+            <div className="mt-12 lg:mt-auto" data-fade data-m-speed="0.04" data-m-text>
               <Scribble variant="underline" className="mb-4 text-accent-soft/85" strokeClassName="w-28">
                 {t("note")}
               </Scribble>
