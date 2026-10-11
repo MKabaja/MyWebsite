@@ -39,7 +39,7 @@ export function HeroSection() {
   useSplitReveal(headlineRef, { delay: 0.6 });
 
   return (
-    <section className="grid-frame flex flex-col lg:grid lg:grid-cols-[minmax(0,45fr)_minmax(0,55fr)]">
+    <section data-m-recede className="grid-frame flex flex-col lg:grid lg:grid-cols-[minmax(0,45fr)_minmax(0,55fr)]">
       {/* Left column */}
       <div className="contents lg:flex lg:flex-col">
         <Tile mode="grain" lines={["left"]} className="h-44 max-lg:order-1 lg:h-[50vh]">
@@ -52,10 +52,10 @@ export function HeroSection() {
           </div>
         </Tile>
 
-        <Tile mode="solid" lines={["left", "top"]} className="flex flex-col max-lg:order-3 lg:h-[74vh]">
+        <Tile mode="solid" lines={["left", "top"]} data-m-expand className="flex flex-col max-lg:order-3 lg:h-[74vh]">
           <GuideOut side="left" className="top-0" />
           <div className="px-5 pt-12 pb-14 sm:px-8 lg:px-12 lg:pt-[8vh] lg:pb-0">
-            <div data-speed="clamp(1.15)">
+            <div data-speed="clamp(1.15)" data-m-speed="0.05">
               <Scribble variant="arrow" className="mb-4 text-accent-soft/80" strokeClassName="w-20!">
                 {t("intro")}
               </Scribble>

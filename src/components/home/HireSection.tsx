@@ -19,11 +19,12 @@ export function HireSection() {
   const achievements = t.raw("achievements") as string[];
 
   return (
-    <section id="hire" aria-labelledby="hire-heading" className="grid-frame grid grid-cols-1 lg:grid-cols-12">
+    <section data-m-recede id="hire" aria-labelledby="hire-heading" className="grid-frame grid grid-cols-1 lg:grid-cols-12">
       <HireTiles />
 
       <Tile
         mode="solid"
+        data-m-expand
         className="px-5 pt-16 pb-16 sm:px-10 lg:col-span-8 lg:px-14 lg:pt-24 lg:pb-28 2xl:px-20"
       >
         <h2

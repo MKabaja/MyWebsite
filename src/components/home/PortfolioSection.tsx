@@ -13,6 +13,7 @@ export function PortfolioSection() {
 
   return (
     <section
+      data-m-recede
       id="portfolio"
       className="grid-frame relative overflow-hidden lg:h-[clamp(860px,118vh,1180px)]"
     >

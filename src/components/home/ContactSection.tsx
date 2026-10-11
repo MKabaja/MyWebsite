@@ -21,6 +21,7 @@ export function ContactSection() {
         <Tile
           mode="solid"
           lines={["top"]}
+          data-m-expand
           className="px-5 pt-16 pb-16 sm:px-10 lg:col-span-8 lg:px-14 lg:pt-24 lg:pb-24 2xl:px-20"
         >
           <div className="flex flex-wrap items-end gap-x-8 gap-y-3">

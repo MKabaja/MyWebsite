@@ -13,7 +13,7 @@ export function ProjectsSection() {
   const t = useTranslations("home.projects");
 
   return (
-    <section id="projects" aria-labelledby="projects-heading">
+    <section data-m-recede id="projects" aria-labelledby="projects-heading">
       <div aria-hidden className="bg-accent py-[1.125rem] font-mono text-[0.85rem] font-semibold tracking-[0.12em] text-ink uppercase">
         <Marquee repeat={16} duration={87}>
           <span className="px-5">{t("marquee")}</span>
@@ -22,7 +22,7 @@ export function ProjectsSection() {
       </div>
 
       <div className="grid-frame grid grid-cols-1 lg:grid-cols-[30%_auto_minmax(0,1fr)]">
-        <Tile lines={["bottom"]} className="px-8 pt-16 pb-12 lg:border-b-0 lg:px-12 lg:pt-20">
+        <Tile lines={["bottom"]} data-m-expand className="px-8 pt-16 pb-12 lg:border-b-0 lg:px-12 lg:pt-20">
           <h2 id="projects-heading" className="text-[2.4rem] font-semibold lg:text-[2.6rem]">
             {t("heading")}
           </h2>

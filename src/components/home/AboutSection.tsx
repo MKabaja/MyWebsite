@@ -17,7 +17,7 @@ export function AboutSection() {
   useSplitReveal(headingRef, { onScroll: true, delay: 0 });
 
   return (
-    <section id="about" aria-labelledby="about-heading" className="grid-frame flex flex-col lg:grid lg:grid-cols-[minmax(0,45fr)_minmax(0,55fr)]">
+    <section data-m-recede id="about" aria-labelledby="about-heading" className="grid-frame flex flex-col lg:grid lg:grid-cols-[minmax(0,45fr)_minmax(0,55fr)]">
       {/* Left column */}
       <div className="contents lg:flex lg:flex-col">
         <Tile mode="grain" lines={["left"]} className="h-20 max-lg:order-2 lg:h-[30vh]">
@@ -29,7 +29,7 @@ export function AboutSection() {
           </div>
         </Tile>
 
-        <Tile mode="solid" lines={["left"]} data-fade className="aspect-[4/5] max-lg:order-3 sm:aspect-square lg:aspect-auto lg:h-[70vh]">
+        <Tile mode="solid" lines={["left"]} data-fade data-m-expand className="aspect-[4/5] max-lg:order-3 sm:aspect-square lg:aspect-auto lg:h-[70vh]">
           <ReactSpotlight title={t("spotlightTitle")} text={t("spotlightText")} className="size-full" />
         </Tile>
       </div>
@@ -37,11 +37,11 @@ export function AboutSection() {
       {/* Right column */}
       <div className="contents lg:flex lg:flex-col">
         <div className="flex max-lg:order-1 lg:h-[70vh]" style={{ backgroundImage: GUTTER_GRADIENT, backgroundSize: "100% 100%" }}>
-          <Tile mode="solid" className="flex w-full flex-col px-5 py-14 sm:px-8 lg:w-[68%] lg:px-12 lg:pt-[8vh] lg:pb-[7vh]">
+          <Tile mode="solid" data-m-expand className="flex w-full flex-col px-5 py-14 sm:px-8 lg:w-[68%] lg:px-12 lg:pt-[8vh] lg:pb-[7vh]">
             <h2 ref={headingRef} id="about-heading" className="max-w-[18ch] text-[clamp(2rem,2.6vw,2.6rem)] leading-[1.1] text-white">
               {t("heading")}
             </h2>
-            <div className="mt-12 lg:mt-auto" data-fade>
+            <div className="mt-12 lg:mt-auto" data-fade data-m-speed="0.04">
               <Scribble variant="underline" className="mb-4 text-accent-soft/85" strokeClassName="w-28">
                 {t("note")}
               </Scribble>
