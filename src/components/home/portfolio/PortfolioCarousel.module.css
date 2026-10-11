@@ -1,0 +1,42 @@
+.viewport {
+  --card-w: min(56vw, 1000px);
+  position: absolute;
+  inset: 0;
+  perspective: 1800px;
+  perspective-origin: 50% 20%;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.viewport[data-pressed] {
+  cursor: grabbing;
+}
+
+/* Wider than the section so the tilted strip still covers its corners. */
+.plane {
+  position: absolute;
+  inset: 0 -30%;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.track {
+  position: relative;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  transform-style: preserve-3d;
+}
+
+@media (max-width: 767px) {
+  .viewport {
+    --card-w: 80vw;
+    perspective: 1100px;
+  }
+
+  .plane {
+    inset: 0 -20%;
+  }
+}
