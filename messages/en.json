@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "title": "Mateusz Kabaja — Web Developer",
+    "description": "Portfolio of Mateusz Kabaja — web developer. Web projects, JavaScript, React, PHP, design and 3D.",
+    "aboutTitle": "About — Mateusz Kabaja",
+    "contactTitle": "Contact — Mateusz Kabaja",
+    "exploreTitle": "Projects — Mateusz Kabaja",
+    "notFoundTitle": "Page not found — Mateusz Kabaja"
+  },
+  "nav": {
+    "about": "About",
+    "explore": "Explore",
+    "contact": "Contact",
+    "language": "Language",
+    "switchTo": "Switch to {language}"
+  },
+  "person": {
+    "name": "Mateusz Kabaja",
+    "jobTitle": "Web Developer",
+    "status": "Open to new projects",
+    "homeLink": "Home page"
+  },
+  "social": {
+    "github": "My GitHub",
+    "linkedin": "Find me on LinkedIn",
+    "facebook": "Find me on Facebook"
+  },
+  "home": {
+    "scrollHint": "Scroll to Explore",
+    "tapHint": "Tap to Explore ->"
+  },
+  "about": {
+    "back": "Back",
+    "headshotAlt": "Hi, I'm Mateusz",
+    "intro": "Hi, I'm Mateusz — a web developer who blends curiosity for code with a love of aesthetics and modern design.",
+    "p1": "For over a year I've been growing as a front-end developer. Building websites gives me real satisfaction — especially when functionality and looks come together into something that truly works and looks great.",
+    "p2": "I enjoy projects that let me learn and experiment — with animations, responsive layouts or application logic. What motivates me most is the moment an idea from my notebook comes alive in the browser.",
+    "p3": "Beyond code I'm into graphic and 3D design — I often use Figma and Spline to give projects depth and character. I'm growing towards full-stack, combining React with a PHP backend.",
+    "stackHeading": "What I work with:",
+    "availabilityHeading": "Availability",
+    "availability1": "I live in Poland (Wieliczka) and I'm open to remote collaboration with clients from all over the world — flexible about communication and where we work.",
+    "availability2": "I'm looking for new challenges: both a permanent role in a team and projects for individual clients. If you have a project in mind, don't hesitate to reach out.",
+    "cta": "Get in touch"
+  },
+  "contact": {
+    "back": "Back",
+    "title": "Let's Chat",
+    "intro": "Want to bring your idea to life on the web? I'd be happy to help. Briefly describe what you need — I'll reply as soon as possible.",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "name",
+      "email": "Email",
+      "emailPlaceholder": "email",
+      "subject": "Subject",
+      "subjectPlaceholder": "subject (optional)",
+      "message": "Message",
+      "messagePlaceholder": "message",
+      "submit": "Send!",
+      "sending": "Sending…",
+      "success": "Thank you! Your message has been sent ✅",
+      "failure": "Oops… sending failed. Please try again."
+    },
+    "errors": {
+      "empty": "This field is required!",
+      "tooShort": "Value is too short!",
+      "illegalChar": "Illegal characters!",
+      "invalidEmail": "Invalid format!",
+      "messageTooShort": "Min. 20 characters."
+    },
+    "altHeading": "Other ways to reach me",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "locationValue": "Wieliczka, Poland",
+    "socials": "You can also find me on:"
+  },
+  "explore": {
+    "comingSoon": "Coming soon"
+  },
+  "portfolio": {
+    "back": "Back",
+    "client": "Client",
+    "role": "Role",
+    "completed": "Completed",
+    "stack": "Stack",
+    "links": "Links",
+    "live": "Live demo",
+    "repo": "Code on GitHub",
+    "cta": "Let's talk",
+    "copyright": "Copyright © {year} Mateusz Kabaja. All rights reserved.",
+    "placeholderNote": "A detailed case study is coming soon."
+  },
+  "notFound": {
+    "title": "You got lost;",
+    "text": "Looks like you've followed a broken link.",
+    "hint": "Head back home and try again.",
+    "back": "Back"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "title": "Mateusz Kabaja — Web Developer",
+    "description": "Portfolio Mateusza Kabaji — web developer. Projekty webowe, JavaScript, React, PHP, design i 3D.",
+    "aboutTitle": "O mnie — Mateusz Kabaja",
+    "contactTitle": "Kontakt — Mateusz Kabaja",
+    "exploreTitle": "Projekty — Mateusz Kabaja",
+    "notFoundTitle": "Nie znaleziono strony — Mateusz Kabaja"
+  },
+  "nav": {
+    "about": "O mnie",
+    "explore": "Projekty",
+    "contact": "Kontakt",
+    "language": "Język",
+    "switchTo": "Przełącz na {language}"
+  },
+  "person": {
+    "name": "Mateusz Kabaja",
+    "jobTitle": "Web Developer",
+    "status": "Otwarty na nowe projekty",
+    "homeLink": "Strona główna"
+  },
+  "social": {
+    "github": "Mój GitHub",
+    "linkedin": "Znajdź mnie na LinkedIn",
+    "facebook": "Znajdź mnie na Facebooku"
+  },
+  "home": {
+    "scrollHint": "Przewiń, aby odkryć",
+    "tapHint": "Dotknij, aby odkryć ->"
+  },
+  "about": {
+    "back": "Wróć",
+    "headshotAlt": "Cześć, jestem Mateusz",
+    "intro": "Cześć, jestem Mateusz — web developer, który łączy ciekawość kodu z zamiłowaniem do estetyki i nowoczesnego designu.",
+    "p1": "Od ponad roku rozwijam się w kierunku front-endu. Tworzenie stron internetowych daje mi ogromną satysfakcję — szczególnie wtedy, gdy połączenie funkcjonalności i wyglądu tworzy coś, co naprawdę „działa” i dobrze wygląda.",
+    "p2": "Lubię projekty, które pozwalają mi się uczyć czegoś nowego i eksperymentować — czy to z animacjami, responsywnym układem, czy logiką aplikacji. Najbardziej motywuje mnie moment, gdy pomysł z notatnika zaczyna żyć w przeglądarce.",
+    "p3": "Poza kodem interesuję się projektowaniem graficznym i 3D — często wykorzystuję Figmę i Spline, by nadać projektom głębi i indywidualnego charakteru. Rozwijam się w kierunku full-stacku, łącząc Reacta z backendem w PHP.",
+    "stackHeading": "Z czym pracuję:",
+    "availabilityHeading": "Dostępność",
+    "availability1": "Mieszkam w Polsce (Wieliczka) i jestem otwarty na zdalną współpracę z klientami z całego świata — elastycznie w zakresie komunikacji i miejsca pracy.",
+    "availability2": "Szukam nowych wyzwań: zarówno stałej współpracy w zespole, jak i projektów dla klientów indywidualnych. Jeśli masz pomysł na projekt — śmiało napisz.",
+    "cta": "Napisz do mnie"
+  },
+  "contact": {
+    "back": "Wróć",
+    "title": "Napisz do mnie",
+    "intro": "Chcesz ożywić swój pomysł w sieci? Chętnie pomogę. Opisz krótko, czego potrzebujesz — odpowiem najszybciej, jak to możliwe.",
+    "form": {
+      "name": "Imię",
+      "namePlaceholder": "imię",
+      "email": "E-mail",
+      "emailPlaceholder": "e-mail",
+      "subject": "Temat",
+      "subjectPlaceholder": "temat (opcjonalnie)",
+      "message": "Treść wiadomości",
+      "messagePlaceholder": "wiadomość",
+      "submit": "Wyślij!",
+      "sending": "Wysyłanie…",
+      "success": "Dziękuję! Wiadomość została wysłana ✅",
+      "failure": "Ups… nie udało się wysłać. Spróbuj ponownie."
+    },
+    "errors": {
+      "empty": "Pole jest wymagane!",
+      "tooShort": "Wartość jest za krótka!",
+      "illegalChar": "Niedozwolone symbole!",
+      "invalidEmail": "Zły format!",
+      "messageTooShort": "Min. 20 znaków."
+    },
+    "altHeading": "Inne formy kontaktu",
+    "email": "E-mail",
+    "phone": "Telefon",
+    "location": "Lokalizacja",
+    "locationValue": "Polska, Wieliczka",
+    "socials": "Znajdziesz mnie też na:"
+  },
+  "explore": {
+    "comingSoon": "Wkrótce"
+  },
+  "portfolio": {
+    "back": "Wróć",
+    "client": "Klient",
+    "role": "Rola",
+    "completed": "Ukończono",
+    "stack": "Technologie",
+    "links": "Linki",
+    "live": "Zobacz na żywo",
+    "repo": "Kod na GitHubie",
+    "cta": "Porozmawiajmy",
+    "copyright": "Copyright © {year} Mateusz Kabaja. Wszelkie prawa zastrzeżone.",
+    "placeholderNote": "Szczegółowe studium przypadku pojawi się wkrótce."
+  },
+  "notFound": {
+    "title": "Zabłądziłeś;",
+    "text": "Wygląda na to, że trafiłeś na nieistniejący link.",
+    "hint": "Wróć na stronę główną i spróbuj jeszcze raz.",
+    "back": "Wróć"
+  }
+}
