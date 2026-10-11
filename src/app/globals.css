@@ -43,6 +43,13 @@
       linear-gradient(90deg, rgb(255 255 255 / 0.025) 1px, transparent 1px);
   }
 
+  /* Small screens: a touch more contrast for secondary text. */
+  @media (max-width: 991px) {
+    :root {
+      --color-on-dark-muted: #b3b4b9;
+    }
+  }
+
   html {
     font-size: 15px;
     overscroll-behavior-y: none;
