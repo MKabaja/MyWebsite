@@ -2,7 +2,7 @@
 
 Pełna historia i pułapki: `docs/kontekstProjektu.md`. Zasady: `AGENTS.md`, struktura: `docs/ARCHITECTURE.md`.
 
-Ostatnia aktualizacja: 2026-11-01 · branch `nextjs-rewrite` (nie wypchnięty)
+Ostatnia aktualizacja: 2026-11-01 · branch `nextjs-rewrite`
 
 ## Zrobione
 
@@ -52,5 +52,4 @@ Ostatnia aktualizacja: 2026-11-01 · branch `nextjs-rewrite` (nie wypchnięty)
 - Teksty EN przetłumaczone automatycznie — do przejrzenia.
 - Test na prawdziwym telefonie (HTTPS): gyro na kartach projektów, płynność karuzeli i hero.
 - Opcjonalnie: `smoothTouch` ScrollSmoothera na telefonie (bardziej „desktopowy” scroll) — do decyzji po teście.
-- Aktualizacja `next` do 16.4.3 (krytyczne luki z `npm audit`) — do decyzji Mateusza.
 - Konkretne IP w `allowedDevOrigins` — do decyzji.
