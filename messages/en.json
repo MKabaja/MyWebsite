@@ -1,0 +1,148 @@
+{
+  "meta": {
+    "title": "Mateusz Kabaja — Web Developer",
+    "description": "Portfolio of Mateusz Kabaja — web developer. Web projects, JavaScript, React, PHP, design and 3D.",
+    "aboutTitle": "About — Mateusz Kabaja",
+    "contactTitle": "Contact — Mateusz Kabaja",
+    "exploreTitle": "Projects — Mateusz Kabaja",
+    "notFoundTitle": "Page not found — Mateusz Kabaja"
+  },
+  "nav": {
+    "about": "About",
+    "explore": "Explore",
+    "contact": "Contact",
+    "language": "Language",
+    "switchTo": "Switch to {language}"
+  },
+  "person": {
+    "name": "Mateusz Kabaja",
+    "jobTitle": "Web Developer",
+    "status": "Open to new projects",
+    "homeLink": "Home page"
+  },
+  "social": {
+    "github": "My GitHub",
+    "linkedin": "Find me on LinkedIn",
+    "facebook": "Find me on Facebook"
+  },
+  "home": {
+    "hero": {
+      "status": "Open to work & projects",
+      "intro": "< intro >",
+      "headline": "Web developer blending code with design to build modern websites 🔥",
+      "shaderNote": "rendered with a shader",
+      "photoAlt": "Mateusz Kabaja",
+      "scrollHint": "scroll",
+      "terminalLabel": "Ubuntu terminal — Linux is my daily driver"
+    },
+    "about": {
+      "spotlightNote": "what I build with",
+      "spotlightTitle": "React",
+      "spotlightText": "Components, hooks and state — my everyday toolkit.",
+      "heading": "Code, design and a bit of 3D 🔥",
+      "note": "about me",
+      "text": "For over a year I've been growing as a front-end developer and moving steadily towards full-stack — React on the front, PHP and Laravel on the back. My favourite moment is when an idea from my notebook comes alive in the browser: with animations, a responsive layout and polished details."
+    },
+    "hire": {
+      "headingStart": "Open to work — looking for a role as a",
+      "headingRoles": "Front-end / React developer",
+      "headingEnd": "👀",
+      "stackHeading": "Core stack",
+      "skillsHeading": "Skills",
+      "skills": [
+        "Responsive, accessible interfaces",
+        "Animation — GSAP, CSS, WebGL",
+        "API and Firebase integrations",
+        "PHP / Laravel backend",
+        "UI design in Figma",
+        "3D design in Spline",
+        "Git and teamwork"
+      ],
+      "achievementsHeading": "Achievements",
+      "achievements": [
+        "PowerTask — a to-do app with a project roadmap (Firebase)",
+        "ShiftFlow & PrintForge — Laravel + React + Inertia.js apps",
+        "Over a year of consistent front-end learning and practice"
+      ],
+      "cta": "Get in touch"
+    },
+    "portfolio": {
+      "marquee": "Portfolio",
+      "dragNote": "drag to explore",
+      "fps": "Rendering at: {fps} fps",
+      "carousel": "Projects — drag to browse",
+      "previous": "Previous project",
+      "next": "Next project",
+      "current": "{index}/{total} · {title}",
+      "open": "Open case"
+    },
+    "projects": {
+      "label": "project",
+      "marquee": "console.log",
+      "heading": "Projects",
+      "text": "Apps and websites I've worked on — with a description, code and a live demo.",
+      "live": "Live demo",
+      "repo": "Code",
+      "details": "Details",
+      "soon": "Coming soon"
+    },
+    "contact": {
+      "heading": "Let's talk",
+      "note": "drop me a line",
+      "text": "Looking for a developer to join your team, or have an idea for a website? Write to me — I'll reply as soon as I can.",
+      "copyright": "© {year} Mateusz Kabaja"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "name",
+      "email": "Email",
+      "emailPlaceholder": "email",
+      "subject": "Subject",
+      "subjectPlaceholder": "subject (optional)",
+      "message": "Message",
+      "messagePlaceholder": "message",
+      "submit": "Send!",
+      "sending": "Sending…",
+      "success": "Thank you! Your message has been sent ✅",
+      "failure": "Oops… sending failed. Please try again."
+    },
+    "errors": {
+      "empty": "This field is required!",
+      "tooShort": "Value is too short!",
+      "illegalChar": "Illegal characters!",
+      "invalidEmail": "Invalid format!",
+      "messageTooShort": "Min. 20 characters."
+    },
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "locationValue": "Wieliczka, Poland"
+  },
+  "explore": {
+    "comingSoon": "Coming soon"
+  },
+  "portfolio": {
+    "back": "Back",
+    "client": "Client",
+    "role": "Role",
+    "completed": "Completed",
+    "stack": "Stack",
+    "links": "Links",
+    "live": "Live demo",
+    "repo": "Code on GitHub",
+    "cta": "Let's talk",
+    "copyright": "Copyright © {year} Mateusz Kabaja. All rights reserved.",
+    "placeholderNote": "A detailed case study is coming soon.",
+    "caseStudy": "case study",
+    "media": "Recording of the {title} app",
+    "ctaText": "Got a similar project in mind? I'd love to hear about it."
+  },
+  "notFound": {
+    "title": "You got lost;",
+    "text": "Looks like you've followed a broken link.",
+    "hint": "Head back home and try again.",
+    "back": "Back"
+  }
+}

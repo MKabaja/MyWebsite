@@ -1,0 +1,82 @@
+.viewport {
+	--card-w: min(56vw, 1000px);
+	position: absolute;
+	inset: 0;
+	perspective: 1800px;
+	perspective-origin: 50% 20%;
+	cursor: grab;
+	touch-action: pan-y;
+	user-select: none;
+}
+
+.viewport,
+.viewport * {
+	touch-action: pan-y !important;
+}
+
+.viewport[data-pressed] {
+	cursor: grabbing;
+}
+
+.plane {
+	position: absolute;
+	inset: 0 -30%;
+	transform-style: preserve-3d;
+	transform-origin: 50% 50%;
+	will-change: transform;
+}
+
+.track {
+	position: relative;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	transform-style: preserve-3d;
+}
+
+@media (max-width: 991px) {
+	.viewport {
+		--card-w: min(80vw, 440px);
+		perspective: 1100px;
+	}
+
+	.plane {
+		inset: 0;
+	}
+}
+
+.controls {
+	display: none;
+}
+@media (max-width: 991px) {
+	.controls {
+		position: absolute;
+		inset: auto 12px 12px;
+		z-index: 20;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 8px;
+		background: rgb(27 28 30 / 0.96);
+		border: 1px dashed var(--color-guide);
+		color: var(--color-on-dark);
+	}
+	.controls button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 44px;
+		min-height: 44px;
+		color: var(--color-accent);
+	}
+	.controls button:focus-visible {
+		outline: 2px solid var(--color-accent);
+		outline-offset: -3px;
+	}
+	.controls p {
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		text-align: center;
+		line-height: 1.3;
+	}
+}

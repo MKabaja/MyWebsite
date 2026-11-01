@@ -1,0 +1,29 @@
+.marquee {
+	overflow: hidden;
+	white-space: nowrap;
+	user-select: none;
+}
+
+.track {
+	display: inline-flex;
+	animation: marquee linear infinite;
+	will-change: transform;
+}
+
+.item {
+	display: inline-flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+@keyframes marquee {
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.track {
+		animation: none;
+	}
+}

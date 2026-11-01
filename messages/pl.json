@@ -1,0 +1,148 @@
+{
+  "meta": {
+    "title": "Mateusz Kabaja — Web Developer",
+    "description": "Portfolio Mateusza Kabaji — web developer. Projekty webowe, JavaScript, React, PHP, design i 3D.",
+    "aboutTitle": "O mnie — Mateusz Kabaja",
+    "contactTitle": "Kontakt — Mateusz Kabaja",
+    "exploreTitle": "Projekty — Mateusz Kabaja",
+    "notFoundTitle": "Nie znaleziono strony — Mateusz Kabaja"
+  },
+  "nav": {
+    "about": "O mnie",
+    "explore": "Projekty",
+    "contact": "Kontakt",
+    "language": "Język",
+    "switchTo": "Przełącz na {language}"
+  },
+  "person": {
+    "name": "Mateusz Kabaja",
+    "jobTitle": "Web Developer",
+    "status": "Otwarty na nowe projekty",
+    "homeLink": "Strona główna"
+  },
+  "social": {
+    "github": "Mój GitHub",
+    "linkedin": "Znajdź mnie na LinkedIn",
+    "facebook": "Znajdź mnie na Facebooku"
+  },
+  "home": {
+    "hero": {
+      "status": "Otwarty na pracę i zlecenia",
+      "intro": "< intro >",
+      "headline": "Web developer, który łączy kod z designem, tworząc nowoczesne strony 🔥",
+      "shaderNote": "renderowane shaderem",
+      "photoAlt": "Mateusz Kabaja",
+      "scrollHint": "przewiń",
+      "terminalLabel": "Terminal Ubuntu — na co dzień pracuję w Linuksie"
+    },
+    "about": {
+      "spotlightNote": "na czym buduję",
+      "spotlightTitle": "React",
+      "spotlightText": "Komponenty, hooki i stan — mój codzienny warsztat.",
+      "heading": "Kod, design i odrobina 3D 🔥",
+      "note": "o mnie",
+      "text": "Od ponad roku rozwijam się w front-endzie i coraz mocniej idę w stronę full-stacku — React na froncie, PHP i Laravel na backendzie. Najbardziej lubię moment, gdy pomysł z notatnika zaczyna żyć w przeglądarce: z animacjami, responsywnym układem i dopracowanym detalem."
+    },
+    "hire": {
+      "headingStart": "Otwarty na zatrudnienie — szukam pracy jako",
+      "headingRoles": "Front-end / React developer",
+      "headingEnd": "👀",
+      "stackHeading": "Główny stack",
+      "skillsHeading": "Umiejętności",
+      "skills": [
+        "Responsywne i dostępne interfejsy",
+        "Animacje — GSAP, CSS, WebGL",
+        "Integracje z API i Firebase",
+        "Backend w PHP / Laravel",
+        "Projektowanie UI w Figmie",
+        "Grafika 3D w Spline",
+        "Git i praca w zespole"
+      ],
+      "achievementsHeading": "Osiągnięcia",
+      "achievements": [
+        "PowerTask — aplikacja To-Do z roadmapą projektów (Firebase)",
+        "ShiftFlow i PrintForge — aplikacje Laravel + React + Inertia.js",
+        "Ponad rok regularnej nauki i praktyki front-endu"
+      ],
+      "cta": "Napisz do mnie"
+    },
+    "portfolio": {
+      "marquee": "Portfolio",
+      "dragNote": "przeciągnij, aby odkryć",
+      "fps": "Renderowanie: {fps} fps",
+      "carousel": "Projekty — przeciągnij, aby przeglądać",
+      "previous": "Poprzedni projekt",
+      "next": "Następny projekt",
+      "current": "{index}/{total} · {title}",
+      "open": "Zobacz projekt"
+    },
+    "projects": {
+      "label": "projekt",
+      "marquee": "console.log",
+      "heading": "Projekty",
+      "text": "Aplikacje i strony, nad którymi pracowałem — z opisem, kodem i wersją demo.",
+      "live": "Live demo",
+      "repo": "Kod",
+      "details": "Szczegóły",
+      "soon": "Wkrótce"
+    },
+    "contact": {
+      "heading": "Porozmawiajmy",
+      "note": "napisz do mnie",
+      "text": "Szukasz developera do zespołu albo masz pomysł na stronę? Napisz — odpowiem najszybciej, jak to możliwe.",
+      "copyright": "© {year} Mateusz Kabaja"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Imię",
+      "namePlaceholder": "imię",
+      "email": "E-mail",
+      "emailPlaceholder": "e-mail",
+      "subject": "Temat",
+      "subjectPlaceholder": "temat (opcjonalnie)",
+      "message": "Treść wiadomości",
+      "messagePlaceholder": "wiadomość",
+      "submit": "Wyślij!",
+      "sending": "Wysyłanie…",
+      "success": "Dziękuję! Wiadomość została wysłana ✅",
+      "failure": "Ups… nie udało się wysłać. Spróbuj ponownie."
+    },
+    "errors": {
+      "empty": "Pole jest wymagane!",
+      "tooShort": "Wartość jest za krótka!",
+      "illegalChar": "Niedozwolone symbole!",
+      "invalidEmail": "Zły format!",
+      "messageTooShort": "Min. 20 znaków."
+    },
+    "email": "E-mail",
+    "phone": "Telefon",
+    "location": "Lokalizacja",
+    "locationValue": "Polska, Wieliczka"
+  },
+  "explore": {
+    "comingSoon": "Wkrótce"
+  },
+  "portfolio": {
+    "back": "Wróć",
+    "client": "Klient",
+    "role": "Rola",
+    "completed": "Ukończono",
+    "stack": "Technologie",
+    "links": "Linki",
+    "live": "Zobacz na żywo",
+    "repo": "Kod na GitHubie",
+    "cta": "Porozmawiajmy",
+    "copyright": "Copyright © {year} Mateusz Kabaja. Wszelkie prawa zastrzeżone.",
+    "placeholderNote": "Szczegółowe studium przypadku pojawi się wkrótce.",
+    "caseStudy": "studium przypadku",
+    "media": "Nagranie z aplikacji {title}",
+    "ctaText": "Masz podobny projekt? Chętnie o nim porozmawiam."
+  },
+  "notFound": {
+    "title": "Zabłądziłeś;",
+    "text": "Wygląda na to, że trafiłeś na nieistniejący link.",
+    "hint": "Wróć na stronę główną i spróbuj jeszcze raz.",
+    "back": "Wróć"
+  }
+}
