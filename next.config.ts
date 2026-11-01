@@ -6,7 +6,7 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig: NextConfig = {
 	output: 'standalone',
 	reactCompiler: true,
-	allowedDevOrigins: ['192.168.55.18'],
+	allowedDevOrigins: ['192.168.*.*'],
 };
 
 export default withNextIntl(nextConfig);
