@@ -1,29 +1,29 @@
 # Mateusz Kabaja — Portfolio
 
-Osobiste portfolio (wizytówka + projekty) w Next.js, React i TypeScript, z tłem WebGL płynnie przechodzącym między podstronami.
+Osobiste portfolio w Next.js, React i TypeScript: jedna długa strona z siatki kafelków nad tłem WebGL.
 
-Design i animacje oparte na otwartoźródłowym projekcie [Marchant Web '24](https://github.com/marchantweb/Marchant-Web) (Simon Le Marchant), przepisanym z Nuxt/Vue na Next.js/React, z własną treścią, kolorystyką i fontami.
+Techniki inspirowane [marchantweb.com](https://marchantweb.com) (Simon Le Marchant), z własną treścią, kolorystyką i fontami.
 
 ## Stack
 
-- Next.js (App Router) · React · TypeScript
-- Tailwind CSS v4 + CSS Modules (animacje)
-- GSAP (Draggable, Inertia, Observer) · WebGL (własny shader) · AOS
-- next-intl (PL / EN) · EmailJS (formularz kontaktowy) · lucide-react
+- Next.js 16 (App Router) · React 19 · TypeScript
+- Tailwind CSS 4 + CSS Modules · Biome
+- GSAP (ScrollSmoother, ScrollTrigger, SplitText, Draggable) · WebGL (własny shader)
+- next-intl (PL / EN) · EmailJS (formularz) · lucide-react · simple-icons
 
 ## Uruchomienie
 
 ```bash
 npm install
-npm run dev      # http://localhost:3000
-npm run build    # build produkcyjny (output: standalone)
+npm run dev        # http://localhost:3000
+npm run build      # build produkcyjny (output: standalone)
 npm run start
 ```
 
 ## Konfiguracja
 
 | Zmienna | Opis |
-|---|---|
-| `NEXT_PUBLIC_SITE_URL` | Publiczny adres strony (canonical, sitemap, hreflang), np. `https://mojadomena.pl` |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Publiczny adres strony (canonical, sitemap, hreflang) |
 
-Dane kontaktowe i klucze EmailJS: `src/lib/site.ts`. Projekty: `src/content/projects.ts`. Teksty: `messages/pl.json`, `messages/en.json`.
+Dokumentacja: `docs/ARCHITECTURE.md`, `docs/MAPA-PROJEKTU.md`, `docs/kontekstProjektu.md`, `docs/HANDOFF.md`.

@@ -1,10 +1,10 @@
 # kontekst.md — co zrobiliśmy i jak tu pracować
 
 Plik dla ludzi i agentów (Claude, Codex, subagenci), którzy wejdą do projektu bez kontekstu rozmowy.
-Szczegółowe zasady kodu: `CLAUDE.md`. Bieżący stan / TODO: `HANDOFF.md`. Ten plik: historia, mechanizmy, pułapki
+Szczegółowe zasady kodu: `AGENTS.md`, struktura: `docs/ARCHITECTURE.md`. Bieżący stan / TODO: `docs/HANDOFF.md`. Ten plik: historia, mechanizmy, pułapki
 i zasady współpracy z Mateuszem.
 
-Ostatnia aktualizacja: 2026-10-11.
+Ostatnia aktualizacja: 2026-11-01 (ścieżki po refaktorze feature-first; sekcja 2 opisuje historię i używa starych nazw).
 
 ---
 
@@ -61,14 +61,14 @@ Mateusz zdecyduje po obejrzeniu nowego mobilnego hero; jeśli nie, zostaje zwyk�
 
 | Mechanizm | Plik(i) | Uwagi |
 |---|---|---|
-| Tło WebGL | `src/components/background/ShaderBackground.tsx`, `shader.ts` | stały canvas, `clip-path` do `--grid-w`, `gsap.ticker`, kolory w `palette` |
-| Kafelki szare/akcent | `background/cells.ts`, `grid/Tile.tsx` | `Tile mode="grain" \| "accent"` rejestruje prostokąt; max 16 + 16 naraz |
-| Płynny scroll (desktop) | `smooth/SmoothScroll.tsx` | ScrollSmoother `smooth: 2`, `data-speed`, `data-lag`, `data-fade`, skok do `#hash` |
-| Efekty mobile | `smooth/mobileEffects.ts` | `data-m-recede`, `data-m-expand`, `data-m-speed`, `data-marquee` |
-| Poszerzanie siatki | `home/HomePage.tsx` | `--grid-w`: desktop 1280 → 100vw (300% scrolla), mobile 100vw−32 px → 100vw (100%) |
-| Sekcje | `src/components/home/*Section.tsx` | hero/about używają `contents` + pozycji w siatce na mobile |
+| Tło WebGL | `src/features/site-shell/components/shader-background/` | stały canvas, `clip-path` do `--grid-w`, `gsap.ticker`, kolory w `palette` |
+| Kafelki szare/akcent | `src/shared/lib/shader-cells.ts`, `src/shared/components/tile/` | `Tile mode="grain" \| "accent"` rejestruje prostokąt; max 16 + 16 naraz |
+| Płynny scroll (desktop) | `src/features/site-shell/components/smooth-scroll/` | ScrollSmoother `smooth: 2`, `data-speed`, `data-lag`, `data-fade`, skok do `#hash` |
+| Efekty mobile | `smooth-scroll/smooth-scroll.mobile-effects.ts` | `data-m-recede`, `data-m-expand`, `data-m-speed`, `data-marquee` |
+| Poszerzanie siatki | `src/features/home/components/home-page/use-grid-widening.ts` | `--grid-w`: desktop 1280 → 100vw (300% scrolla), mobile 100vw−32 px → 100vw (100%) |
+| Sekcje | `src/features/{home,projects,contact}/components/*-section/` | hero/about używają `contents` + pozycji w siatce na mobile |
 | Teksty | `messages/pl.json`, `messages/en.json` | zero tekstów w komponentach |
-| Dane | `src/content/projects.ts`, `stack.ts`, `src/lib/site.ts` | |
+| Dane | `src/features/projects/model/projects.constants.ts`, `src/shared/lib/tech-stack.ts`, `src/shared/lib/site.ts` | |
 
 ## 4. Pułapki, na które już wpadliśmy
 
@@ -77,7 +77,6 @@ Mateusz zdecyduje po obejrzeniu nowego mobilnego hero; jeśli nie, zostaje zwyk�
 - **Marquee**: pętla `translateX(-50%)` wymaga, by połowa toru była szersza od ekranu — dobierz `repeat` (i `duration`, bo prędkość zależy od długości toru).
 - **Tilt kart**: transform na elemencie, który zawiera etykiety — inaczej etykiety „stoją w miejscu”.
 - **Po zmianach w dev (HMR)** efekty GSAP potrafią zostać w starym stanie — odśwież stronę, zanim uznasz, że coś nie działa.
-- **Prettier nie jest w projekcie** — nie uruchamiaj go (przeformatuje pliki na swój styl). Styl: linie do ~120 znaków, jak w okolicznym kodzie.
 - **Stare typy w `.next`** po usunięciu tras → `rm -rf .next`. Błędy `LayoutProps`/`PageProps` z generowanych typów są do zignorowania, jeśli build przechodzi.
 - **`next dev` dopisuje blok do `AGENTS.md`** — to normalne.
 - Na desktopie ScrollSmoother przechwytuje scroll: w testach Playwright używaj `window.scrollTo`, a na mobile emulacji dotyku (kółko myszy nie przewija).
@@ -106,17 +105,17 @@ Telefon: `http://<IP Windowsa w Wi-Fi>:3000` (`ipconfig`). Usunięcie: `netsh in
 
 ### Weryfikacja przed commitem
 ```bash
-npm run lint
-npx tsc --noEmit
+npm run lint:fix
+npm run typecheck
 npm run build          # przy większych zmianach
 ```
 Wizualnie: zrzuty Playwright desktop **1440×900** i mobile **390×844** (emulacja dotyku), cała strona + `/portfolio/[slug]` + 404,
 brak poziomego scrolla. Przy zmianach „mobile only” — porównanie zrzutów desktopu przed/po.
 
 ### Strojenie
-- Kolory shadera: `palette` w `src/components/background/shader.ts`; ziarno `GRAIN_STRENGTH`, miękkość pasów `BAND_EDGE`.
-- Gradient hero/terminala: `src/components/home/hero/gradient.ts`.
-- Sesja terminala: `SESSION` w `src/components/home/hero/HeroTerminal.tsx`.
+- Kolory shadera: `palette` w `shader-background.program.ts`; ziarno `GRAIN_STRENGTH`, miękkość pasów `BAND_EDGE`.
+- Gradient hero/terminala: `src/features/home/model/home.constants.ts`.
+- Sesja terminala: `TERMINAL_SESSION` w `hero-terminal.constants.ts`.
 
 ## 6. Zasady współpracy z Mateuszem
 

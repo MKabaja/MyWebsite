@@ -1,11 +1,12 @@
 # HANDOFF — stan prac
 
-Pełna historia, pułapki i zasady współpracy: `kontekst.md`.
+Pełna historia i pułapki: `docs/kontekstProjektu.md`. Zasady: `AGENTS.md`, struktura: `docs/ARCHITECTURE.md`.
 
-Ostatnia aktualizacja: 2026-10-11 · branch `nextjs-rewrite` (nie wypchnięty)
+Ostatnia aktualizacja: 2026-11-01 · branch `nextjs-rewrite` (nie wypchnięty)
 
 ## Zrobione
 
+- Refaktor do struktury z Linkera (2026-11-01): `src/features`, `src/shared`, `src/styles`, klasy w `*.styles.ts`, Biome zamiast ESLint, React Compiler, `.claude/` z hookiem i regułami. Wygląd zweryfikowany porównaniem DOM i computed styles. Starsze wpisy niżej mówią o poprzednich nazwach plików.
 - Etap 1: port Marchant Web '24 (Nuxt → Next.js 16, TS, Tailwind v4, next-intl PL/EN, przejścia out-in).
 - Etap 2: redesign w stylu marchantweb.com (2025) — jedna długa ciemna strona z siatki kafelków:
   - fundament: `ShaderBackground` + rejestr kafelków (`grain`/`accent`), `SmoothScroll` (ScrollSmoother, parallax,
@@ -51,4 +52,5 @@ Ostatnia aktualizacja: 2026-10-11 · branch `nextjs-rewrite` (nie wypchnięty)
 - Teksty EN przetłumaczone automatycznie — do przejrzenia.
 - Test na prawdziwym telefonie (HTTPS): gyro na kartach projektów, płynność karuzeli i hero.
 - Opcjonalnie: `smoothTouch` ScrollSmoothera na telefonie (bardziej „desktopowy” scroll) — do decyzji po teście.
-- `next.config.ts` ma niezacommitowaną zmianę formatowania + konkretne IP w `allowedDevOrigins` — do decyzji.
+- Aktualizacja `next` do 16.4.3 (krytyczne luki z `npm audit`) — do decyzji Mateusza.
+- Konkretne IP w `allowedDevOrigins` — do decyzji.
