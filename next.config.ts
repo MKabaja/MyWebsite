@@ -5,7 +5,7 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
 	output: 'standalone',
-	// Lets phones on the local network load dev assets (HMR) from `next dev`.
+	reactCompiler: true,
 	allowedDevOrigins: ['192.168.55.18'],
 };
 
