@@ -1,0 +1,10 @@
+.placeholder {
+	background:
+		radial-gradient(70% 90% at 78% 18%, rgb(255 140 50 / 0.32), transparent 62%),
+		radial-gradient(55% 70% at 12% 88%, rgb(0 212 204 / 0.14), transparent 60%),
+		linear-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px) 0 0 / 48px
+		48px,
+		linear-gradient(90deg, rgb(255 255 255 / 0.035) 1px, transparent 1px) 0 0 /
+		48px 48px,
+		linear-gradient(145deg, #232427, #0d0d0d);
+}

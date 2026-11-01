@@ -1,0 +1,11 @@
+@utility grid-paper {
+	background-image: var(--grid-paper);
+	background-size: 24px 24px;
+}
+
+@utility grid-frame {
+	position: relative;
+	width: var(--grid-w);
+	max-width: 100%;
+	margin-inline: auto;
+}

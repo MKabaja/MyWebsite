@@ -1,0 +1,43 @@
+.page {
+	position: relative;
+}
+
+@keyframes page-in {
+	from {
+		opacity: 0;
+		filter: blur(1px);
+	}
+}
+
+@keyframes page-out {
+	to {
+		opacity: 0;
+		filter: blur(1px);
+	}
+}
+
+.page[data-phase="enter"] {
+	animation: page-in var(--page-enter-duration, 1s) ease
+		var(--page-enter-delay, 0s) backwards;
+}
+
+.page[data-phase="leave"] {
+	animation: page-out var(--page-leave-duration, 1s) ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.page[data-phase] {
+		animation: none;
+	}
+}
+
+@media (max-width: 991px) and (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

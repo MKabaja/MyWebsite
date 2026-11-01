@@ -1,0 +1,36 @@
+.indicator {
+	color: #c9c2bb;
+	cursor: default;
+	font-size: 0.95rem;
+	font-weight: 500;
+}
+
+.light {
+	display: inline-block;
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background-color: #00d4cc;
+	margin-right: 8px;
+	position: relative;
+}
+
+.light::before {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-color: #00d4cc;
+	opacity: 0.5;
+	animation: ping 2s cubic-bezier(0, 0, 0.3, 1) infinite;
+}
+
+@keyframes ping {
+	80%,
+	to {
+		opacity: 0;
+		transform: scale(3);
+	}
+}
