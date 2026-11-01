@@ -7,7 +7,7 @@ export const heroTerminalStyles = {
 	idleDot: 'size-2.5 rounded-full bg-white/20',
 	title: 'ms-3 truncate text-[0.72rem] text-white/45',
 	screen:
-		'flex min-h-0 flex-1 flex-col justify-end overflow-hidden px-4 py-3 text-white/85',
+		'flex min-h-0 flex-1 flex-col justify-end overflow-hidden [overflow-anchor:none] px-4 py-3 text-white/85',
 	historyLine: 'font-normal break-all whitespace-pre-wrap',
 	outputLine: 'text-white/55',
 	currentLine: 'font-normal break-all',
