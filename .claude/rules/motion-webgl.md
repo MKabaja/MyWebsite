@@ -19,6 +19,7 @@ paths:
 - W obszarze poszerzania siatki (pierwsze 300% scrolla na desktopie) wysokości kafelków podawaj w `vh`/px, nie zależnie od treści.
 - Mobilny hero skaluj przez `transform`, nie `--grid-w` (zmiana szerokości to reflow co klatkę).
 - Parallax: `data-speed="clamp(1.03…1.7)"`, `data-lag`, `data-fade`; na mobile te same wartości odtwarza `smooth-scroll.mobile-effects.ts`.
+- Element, którego treść zmienia się podczas scrolla (terminal), musi mieć `overflow-anchor: none`, inaczej przeglądarka przesuwa stronę na mobile.
 - Marquee: pętla `translateX(-50%)` wymaga połowy toru szerszej od ekranu; dobierz `repeat` i `duration` (prędkość zależy od długości toru).
 - Tilt kart: transform na elemencie, który zawiera etykiety, inaczej etykiety stoją w miejscu.
 - Karuzela na dotyku wymaga `touch-action: pan-y`, bo Draggable wymusza `manipulation` i psuje swipe.

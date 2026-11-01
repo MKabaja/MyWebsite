@@ -17,8 +17,8 @@ Ostatnia aktualizacja: 2026-11-01 · branch `nextjs-rewrite`
   - ciemna strona projektu `/portfolio/[slug]` i 404.
 - Usunięte: `/about`, `/contact`, `/explore`, stary Hero, NavMenu, BottomBar, AOS.
 - Mobile (< 992 px), desktop bez zmian wizualnych:
-  - hero: ramka startuje ze skali 0.86 i rośnie do pełnej szerokości w pierwszych ~240 px scrolla (`transform`, bez
-    reflow), shader przycinany do niej przez `--shader-w`; zdjęcie 1.18 → 1; PL/EN w miejscu statusu, sociale w kafelku z logo;
+  - hero + about: wspólna ramka startuje ze skali 0.74 i rośnie do pełnej szerokości przez 1,4 ekranu scrolla (`transform`, bez
+    reflow), shader przycinany do niej przez `--shader-w`; PL/EN w miejscu statusu, sociale w kafelku z logo;
   - `mobileEffects`: wartości `data-speed` z desktopu odtwarzane na natywnym scrollu, scrub z opóźnieniem 0.6 s;
     usunięte wygaszanie całych sekcji (`data-m-recede` tylko na szerokim dotyku);
   - karuzela: sama się kręci (pauza 3 s po interakcji), pochylona jak desktop, karta na środku dostaje stan „hover”
@@ -45,10 +45,13 @@ Ostatnia aktualizacja: 2026-11-01 · branch `nextjs-rewrite`
 
 ## Do zrobienia / pomysły
 
+- Poziomy jakości shadera dla słabego sprzętu i łącza (pełny, lżejszy, statyczny) — do decyzji Mateusza.
+- Wysokość strony na desktopie zmienia się podczas poszerzania siatki (6275 → 6207 px przy 1600 px), możliwy skok scrolla.
+- Netlify: ustawić `NEXT_PUBLIC_SITE_URL`.
 - Prawdziwe osiągnięcia (`home.hire.achievements`) — obecne są tymczasowe.
 - Prawdziwe opisy, media i linki projektów (ShiftFlow, PrintForge — placeholdery; PowerTask bez linków live/repo).
 - Poster i lżejszy `webm` filmu PowerTask (ma czarne pasy w samym pliku).
-- `NEXT_PUBLIC_SITE_URL` po zakupie domeny; obraz OG.
+- Obraz OG.
 - Teksty EN przetłumaczone automatycznie — do przejrzenia.
 - Test na prawdziwym telefonie (HTTPS): gyro na kartach projektów, płynność karuzeli i hero.
 - Opcjonalnie: `smoothTouch` ScrollSmoothera na telefonie (bardziej „desktopowy” scroll) — do decyzji po teście.
