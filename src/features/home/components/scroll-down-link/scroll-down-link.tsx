@@ -2,7 +2,6 @@
 
 import type { MouseEvent, ReactNode } from 'react';
 import { ScrollSmoother } from '@/shared/lib/gsap';
-import { matchesMedia, mediaQueries } from '@/shared/lib/media-queries';
 
 type ScrollDownLinkProps = {
 	targetId: string;
@@ -19,18 +18,10 @@ export function ScrollDownLink({
 }: ScrollDownLinkProps) {
 	function handleClick(event: MouseEvent<HTMLAnchorElement>) {
 		const target = document.getElementById(targetId);
-		if (!target) return;
-		event.preventDefault();
 		const smoother = ScrollSmoother.get();
-		if (smoother) {
-			smoother.scrollTo(target, true, 'top top');
-			return;
-		}
-		target.scrollIntoView({
-			behavior: matchesMedia(mediaQueries.narrowReducedMotion)
-				? 'instant'
-				: 'smooth',
-		});
+		if (!target || !smoother) return;
+		event.preventDefault();
+		smoother.scrollTo(target, true, 'top top');
 	}
 
 	return (

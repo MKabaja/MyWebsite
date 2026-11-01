@@ -84,10 +84,7 @@ function animateSpeedParallax() {
 			(element.dataset.speed ?? '').replace('clamp(', ''),
 		);
 		if (!speed || speed === 1 || !element.getClientRects().length) continue;
-		const top = () =>
-			element.getBoundingClientRect().top +
-			window.scrollY -
-			Number(gsap.getProperty(element, 'y'));
+		const top = () => getLayoutTopInPixels(element);
 		const start = () => Math.max(0, top() - window.innerHeight);
 		const end = () => top() + element.offsetHeight;
 		const rest = () =>
@@ -207,4 +204,14 @@ function boostMarqueesOnScroll() {
 		boost.rate = 1;
 		applyRate();
 	};
+}
+
+function getLayoutTopInPixels(element: HTMLElement) {
+	let top = 0;
+	let current: Element | null = element;
+	while (current instanceof HTMLElement) {
+		top += current.offsetTop;
+		current = current.offsetParent;
+	}
+	return top;
 }

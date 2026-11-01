@@ -6,16 +6,14 @@ import { matchesMedia, mediaQueries } from '@/shared/lib/media-queries';
 
 const DESKTOP_START_WIDTH_PIXELS = 1280;
 const TOUCH_TABLET_GUTTER_PIXELS = 32;
-const MOBILE_START_SCALE = 0.86;
-const MOBILE_PORTRAIT_START_SCALE = 1.18;
-const MOBILE_MIN_SCROLL_PIXELS = 120;
-const MOBILE_MAX_SCROLL_VIEWPORT_RATIO = 0.6;
+const MOBILE_START_SCALE = 0.74;
+const MOBILE_SCROLL_VIEWPORT_RATIO = 1.4;
 
 export function useGridWidening() {
 	useEffect(() => {
 		const media = gsap.matchMedia();
 		media.add(mediaQueries.wide, widenGridOnScroll);
-		media.add(mediaQueries.narrowFullMotion, scaleHeroOnScroll);
+		media.add(mediaQueries.narrowFullMotion, scaleFrameOnScroll);
 		return () => media.revert();
 	}, []);
 }
@@ -60,10 +58,10 @@ function widenGridOnScroll() {
 	};
 }
 
-function scaleHeroOnScroll() {
+function scaleFrameOnScroll() {
 	const root = document.documentElement;
-	const hero = document.querySelector<HTMLElement>('[data-m-hero]');
-	if (!hero) return;
+	const frame = document.querySelector<HTMLElement>('[data-m-frame]');
+	if (!frame) return;
 	const state = { scale: MOBILE_START_SCALE };
 
 	function applyShaderWidth() {
@@ -76,21 +74,17 @@ function scaleHeroOnScroll() {
 	const timeline = gsap.timeline({
 		defaults: { ease: 'none' },
 		scrollTrigger: {
-			trigger: hero,
+			trigger: frame,
 			start: 'top top',
-			end: () =>
-				`+=${gsap.utils.clamp(
-					MOBILE_MIN_SCROLL_PIXELS,
-					window.innerHeight * MOBILE_MAX_SCROLL_VIEWPORT_RATIO,
-					hero.offsetHeight - window.innerHeight,
-				)}`,
+			end: () => `+=${window.innerHeight * MOBILE_SCROLL_VIEWPORT_RATIO}`,
 			scrub: 0.5,
 			invalidateOnRefresh: true,
+			toggleClass: { targets: frame, className: 'will-change-transform' },
 		},
 	});
 	timeline
 		.fromTo(
-			hero,
+			frame,
 			{ scale: MOBILE_START_SCALE, transformOrigin: '50% 0%' },
 			{ scale: 1 },
 			0,
@@ -99,12 +93,6 @@ function scaleHeroOnScroll() {
 			state,
 			{ scale: MOBILE_START_SCALE },
 			{ scale: 1, onUpdate: applyShaderWidth },
-			0,
-		)
-		.fromTo(
-			hero.querySelector('[data-m-portrait]'),
-			{ scale: MOBILE_PORTRAIT_START_SCALE },
-			{ scale: 1 },
 			0,
 		);
 	applyShaderWidth();

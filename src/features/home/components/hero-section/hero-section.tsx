@@ -74,7 +74,7 @@ export function HeroSection() {
 	useSplitReveal(headlineRef, { delayInSeconds: 0.6 });
 
 	return (
-		<section data-m-hero className={section}>
+		<section className={section}>
 			<div className={column}>
 				<Tile mode="grain" lines={['left']} className={logoTile}>
 					<Logo
@@ -183,7 +183,6 @@ export function HeroSection() {
 							height={400}
 							sizes="(min-width: 992px) 180px, 55vw"
 							priority
-							data-m-portrait
 							className={portrait}
 						/>
 					</Tile>
