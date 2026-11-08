@@ -60,9 +60,9 @@
       ],
       "achievementsHeading": "Osiągnięcia",
       "achievements": [
-        "PowerTask — aplikacja To-Do z roadmapą projektów (Firebase)",
-        "ShiftFlow i PrintForge — aplikacje Laravel + React + Inertia.js",
-        "Ponad rok regularnej nauki i praktyki front-endu"
+        "DriveBook — system rezerwacji aut, Laravel API + React, wdrożony",
+        "ShiftFlow — grafiki pracy, API na produkcji, frontend w toku",
+        "Linker — narzędzie dla e-commerce w Next.js, używane w pracy"
       ],
       "cta": "Napisz do mnie"
     },
@@ -81,10 +81,7 @@
       "marquee": "console.log",
       "heading": "Projekty",
       "text": "Aplikacje i strony, nad którymi pracowałem — z opisem, kodem i wersją demo.",
-      "live": "Live demo",
-      "repo": "Kod",
-      "details": "Szczegóły",
-      "soon": "Wkrótce"
+      "details": "Szczegóły"
     },
     "contact": {
       "heading": "Porozmawiajmy",
@@ -120,24 +117,44 @@
     "location": "Lokalizacja",
     "locationValue": "Polska, Wieliczka"
   },
-  "explore": {
-    "comingSoon": "Wkrótce"
-  },
   "portfolio": {
     "back": "Wróć",
-    "client": "Klient",
     "role": "Rola",
-    "completed": "Ukończono",
-    "stack": "Technologie",
-    "links": "Linki",
-    "live": "Zobacz na żywo",
-    "repo": "Kod na GitHubie",
+    "stack": "Stack",
     "cta": "Porozmawiajmy",
     "copyright": "Copyright © {year} Mateusz Kabaja. Wszelkie prawa zastrzeżone.",
-    "placeholderNote": "Szczegółowe studium przypadku pojawi się wkrótce.",
     "caseStudy": "studium przypadku",
     "media": "Nagranie z aplikacji {title}",
-    "ctaText": "Masz podobny projekt? Chętnie o nim porozmawiam."
+    "ctaText": "Masz podobny projekt? Chętnie o nim porozmawiam.",
+    "period": "Okres",
+    "stackGroups": {
+      "frontend": "Frontend",
+      "backend": "Backend i dane",
+      "quality": "Jakość",
+      "infrastructure": "Infrastruktura"
+    },
+    "problemsHeading": "Problemy, które rozwiązuję",
+    "problem": "Problem",
+    "solution": "Rozwiązanie",
+    "stagesHeading": "Aktualny stan",
+    "stagesProgress": "Ukończone etapy: {done} z {total}",
+    "stageStates": {
+      "done": "zrobione",
+      "current": "w toku",
+      "planned": "w planach"
+    },
+    "status": {
+      "completed": "Ukończony",
+      "inProgress": "W trakcie prac",
+      "early": "Wczesny projekt"
+    },
+    "actions": {
+      "live": "Chcę zobaczyć live demo",
+      "liveAnyway": "Mimo to chcę zobaczyć",
+      "code": "Pokaż mi kod",
+      "codeFrontend": "Kod frontendu",
+      "codeBackend": "Kod backendu"
+    }
   },
   "notFound": {
     "title": "Zabłądziłeś;",

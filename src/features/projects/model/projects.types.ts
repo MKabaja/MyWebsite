@@ -7,22 +7,74 @@ export type ContentBlock =
 	| { type: 'paragraph'; text: Localized }
 	| { type: 'image'; src: string; alt: Localized; caption?: Localized };
 
-type ProjectVideo = { mp4: string; webm?: string; poster?: string };
+export type ProjectStatus = 'completed' | 'in-progress' | 'early';
 
-type ProjectLinks = { live?: string; repo?: string };
+export type ProjectVideoMedia = { kind: 'video'; cover: string; mp4: string };
+
+type ProjectImageMedia = {
+	kind: 'image';
+	cover: string;
+	widthInPixels: number;
+	heightInPixels: number;
+	alt: Localized;
+};
+
+type ProjectMedia = ProjectVideoMedia | ProjectImageMedia;
+
+export type ProjectRepository = {
+	url: string;
+	part?: 'frontend' | 'backend';
+};
+
+type ProjectLinks = {
+	live: string;
+	repositories: ProjectRepository[];
+};
+
+export type StackGroupName =
+	| 'frontend'
+	| 'backend'
+	| 'quality'
+	| 'infrastructure';
+
+export type ProjectStackGroup = {
+	name: StackGroupName;
+	technologies: string[];
+};
+
+export type ProjectProblem = {
+	title: Localized;
+	problem: Localized;
+	solution: Localized;
+};
+
+export type ProjectStageState = 'done' | 'current' | 'planned';
+
+export type ProjectStage = {
+	state: ProjectStageState;
+	title: Localized;
+	description: Localized;
+};
+
+type ProjectCaseStudy = {
+	stackGroups: ProjectStackGroup[];
+	problems: ProjectProblem[];
+	stages: ProjectStage[];
+};
 
 export type Project = {
 	slug: string;
 	title: string;
 	type: Localized;
 	lead: Localized;
-	role?: Localized;
-	client?: Localized;
-	completed?: string;
+	status: ProjectStatus;
+	statusNote: Localized;
+	role: Localized;
+	period: Localized;
 	stack: string[];
-	video?: ProjectVideo;
-	links?: ProjectLinks;
+	media: ProjectMedia;
+	links: ProjectLinks;
 	content: ContentBlock[];
-	/** Wpis bez gotowych materiałów: zamiast mediów pokazuje okładkę „wkrótce”. */
-	isPlaceholder?: boolean;
+	/** Brak oznacza krótki wpis: projekt jest tylko w karuzeli, bez karty na liście. */
+	caseStudy?: ProjectCaseStudy;
 };

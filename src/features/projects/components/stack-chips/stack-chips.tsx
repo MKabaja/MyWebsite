@@ -1,5 +1,5 @@
 import { TechIcon } from '@/shared/components/tech-icon';
-import { toolbox } from '@/shared/lib/tech-stack';
+import { projectTech } from '@/shared/lib/tech-stack';
 import { cn } from '@/shared/lib/utils';
 import { stackChipsStyles } from './stack-chips.styles';
 
@@ -8,7 +8,7 @@ type StackChipsProps = {
 	className?: string;
 };
 
-const techByName = new Map(toolbox.map((tech) => [tech.name, tech]));
+const techByName = new Map(projectTech.map((tech) => [tech.name, tech]));
 
 const { list, chip, chipIcon } = stackChipsStyles;
 

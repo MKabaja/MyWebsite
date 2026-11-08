@@ -12,7 +12,7 @@ export const TERMINAL_SESSION: TerminalStep[] = [
 		command: 'sudo apt update && sudo apt upgrade -y',
 		output: ['All packages are up to date.'],
 	},
-	{ command: 'ls ~/projects', output: ['powertask  shiftflow  printforge'] },
+	{ command: 'ls ~/projects', output: ['drivebook  shiftflow  linker'] },
 	{
 		command: 'cd ~/projects/shiftflow && git pull',
 		output: ['Already up to date.'],

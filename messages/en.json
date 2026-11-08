@@ -60,9 +60,9 @@
       ],
       "achievementsHeading": "Achievements",
       "achievements": [
-        "PowerTask — a to-do app with a project roadmap (Firebase)",
-        "ShiftFlow & PrintForge — Laravel + React + Inertia.js apps",
-        "Over a year of consistent front-end learning and practice"
+        "DriveBook — a car rental system, Laravel API + React, deployed",
+        "ShiftFlow — work schedules, API in production, frontend in progress",
+        "Linker — an e-commerce tool in Next.js, built at work"
       ],
       "cta": "Get in touch"
     },
@@ -81,10 +81,7 @@
       "marquee": "console.log",
       "heading": "Projects",
       "text": "Apps and websites I've worked on — with a description, code and a live demo.",
-      "live": "Live demo",
-      "repo": "Code",
-      "details": "Details",
-      "soon": "Coming soon"
+      "details": "Details"
     },
     "contact": {
       "heading": "Let's talk",
@@ -120,24 +117,44 @@
     "location": "Location",
     "locationValue": "Wieliczka, Poland"
   },
-  "explore": {
-    "comingSoon": "Coming soon"
-  },
   "portfolio": {
     "back": "Back",
-    "client": "Client",
     "role": "Role",
-    "completed": "Completed",
     "stack": "Stack",
-    "links": "Links",
-    "live": "Live demo",
-    "repo": "Code on GitHub",
     "cta": "Let's talk",
     "copyright": "Copyright © {year} Mateusz Kabaja. All rights reserved.",
-    "placeholderNote": "A detailed case study is coming soon.",
     "caseStudy": "case study",
     "media": "Recording of the {title} app",
-    "ctaText": "Got a similar project in mind? I'd love to hear about it."
+    "ctaText": "Got a similar project in mind? I'd love to hear about it.",
+    "period": "Period",
+    "stackGroups": {
+      "frontend": "Frontend",
+      "backend": "Backend & data",
+      "quality": "Quality",
+      "infrastructure": "Infrastructure"
+    },
+    "problemsHeading": "Problems it solves",
+    "problem": "Problem",
+    "solution": "Solution",
+    "stagesHeading": "Current state",
+    "stagesProgress": "Stages finished: {done} of {total}",
+    "stageStates": {
+      "done": "done",
+      "current": "in progress",
+      "planned": "planned"
+    },
+    "status": {
+      "completed": "Finished",
+      "inProgress": "In progress",
+      "early": "Early project"
+    },
+    "actions": {
+      "live": "Show me the live demo",
+      "liveAnyway": "Show me anyway",
+      "code": "Show me the code",
+      "codeFrontend": "Frontend code",
+      "codeBackend": "Backend code"
+    }
   },
   "notFound": {
     "title": "You got lost;",

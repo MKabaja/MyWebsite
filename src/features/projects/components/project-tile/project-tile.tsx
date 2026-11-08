@@ -1,11 +1,12 @@
 'use client';
 
-import { ArrowUpRight, ExternalLink } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
+import { ProjectActions } from '@/features/projects/components/project-actions';
+import { ProjectStatusBadge } from '@/features/projects/components/project-status-badge';
 import { StackChips } from '@/features/projects/components/stack-chips';
 import type { Project } from '@/features/projects/model/projects.types';
 import { toLocale } from '@/i18n/routing';
-import { GithubIcon } from '@/shared/components/brand-icons';
 import { TransitionLink } from '@/shared/components/page-transition';
 import { projectTileStyles } from './project-tile.styles';
 import { useProjectTilt } from './use-project-tilt';
@@ -23,13 +24,12 @@ const {
 	typeBadge,
 	article,
 	cornerArrow,
+	statusBadge,
 	title,
 	titleLink,
 	lead,
 	stackChips,
 	actions,
-	externalLink,
-	soonBadge,
 	detailsLink,
 } = projectTileStyles;
 
@@ -39,7 +39,6 @@ export function ProjectTile({ project, index }: ProjectTileProps) {
 	const cardRef = useProjectTilt();
 
 	const href = `/portfolio/${project.slug}`;
-	const { live, repo } = project.links ?? {};
 
 	return (
 		<li className={item} data-fade>
@@ -58,6 +57,7 @@ export function ProjectTile({ project, index }: ProjectTileProps) {
 						strokeWidth={1.25}
 						className={cornerArrow}
 					/>
+					<ProjectStatusBadge status={project.status} className={statusBadge} />
 					<h3 className={title}>
 						<TransitionLink href={href} className={titleLink}>
 							{project.title}
@@ -68,31 +68,7 @@ export function ProjectTile({ project, index }: ProjectTileProps) {
 					<StackChips stack={project.stack} className={stackChips} />
 
 					<div className={actions}>
-						{live && (
-							<a
-								href={live}
-								target="_blank"
-								rel="noopener noreferrer"
-								className={externalLink}
-							>
-								<ExternalLink size={14} aria-hidden />
-								{t('live')}
-							</a>
-						)}
-						{repo && (
-							<a
-								href={repo}
-								target="_blank"
-								rel="noopener noreferrer"
-								className={externalLink}
-							>
-								<GithubIcon size={14} />
-								{t('repo')}
-							</a>
-						)}
-						{project.isPlaceholder && (
-							<span className={soonBadge}>{t('soon')}</span>
-						)}
+						<ProjectActions project={project} variant="compact" />
 						<TransitionLink
 							href={href}
 							aria-label={`${t('details')}: ${project.title}`}
