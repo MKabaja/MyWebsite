@@ -4,6 +4,7 @@ import { ContactSection } from '@/features/contact/components/contact-section';
 import { AboutSection } from '@/features/home/components/about-section';
 import { HeroSection } from '@/features/home/components/hero-section';
 import { HireSection } from '@/features/home/components/hire-section';
+import { StorySection } from '@/features/home/components/story-section';
 import { PortfolioSection } from '@/features/projects/components/portfolio-section';
 import { ProjectsSection } from '@/features/projects/components/projects-section';
 import { homePageStyles } from './home-page.styles';
@@ -23,6 +24,7 @@ export function HomePage() {
 			<HireSection />
 			<PortfolioSection />
 			<ProjectsSection />
+			<StorySection />
 			<ContactSection />
 		</>
 	);

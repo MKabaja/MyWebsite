@@ -1,9 +1,12 @@
 'use client';
 
 import { ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import type { MouseEvent } from 'react';
+import { ProjectVideo } from '@/features/projects/components/project-video';
 import type { Project } from '@/features/projects/model/projects.types';
+import { toLocale } from '@/i18n/routing';
 import { TransitionLink } from '@/shared/components/page-transition';
 import { matchesMedia, mediaQueries } from '@/shared/lib/media-queries';
 import { cn } from '@/shared/lib/utils';
@@ -19,7 +22,7 @@ type PortfolioCardProps = {
 	wasDragged: () => boolean;
 };
 
-const { cardCursor, openIcon } = portfolioCardStyles;
+const { cardCursor, openIcon, screenshot } = portfolioCardStyles;
 
 export function PortfolioCard({
 	project,
@@ -29,9 +32,9 @@ export function PortfolioCard({
 	isDuplicate,
 	wasDragged,
 }: PortfolioCardProps) {
-	const locale = useLocale();
+	const locale = toLocale(useLocale());
 	const t = useTranslations('home.portfolio');
-	const tExplore = useTranslations('explore');
+	const { media } = project;
 
 	function handleClick(event: MouseEvent<HTMLAnchorElement>) {
 		const isNarrowKeyboardClick =
@@ -59,38 +62,22 @@ export function PortfolioCard({
 					onClick={handleClick}
 				>
 					<div className={styles.media}>
-						{project.video ? (
-							<video
+						{media.kind === 'video' ? (
+							<ProjectVideo
+								media={media}
 								className={styles.video}
-								muted
-								loop
-								playsInline
-								autoPlay
-								preload="metadata"
-								poster={project.video.poster}
 								draggable={false}
-							>
-								{project.video.webm && (
-									<source src={project.video.webm} type="video/webm" />
-								)}
-								<source src={project.video.mp4} type="video/mp4" />
-							</video>
+							/>
 						) : (
-							<div className={styles.cover}>
-								<span className={styles.coverIndex} aria-hidden>
-									{padToTwoDigits(index + 1)}
-								</span>
-								<span className={styles.badge}>
-									<span className={styles.badgeDot} aria-hidden />
-									{tExplore('comingSoon')}
-								</span>
-								<span className={styles.coverTitle}>{project.title}</span>
-								<ul className={styles.chips}>
-									{project.stack.map((tech) => (
-										<li key={tech}>{tech}</li>
-									))}
-								</ul>
-							</div>
+							<Image
+								src={media.cover}
+								alt=""
+								width={media.widthInPixels}
+								height={media.heightInPixels}
+								sizes="(max-width: 991px) 80vw, 50vw"
+								className={`${styles.video} ${screenshot}`}
+								draggable={false}
+							/>
 						)}
 					</div>
 

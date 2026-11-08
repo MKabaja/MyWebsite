@@ -45,7 +45,7 @@
     },
     "hire": {
       "headingStart": "Otwarty na zatrudnienie — szukam pracy jako",
-      "headingRoles": "Front-end / React developer",
+      "headingRoles": "Web developer",
       "headingEnd": "👀",
       "stackHeading": "Główny stack",
       "skillsHeading": "Umiejętności",
@@ -60,9 +60,9 @@
       ],
       "achievementsHeading": "Osiągnięcia",
       "achievements": [
-        "PowerTask — aplikacja To-Do z roadmapą projektów (Firebase)",
-        "ShiftFlow i PrintForge — aplikacje Laravel + React + Inertia.js",
-        "Ponad rok regularnej nauki i praktyki front-endu"
+        "DriveBook — system rezerwacji aut, Laravel API + React, wdrożony",
+        "ShiftFlow — grafiki pracy, API na produkcji, frontend w toku",
+        "Linker — narzędzie dla e-commerce w Next.js, używane w pracy"
       ],
       "cta": "Napisz do mnie"
     },
@@ -81,16 +81,50 @@
       "marquee": "console.log",
       "heading": "Projekty",
       "text": "Aplikacje i strony, nad którymi pracowałem — z opisem, kodem i wersją demo.",
-      "live": "Live demo",
-      "repo": "Kod",
-      "details": "Szczegóły",
-      "soon": "Wkrótce"
+      "details": "Szczegóły"
     },
     "contact": {
       "heading": "Porozmawiajmy",
       "note": "napisz do mnie",
       "text": "Szukasz developera do zespołu albo masz pomysł na stronę? Napisz — odpowiem najszybciej, jak to możliwe.",
       "copyright": "© {year} Mateusz Kabaja"
+    },
+    "story": {
+      "note": "kim jestem",
+      "heading": "Od spawania do kodu",
+      "paragraphs": [
+        "Zanim zająłem się programowaniem, przez lata pracowałem na produkcji, między innymi przy spawaniu. Moją pierwszą aplikacją była lista zadań w czystym JavaScripcie, a pod koniec 2024 roku zacząłem po godzinach uczyć się PHP i Laravela.",
+        "Od września 2026 pracuję jako programista w e-commerce: rozwijam sklep internetowy i buduję narzędzia dla zespołu. Po godzinach tworzę własne aplikacje, od bazy danych po wdrożenie na własnym serwerze.",
+        "Najbardziej interesuje mnie to, co łatwo zepsuć: reguły biznesowe, daty, współbieżność i bezpieczeństwo sesji."
+      ],
+      "timelineHeading": "Oś czasu",
+      "timeline": [
+        {
+          "period": "09/2026 – obecnie",
+          "title": "Pierwsza praca jako programista",
+          "text": "E-commerce: migracja sklepu na nową wersję platformy, integracje i wewnętrzne narzędzie Linker."
+        },
+        {
+          "period": "11/2026",
+          "title": "DriveBook",
+          "text": "Ukończony system rezerwacji aut: Laravel API i React SPA, wdrożony na własnym serwerze."
+        },
+        {
+          "period": "12/2025 – obecnie",
+          "title": "ShiftFlow",
+          "text": "Pierwszy duży projekt: grafiki pracy, API na produkcji i automatyczne wdrożenia."
+        },
+        {
+          "period": "12/2024",
+          "title": "Start z Laravelem",
+          "text": "Nauka PHP i Laravela po godzinach, obok pracy na produkcji."
+        },
+        {
+          "period": "2024",
+          "title": "PowerTask",
+          "text": "Pierwsza aplikacja: planer zadań w czystym JavaScripcie i Firebase."
+        }
+      ]
     }
   },
   "contact": {
@@ -120,24 +154,44 @@
     "location": "Lokalizacja",
     "locationValue": "Polska, Wieliczka"
   },
-  "explore": {
-    "comingSoon": "Wkrótce"
-  },
   "portfolio": {
     "back": "Wróć",
-    "client": "Klient",
     "role": "Rola",
-    "completed": "Ukończono",
-    "stack": "Technologie",
-    "links": "Linki",
-    "live": "Zobacz na żywo",
-    "repo": "Kod na GitHubie",
+    "stack": "Stack",
     "cta": "Porozmawiajmy",
     "copyright": "Copyright © {year} Mateusz Kabaja. Wszelkie prawa zastrzeżone.",
-    "placeholderNote": "Szczegółowe studium przypadku pojawi się wkrótce.",
     "caseStudy": "studium przypadku",
     "media": "Nagranie z aplikacji {title}",
-    "ctaText": "Masz podobny projekt? Chętnie o nim porozmawiam."
+    "ctaText": "Masz podobny projekt? Chętnie o nim porozmawiam.",
+    "period": "Okres",
+    "stackGroups": {
+      "frontend": "Frontend",
+      "backend": "Backend i dane",
+      "quality": "Jakość",
+      "infrastructure": "Infrastruktura"
+    },
+    "problemsHeading": "Problemy, które rozwiązuję",
+    "problem": "Problem",
+    "solution": "Rozwiązanie",
+    "stagesHeading": "Aktualny stan",
+    "stagesProgress": "Ukończone etapy: {done} z {total}",
+    "stageStates": {
+      "done": "zrobione",
+      "current": "w toku",
+      "planned": "w planach"
+    },
+    "status": {
+      "completed": "Ukończony",
+      "inProgress": "W trakcie prac",
+      "early": "Wczesny projekt"
+    },
+    "actions": {
+      "live": "Chcę zobaczyć live demo",
+      "liveAnyway": "Mimo to chcę zobaczyć",
+      "code": "Pokaż mi kod",
+      "codeFrontend": "Kod frontendu",
+      "codeBackend": "Kod backendu"
+    }
   },
   "notFound": {
     "title": "Zabłądziłeś;",

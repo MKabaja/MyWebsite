@@ -1,21 +1,24 @@
 'use client';
 
-import { ArrowRight, ArrowUpLeft, ExternalLink } from 'lucide-react';
+import { ArrowRight, ArrowUpLeft } from 'lucide-react';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { useRef } from 'react';
+import { ProjectActions } from '@/features/projects/components/project-actions';
 import { ProjectContent } from '@/features/projects/components/project-content';
-import { StackChips } from '@/features/projects/components/stack-chips';
+import { ProjectStatusBadge } from '@/features/projects/components/project-status-badge';
+import { ProjectVideo } from '@/features/projects/components/project-video';
 import type { Project } from '@/features/projects/model/projects.types';
 import type { Locale } from '@/i18n/routing';
-import { GithubIcon } from '@/shared/components/brand-icons';
 import { Logo } from '@/shared/components/logo';
 import { TransitionLink } from '@/shared/components/page-transition';
 import { Scribble } from '@/shared/components/scribble';
 import { Tile } from '@/shared/components/tile';
 import { useSplitReveal } from '@/shared/hooks/use-split-reveal';
-import { cn } from '@/shared/lib/utils';
 import { DetailCell } from './project-view.detail-cell';
-import styles from './project-view.module.css';
+import { ProjectProblems } from './project-view.problems';
+import { ProjectStack } from './project-view.stack';
+import { ProjectStages } from './project-view.stages';
 import { projectViewStyles } from './project-view.styles';
 
 type ProjectViewProps = {
@@ -35,20 +38,19 @@ const {
 	projectType,
 	title,
 	lead,
+	statusRow,
+	statusNote,
 	mediaTile,
 	mediaFrame,
 	video,
-	placeholderCover,
-	placeholderTitle,
-	placeholderSoon,
+	imageFrame,
+	image,
+	actionsTile,
+	actionsRow,
 	detailsTile,
-	details: detailList,
-	links,
-	link,
-	soonBadge,
+	details,
+	sectionTile,
 	contentTile,
-	placeholderNote,
-	placeholderNotePrefix,
 	ctaTile,
 	ctaRow,
 	ctaText,
@@ -64,18 +66,7 @@ export function ProjectView({ project, locale }: ProjectViewProps) {
 	const titleRef = useRef<HTMLHeadingElement>(null);
 	useSplitReveal(titleRef, { delayInSeconds: 0.5 });
 
-	const { live, repo } = project.links ?? {};
-	const details = [
-		project.client && {
-			label: t('portfolio.client'),
-			value: project.client[locale],
-		},
-		project.role && { label: t('portfolio.role'), value: project.role[locale] },
-		project.completed && {
-			label: t('portfolio.completed'),
-			value: project.completed,
-		},
-	].filter((detail) => !!detail);
+	const { media, caseStudy } = project;
 
 	return (
 		<div className={frame}>
@@ -101,96 +92,71 @@ export function ProjectView({ project, locale }: ProjectViewProps) {
 							{project.title}
 						</h1>
 						<p className={lead}>{project.lead[locale]}</p>
+						<div className={statusRow}>
+							<ProjectStatusBadge status={project.status} />
+							<span className={statusNote}>{project.statusNote[locale]}</span>
+						</div>
 					</div>
 				</Tile>
 
 				<Tile lines={['top', 'bottom']} className={mediaTile}>
-					<div className={mediaFrame}>
-						{project.video ? (
-							<video
+					{media.kind === 'video' ? (
+						<div className={mediaFrame}>
+							<ProjectVideo
+								media={media}
 								className={video}
 								data-speed="auto"
-								loop
-								muted
-								autoPlay
-								playsInline
-								poster={project.video.poster}
 								aria-label={t('portfolio.media', { title: project.title })}
-							>
-								{project.video.webm && (
-									<source src={project.video.webm} type="video/webm" />
-								)}
-								<source src={project.video.mp4} type="video/mp4" />
-							</video>
-						) : (
-							<div
-								aria-hidden
-								data-speed="auto"
-								className={cn(styles.placeholder, placeholderCover)}
-							>
-								<span className={placeholderTitle}>{project.title}</span>
-								<span className={placeholderSoon}>
-									&lt; {t('home.projects.soon')} /&gt;
-								</span>
-							</div>
-						)}
+							/>
+						</div>
+					) : (
+						<div className={imageFrame}>
+							<Image
+								src={media.cover}
+								alt={media.alt[locale]}
+								width={media.widthInPixels}
+								height={media.heightInPixels}
+								className={image}
+								priority
+							/>
+						</div>
+					)}
+				</Tile>
+
+				<Tile lines={['bottom']} className={actionsTile}>
+					<div className={actionsRow}>
+						<ProjectActions project={project} variant="prominent" />
 					</div>
 				</Tile>
 
 				<Tile lines={['bottom']} className={detailsTile}>
-					<dl className={detailList}>
-						{details.map(({ label, value }) => (
-							<DetailCell key={label} label={label}>
-								{value}
-							</DetailCell>
-						))}
-						<DetailCell label={t('portfolio.stack')}>
-							<StackChips stack={project.stack} />
+					<dl className={details}>
+						<DetailCell label={t('portfolio.role')}>
+							{project.role[locale]}
 						</DetailCell>
-						{(live || repo || project.isPlaceholder) && (
-							<DetailCell label={t('portfolio.links')}>
-								<div className={links}>
-									{live && (
-										<a
-											href={live}
-											target="_blank"
-											rel="noopener noreferrer"
-											className={link}
-										>
-											<ExternalLink size={14} aria-hidden />
-											{t('portfolio.live')}
-										</a>
-									)}
-									{repo && (
-										<a
-											href={repo}
-											target="_blank"
-											rel="noopener noreferrer"
-											className={link}
-										>
-											<GithubIcon size={14} />
-											{t('portfolio.repo')}
-										</a>
-									)}
-									{!live && !repo && (
-										<span className={soonBadge}>{t('home.projects.soon')}</span>
-									)}
-								</div>
-							</DetailCell>
-						)}
+						<DetailCell label={t('portfolio.period')}>
+							{project.period[locale]}
+						</DetailCell>
 					</dl>
 				</Tile>
 
-				<Tile className={contentTile}>
-					{project.isPlaceholder || project.content.length === 0 ? (
-						<p className={placeholderNote} data-fade>
-							<span className={placeholderNotePrefix}>{'// '}</span>
-							{t('portfolio.placeholderNote')}
-						</p>
-					) : (
-						<ProjectContent blocks={project.content} locale={locale} />
-					)}
+				<Tile lines={['bottom']} className={contentTile}>
+					<ProjectContent blocks={project.content} locale={locale} />
 				</Tile>
+
+				{caseStudy && (
+					<>
+						<Tile lines={['bottom']} className={sectionTile}>
+							<ProjectStack groups={caseStudy.stackGroups} />
+						</Tile>
+						<Tile lines={['bottom']} className={sectionTile}>
+							<ProjectProblems problems={caseStudy.problems} locale={locale} />
+						</Tile>
+						<Tile className={sectionTile}>
+							<ProjectStages stages={caseStudy.stages} locale={locale} />
+						</Tile>
+					</>
+				)}
 
 				<Tile mode="grain" lines={['top', 'bottom']} className={ctaTile}>
 					<div className={ctaRow} data-fade>

@@ -24,6 +24,8 @@ const {
 	list,
 } = projectsSectionStyles;
 
+const listedProjects = projects.filter((project) => project.caseStudy);
+
 export function ProjectsSection() {
 	const t = useTranslations('home.projects');
 
@@ -53,7 +55,7 @@ export function ProjectsSection() {
 
 				<Tile className={listTile}>
 					<ul className={list}>
-						{projects.map((project, index) => (
+						{listedProjects.map((project, index) => (
 							<ProjectTile key={project.slug} project={project} index={index} />
 						))}
 					</ul>
