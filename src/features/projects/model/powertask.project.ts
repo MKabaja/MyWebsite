@@ -14,7 +14,7 @@ export const powertaskProject: Project = {
 		en: 'Kept here as my starting point',
 	},
 	role: { pl: 'Projekt i implementacja', en: 'Design & development' },
-	period: { pl: '2024', en: '2024' },
+	period: { pl: '2025', en: '2025' },
 	stack: ['JavaScript', 'SCSS', 'HTML', 'Firebase'],
 	media: {
 		kind: 'video',
