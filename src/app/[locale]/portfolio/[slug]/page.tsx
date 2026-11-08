@@ -26,7 +26,11 @@ export async function generateMetadata({
 		title: `${project.title} — ${project.type[lang]} | Mateusz Kabaja`,
 		description: project.lead[lang],
 		alternates: localeAlternates(lang, `/portfolio/${slug}`),
-		openGraph: { title: project.title, description: project.lead[lang] },
+		openGraph: {
+			title: project.title,
+			description: project.lead[lang],
+			images: [project.media.cover],
+		},
 	};
 }
 

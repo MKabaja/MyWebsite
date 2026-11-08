@@ -27,6 +27,8 @@ const caveat = Caveat({
 	weight: ['400', '500'],
 });
 
+const OG_IMAGE_PATH = '/images/og.jpg';
+
 export const viewport: Viewport = {
 	width: 'device-width',
 	initialScale: 1,
@@ -57,11 +59,13 @@ export async function generateMetadata({
 			description: t('description'),
 			siteName: t('title'),
 			locale: locale === 'pl' ? 'pl_PL' : 'en_US',
+			images: [OG_IMAGE_PATH],
 		},
 		twitter: {
 			card: 'summary_large_image',
 			title: t('title'),
 			description: t('description'),
+			images: [OG_IMAGE_PATH],
 		},
 	};
 }
