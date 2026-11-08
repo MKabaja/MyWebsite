@@ -22,9 +22,9 @@ export const heroSectionStyles = {
 	stackBar:
 		'mt-auto flex items-center justify-between gap-6 border-t border-dashed border-guide px-5 py-5 sm:px-8 lg:h-20 lg:px-12 lg:py-0',
 	stackList:
-		'flex flex-wrap items-center gap-x-1 gap-y-1 lg:gap-x-8 lg:gap-y-4',
+		'items-center max-lg:grid max-lg:flex-1 max-lg:grid-cols-7 lg:flex lg:flex-wrap lg:gap-x-8 lg:gap-y-4',
 	stackLink:
-		'mouse-sm flex max-lg:min-h-11 max-lg:min-w-11 items-center justify-center text-white/40 max-lg:text-white/75 transition-colors hover:text-white',
+		'mouse-sm flex items-center justify-center text-white/75 transition-colors hover:text-white max-lg:min-h-11 max-lg:w-full',
 	stackIcon: 'size-6 lg:size-7',
 	scrollDownLink:
 		'mouse-sm shrink-0 text-white/50 transition-colors hover:text-accent',

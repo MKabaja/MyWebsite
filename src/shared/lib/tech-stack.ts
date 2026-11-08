@@ -41,6 +41,7 @@ export const coreStack: Tech[] = [
 		icon: siTypescript,
 		url: 'https://www.typescriptlang.org',
 	},
+	{ name: 'PHP', icon: siPhp, url: 'https://www.php.net' },
 	{ name: 'Laravel', icon: siLaravel, url: 'https://laravel.com' },
 	{ name: 'Tailwind CSS', icon: siTailwindcss, url: 'https://tailwindcss.com' },
 	{ name: 'GSAP', icon: siGsap, url: 'https://gsap.com' },
@@ -53,7 +54,6 @@ export const toolbox: Tech[] = [
 		icon: siJavascript,
 		url: 'https://developer.mozilla.org/docs/Web/JavaScript',
 	},
-	{ name: 'PHP', icon: siPhp, url: 'https://www.php.net' },
 	{ name: 'Inertia.js', icon: siInertia, url: 'https://inertiajs.com' },
 	{ name: 'Firebase', icon: siFirebase, url: 'https://firebase.google.com' },
 	{
