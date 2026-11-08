@@ -88,6 +88,43 @@
       "note": "napisz do mnie",
       "text": "Szukasz developera do zespołu albo masz pomysł na stronę? Napisz — odpowiem najszybciej, jak to możliwe.",
       "copyright": "© {year} Mateusz Kabaja"
+    },
+    "story": {
+      "note": "kim jestem",
+      "heading": "Od spawania do kodu",
+      "paragraphs": [
+        "Zanim zająłem się programowaniem, przez lata pracowałem na produkcji, między innymi przy spawaniu. Moją pierwszą aplikacją była lista zadań w czystym JavaScripcie, a pod koniec 2024 roku zacząłem po godzinach uczyć się PHP i Laravela.",
+        "Od września 2026 pracuję jako programista w e-commerce: rozwijam sklep internetowy i buduję narzędzia dla zespołu. Po godzinach tworzę własne aplikacje, od bazy danych po wdrożenie na własnym serwerze.",
+        "Najbardziej interesuje mnie to, co łatwo zepsuć: reguły biznesowe, daty, współbieżność i bezpieczeństwo sesji."
+      ],
+      "timelineHeading": "Oś czasu",
+      "timeline": [
+        {
+          "period": "09/2026 – obecnie",
+          "title": "Pierwsza praca jako programista",
+          "text": "E-commerce: migracja sklepu na nową wersję platformy, integracje i wewnętrzne narzędzie Linker."
+        },
+        {
+          "period": "11/2026",
+          "title": "DriveBook",
+          "text": "Ukończony system rezerwacji aut: Laravel API i React SPA, wdrożony na własnym serwerze."
+        },
+        {
+          "period": "12/2025 – obecnie",
+          "title": "ShiftFlow",
+          "text": "Pierwszy duży projekt: grafiki pracy, API na produkcji i automatyczne wdrożenia."
+        },
+        {
+          "period": "12/2024",
+          "title": "Start z Laravelem",
+          "text": "Nauka PHP i Laravela po godzinach, obok pracy na produkcji."
+        },
+        {
+          "period": "2024",
+          "title": "PowerTask",
+          "text": "Pierwsza aplikacja: planer zadań w czystym JavaScripcie i Firebase."
+        }
+      ]
     }
   },
   "contact": {

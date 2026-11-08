@@ -88,6 +88,43 @@
       "note": "drop me a line",
       "text": "Looking for a developer to join your team, or have an idea for a website? Write to me — I'll reply as soon as I can.",
       "copyright": "© {year} Mateusz Kabaja"
+    },
+    "story": {
+      "note": "who I am",
+      "heading": "From welding to code",
+      "paragraphs": [
+        "Before I got into programming, I spent years working in manufacturing, including as a welder. My first app was a to-do list in vanilla JavaScript, and in late 2024 I started learning PHP and Laravel in my spare time.",
+        "Since September 2026 I have been working as a developer in e-commerce, improving an online store and building tools for the team. In my spare time I build my own apps, from the database to deployment on my own server.",
+        "I am most interested in what is easy to break: business rules, dates, concurrency and session security."
+      ],
+      "timelineHeading": "Timeline",
+      "timeline": [
+        {
+          "period": "09/2026 – present",
+          "title": "First job as a developer",
+          "text": "E-commerce: migrating a store to a new platform version, integrations and the internal Linker tool."
+        },
+        {
+          "period": "11/2026",
+          "title": "DriveBook",
+          "text": "A finished car rental booking system: Laravel API and React SPA, deployed on my own server."
+        },
+        {
+          "period": "12/2025 – present",
+          "title": "ShiftFlow",
+          "text": "My first big project: work schedules, an API in production and automated deployments."
+        },
+        {
+          "period": "12/2024",
+          "title": "Getting started with Laravel",
+          "text": "Learning PHP and Laravel in my spare time, alongside a job in manufacturing."
+        },
+        {
+          "period": "2024",
+          "title": "PowerTask",
+          "text": "My first app: a task planner in vanilla JavaScript and Firebase."
+        }
+      ]
     }
   },
   "contact": {
