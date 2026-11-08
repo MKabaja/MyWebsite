@@ -41,7 +41,7 @@
       "spotlightText": "Komponenty, hooki i stan — mój codzienny warsztat.",
       "heading": "Kod, design i odrobina 3D 🔥",
       "note": "o mnie",
-      "text": "Od ponad roku rozwijam się w front-endzie i coraz mocniej idę w stronę full-stacku — React na froncie, PHP i Laravel na backendzie. Najbardziej lubię moment, gdy pomysł z notatnika zaczyna żyć w przeglądarce: z animacjami, responsywnym układem i dopracowanym detalem."
+      "text": "Od prawie dwóch lat rozwijam się w front-endzie i coraz mocniej idę w stronę full-stacku — React na froncie, PHP i Laravel na backendzie. Najbardziej lubię moment, gdy pomysł z notatnika zaczyna żyć w przeglądarce: z animacjami, responsywnym układem i dopracowanym detalem."
     },
     "hire": {
       "headingStart": "Otwarty na zatrudnienie — szukam pracy jako",
@@ -54,6 +54,9 @@
         "Animacje — GSAP, CSS, WebGL",
         "Integracje z API i Firebase",
         "Backend w PHP / Laravel",
+        "Praca z REST API",
+        "Bazy danych SQL (PostgreSQL, MySQL)",
+        "WAPRO Mag (ERP)",
         "Projektowanie UI w Figmie",
         "Grafika 3D w Spline",
         "Git i praca w zespole"
@@ -93,7 +96,7 @@
       "note": "kim jestem",
       "heading": "Od spawania do kodu",
       "paragraphs": [
-        "Zanim zająłem się programowaniem, przez lata pracowałem na produkcji, między innymi przy spawaniu. Moją pierwszą aplikacją była lista zadań w czystym JavaScripcie, a pod koniec 2024 roku zacząłem po godzinach uczyć się PHP i Laravela.",
+        "Od 2016 roku pracowałem na produkcji jako spawacz TIG i operator CNC, a z czasem nieformalnie przejąłem też rolę informatyka zakładowego. W grudniu 2024 zacząłem po godzinach uczyć się JavaScriptu, PHP i Laravela, a moją pierwszą aplikacją była lista zadań w czystym JavaScripcie.",
         "Od września 2026 pracuję jako programista w e-commerce: rozwijam sklep internetowy i buduję narzędzia dla zespołu. Po godzinach tworzę własne aplikacje, od bazy danych po wdrożenie na własnym serwerze.",
         "Najbardziej interesuje mnie to, co łatwo zepsuć: reguły biznesowe, daty, współbieżność i bezpieczeństwo sesji."
       ],
@@ -115,14 +118,24 @@
           "text": "Pierwszy duży projekt: grafiki pracy, API na produkcji i automatyczne wdrożenia."
         },
         {
-          "period": "12/2024",
-          "title": "Start z Laravelem",
-          "text": "Nauka PHP i Laravela po godzinach, obok pracy na produkcji."
-        },
-        {
-          "period": "2024",
+          "period": "05/2025",
           "title": "PowerTask",
           "text": "Pierwsza aplikacja: planer zadań w czystym JavaScripcie i Firebase."
+        },
+        {
+          "period": "12/2024",
+          "title": "Początek nauki programowania",
+          "text": "Po godzinach, obok pracy na produkcji: JavaScript, PHP i Laravel."
+        },
+        {
+          "period": "ok. 2019",
+          "title": "Nieformalny awans: informatyk zakładowy",
+          "text": "Obok pracy przy maszynach pomoc biuru i hali: komputery, drukarki, oprogramowanie oraz zadania administracyjne w Comarch MES."
+        },
+        {
+          "period": "2016 – 08/2026",
+          "title": "Spawacz TIG i operator CNC",
+          "text": "Produkcja i serwis u klientów, praca z dokumentacją techniczną, funkcja brygadzisty na drugiej zmianie."
         }
       ]
     }
